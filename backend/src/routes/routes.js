@@ -23,12 +23,29 @@ router.post('/registro', bodyParser.json(), (req , res)=>{
             res.json({
                 status: true,
                 mensaje: 'el registro se grabo correctamente'
-            })
-        }
+                    })
+                }
 
-    })
+            })
+        })
     //res.send('holaaaa')
+
+/////////////////// LOGIN  //////////////
+
+router.post('/login', bodyParser.json(), (req , res)=>{
+    const {user, pass}= req.body
+    coneccion.query( 'SELECT * FROM usuarios WHERE user=?', [user], (error, registros)=>{
+        if(!error){
+            console.log(registros)
+        }else {
+            res.json({
+                status: false,
+                mensaje: 'error'
+        })
+        }
+    })
 })
+
 
 /////////lISTAR MODELOS/////
 router.get('/usuarios', (req , res)=>{
