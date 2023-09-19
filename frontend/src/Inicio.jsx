@@ -1,22 +1,23 @@
 import React from "react";
-import viteLogo from '/vite.svg'
 import {Link} from "react-router-dom"
+import './inicio.css'
+
 
 export function Inicio(){
     return(
         <>
+            <h1>Este es el Inicio</h1>
+
             <div>
-                <a href="https://vitejs.dev" target="_blank">
-                <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
+
             </div>
             
-            <h1>Este es el Inicio</h1>
             <div>
                 <ul>
                     <li><Link to="/">Inicio</Link></li>
                     <li><Link to="/Login">Login</Link></li>
 
+                    
                 </ul>
             </div>
         </>

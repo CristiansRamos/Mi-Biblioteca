@@ -29,11 +29,11 @@ export function Login(){
 
     return(
         <>
-            <div onSubmit={ingresar} className="form-signin w-100 m-auto">
+            <div onSubmit={ingresar} className="container">
                 <div className="container">
                     <img src={libros_apilados} alt="libros_apilados"/>
                     <div className="login-container">
-                        <h1>Iniciar Sesión</h1>
+                        <h2>Iniciar Sesión</h2>
                         <form id="">
                             <div className="form-group">
                                 <input
@@ -53,7 +53,6 @@ export function Login(){
                                 className="input" 
                                 id="input" 
                                 placeholder="Contraseña"/>
-                                <label for="floatingPassword">Contraseña</label>
                             </div>
                             <button type="submit" className="input" >Iniciar Sesión</button>
                         </form>
