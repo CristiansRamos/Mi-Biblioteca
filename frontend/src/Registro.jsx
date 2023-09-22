@@ -28,10 +28,11 @@ export function Registro(){
         <>
         <main className="form-signin w-100 m-auto">
               <form onSubmit={Registro}>
-                <h1 className="h3 mb-3 fw-normal">Por favor completar los datos</h1>
+                <h1 className="h3 mb-3 fw-normal">completar los campos</h1>
                 
                 <div className="form-floating">
                   <input 
+                  required
                   type="text" 
                   value={apellido}
                   onChange={(event)=>setApellido(event.target.value)}
@@ -42,6 +43,7 @@ export function Registro(){
                 </div>
                 <div className="form-floating">
                   <input 
+                  required
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
@@ -63,6 +65,7 @@ export function Registro(){
                 </div>
                 <div className="form-floating">
                 <input 
+                  required
                   type="email" 
                   value={correo}
                   onChange={(event)=>setCorreo(event.target.value)}
@@ -73,6 +76,7 @@ export function Registro(){
                 </div>
                 <div className="form-floating">
                   <input 
+                  required
                   type="text" 
                   value={user}
                   onChange={(event)=>setUser(event.target.value)}
@@ -83,6 +87,7 @@ export function Registro(){
                 </div>
                 <div className="form-floating">
                   <input 
+                  required
                   type="password" 
                   value={pass}
                   onChange={(event)=>setPass(event.target.value)}
@@ -91,7 +96,7 @@ export function Registro(){
                   />
                   <label for="password">Password</label>
                 </div>
-                <button className="btn btn-primary" type="submit">Registrarme </button>
+                <button className="btn btn-primary" type="submit">Registrar </button>
               </form>
           </main>
         </>

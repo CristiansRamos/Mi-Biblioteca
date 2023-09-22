@@ -22,8 +22,8 @@ router.post('/registro', bodyParser.json() , (req , res)=>{
             status:false,
             mensaje: "El DNI es un campo obligatorio"
         })
-    }
-    //  return
+    };
+
 
     mysqlConnect.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuarios)=>{
         if(error){
@@ -80,7 +80,7 @@ router.post('/login', bodyParser.json() , (req , res)=>{
                  if(comparacion)  {
 
                     // vamos a generar el token
-                    jwt.sign({usuario}, 'siliconKey', (error, token)=>{
+                    jwt.sign({usuario}, 'biblioteca', (error, token)=>{
 
                         res.json({
                             status: true,

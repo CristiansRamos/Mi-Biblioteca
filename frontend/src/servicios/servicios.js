@@ -28,17 +28,17 @@ export async function Registro(datos){
     return data
 }
 
-/* export async function getLibros(){
+export async function getLibros(){
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         }
     }
     const respuesta = await fetch(`${URL}/libros`, Options)
     const data= await respuesta.json()
     return data
-} */
+}
 
 /*
 

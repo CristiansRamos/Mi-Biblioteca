@@ -6,6 +6,8 @@ import { Login } from './Login'
 import { Registro } from './Registro'
 import { Principal } from './Principal'
 import { Dashboard } from './Dashboard'
+import { Libros } from '../src/componentes/Libros/Libros'
+
 
 
 
@@ -20,6 +22,8 @@ function App() {
       <Route path='/Registro' element= {<Registro/>}></Route>
       <Route path='/Principal' element= {<Principal/>}></Route>
       <Route path='/Dashboard' element= {<Dashboard/>}></Route>
+      <Route path='/Libros' element= {<Libros/>}></Route>
+
 
 
     </Routes>

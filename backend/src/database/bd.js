@@ -1,19 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
-const miConeccionMysql = mysql.createConnection({
+const miConexionMysql = mysql.createConnection({
     host: 'localhost',
     user:'root',
     password: 'root',
     database: 'mi_biblioteca'
 });
 
-miConeccionMysql.connect(function(err){
+miConexionMysql.connect(function(err){
     if(err){
         console.log(`mi error es ${err}`)
         return;
     }else{
-        console.log('mi coneccion se realizo correctamente')
+        console.log('mi conexion se realizo correctamente')
     }
 })
 
-module.exports = miConeccionMysql;
+module.exports = miConexionMysql;

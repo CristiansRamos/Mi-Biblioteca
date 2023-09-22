@@ -37,6 +37,7 @@ export function Login(){
                         <form id="">
                             <div className="form-group">
                                 <input
+                                required
                                 type="text" 
                                 value={user}
                                 onChange={(event)=> setUsername(event.target.value)}
@@ -47,6 +48,7 @@ export function Login(){
                             </div>
                             <div className="form-group">
                                 <input 
+                                required
                                 type="password" 
                                 value={pass} 
                                 onChange={(event)=> setPassword(event.target.value)}
