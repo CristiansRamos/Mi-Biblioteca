@@ -1,7 +1,7 @@
 import React from "react";
 import './Dashboard.css';
 import { Link } from "react-router-dom";
-import { Libros } from "./componentes/Libros/Libros";
+import { Menu } from "./Menu";
 
 
 
@@ -12,8 +12,9 @@ export function Dashboard(){
         
         <h1> Dashboard </h1>
         <Link to='/Registro'>Registrar</Link>
+        <Menu/>
+
         
-        <Libros />
         
         </>
     )

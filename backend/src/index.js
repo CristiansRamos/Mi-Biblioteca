@@ -28,6 +28,10 @@ app.use(function (req, res, next) {
 //importo las rutas 
 app.use(require('./routes/routes'))
 app.use(require('./routes/routesLibros'))
+app.use(require('./routes/routesEditorial'))
+app.use(require('./routes/routesAutores'))
+
+
 
 /* app.use(require('./routes/routesTipoEquipo'))
 app.use(require('./routes/routesUbicaciones'))

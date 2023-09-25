@@ -11,8 +11,10 @@ export function Menu(){
             <ul>
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/">Categorias</Link></li>
-              <li><Link to="/">Equipos</Link></li>
-              <li><Link to="/">Usuarios</Link></li>
+              <li><Link to="/Libros">Libros</Link></li>
+              <li><Link to="/Editorial">Editorial</Link></li>
+              <li><Link to="/Autores">Autores</Link></li>
+
             </ul>
           </div>
         </>

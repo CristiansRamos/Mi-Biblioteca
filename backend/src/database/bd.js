@@ -16,4 +16,5 @@ miConexionMysql.connect(function(err){
     }
 })
 
+
 module.exports = miConexionMysql;

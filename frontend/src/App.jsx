@@ -7,6 +7,12 @@ import { Registro } from './Registro'
 import { Principal } from './Principal'
 import { Dashboard } from './Dashboard'
 import { Libros } from '../src/componentes/Libros/Libros'
+import { Editorial } from './componentes/Editorial/Editorial'
+import { Autores } from './componentes/Autores/Autores'
+import { AddEditorial } from './componentes/Editorial/AddEditorial'
+
+
+
 
 
 
@@ -23,7 +29,9 @@ function App() {
       <Route path='/Principal' element= {<Principal/>}></Route>
       <Route path='/Dashboard' element= {<Dashboard/>}></Route>
       <Route path='/Libros' element= {<Libros/>}></Route>
-
+      <Route path='/Editorial' element= {<Editorial/>}></Route>
+      <Route path='/Autores' element= {<Autores/>}></Route>
+      <Route path='/AddEditorial' element= {<AddEditorial/>}></Route>
 
 
     </Routes>

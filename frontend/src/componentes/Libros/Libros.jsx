@@ -15,7 +15,7 @@ export function Libros(){
               <thead>
                 <tr>
                   <td>Título</td>
-                  <td>Autor</td>
+                  <td>Autor-Editorial</td>
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
@@ -26,10 +26,10 @@ export function Libros(){
               <tbody>
               {Libros.map((lib)=>(
                 <tr>
-                  <td scope="col">{lib.nombre}</td>
+                  <td >{lib.nombre}</td>
                   <td >{lib.autor_editorial}</td>
                   <td >{lib.generos}</td>
-                  <td >{lib.lugar_ubicacion}</td>
+                  <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
                 </tr>
               ))}
