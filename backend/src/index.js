@@ -32,16 +32,6 @@ app.use(require('./routes/routesEditorial'))
 app.use(require('./routes/routesAutores'))
 
 
-
-/* app.use(require('./routes/routesTipoEquipo'))
-app.use(require('./routes/routesUbicaciones'))
-app.use(require('./routes/routesModelos'))
-app.use(require('./routes/routesFabricantes'))
-app.use(require('./routes/routesEquipos')) */
-
-
-
-
 app.listen(app.get('puerto'), ()=>{
     console.log('mi servidor esta corriendo en el puerto', app.get('puerto'))
 });

@@ -25,6 +25,7 @@ const guardarEditorial = async(event)=>{
                 <div>
                     {mensaje}
                 </div>
+                
                 <div className="form-floating">
                   <input 
                   type="text" 
@@ -34,11 +35,10 @@ const guardarEditorial = async(event)=>{
                   />
                   <label for="floatingInput">Nombre de Editorial</label>
                 </div>
-               
-               
+                
                 <button className="btn btn-primary" type="submit" >Guardar</button>
                 <Link to="/editorial" >Volver</Link>
-                
+
               </form>
             </main>
         </>

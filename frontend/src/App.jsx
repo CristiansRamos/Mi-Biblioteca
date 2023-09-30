@@ -10,6 +10,8 @@ import { Libros } from '../src/componentes/Libros/Libros'
 import { Editorial } from './componentes/Editorial/Editorial'
 import { Autores } from './componentes/Autores/Autores'
 import { AddEditorial } from './componentes/Editorial/AddEditorial'
+import { AddAutores } from './componentes/Autores/AddAutores'
+import { EditEditorial } from './componentes/Editorial/EditEditorial'
 
 
 
@@ -32,6 +34,10 @@ function App() {
       <Route path='/Editorial' element= {<Editorial/>}></Route>
       <Route path='/Autores' element= {<Autores/>}></Route>
       <Route path='/AddEditorial' element= {<AddEditorial/>}></Route>
+      <Route path='/AddAutores' element= {<AddAutores/>}></Route>
+      <Route path='/EditEditorial/:id_editorial' element= {<EditEditorial/>}></Route>
+
+
 
 
     </Routes>

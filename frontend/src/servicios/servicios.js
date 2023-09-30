@@ -53,6 +53,32 @@ export async function getEditorial(){
     const data= await respuesta.json()
     return data;
 }
+///////////////EDITORIAL POR ID////////////
+export async function getEditorialByID(id_editorial){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+/////////////EDITAR EDITORIAL////////////
+export async function EditEditorial(datos, id_editorial){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
 ////////AGREGAR EDITORIAL METODO POST/////////
 export async function AddEditorial(datos){
     const Options={
@@ -63,6 +89,19 @@ export async function AddEditorial(datos){
         }
     }
     const respuesta = await fetch(`${URL}/editorial`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+/////////////////CAMBIAR ESTADO EDITORIAL//////////
+export async function ActualizarEstadoEditorial(id_editorial, actulizar){
+    const Options={
+        method:'DELETE',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
     const data= await respuesta.json()
     return data;
 }
@@ -80,6 +119,35 @@ export async function getAutores(){
         }
     }
     const respuesta = await fetch(`${URL}/autores`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+////////AGREGAR AUTORES METODO POST/////////
+export async function AddAutores(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/autores`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+////////////CAMBIAR ESTADO AUTOR//////////
+
+export async function ActualizarEstadoAutores(id_autor, actulizar){
+    const Options={
+        method:'DELETE',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
     const data= await respuesta.json()
     return data;
 }

@@ -33,4 +33,48 @@ router.post('/editorial', bodyParser.json(), (req , res)=>{
    })
 })
 
+////////////TRAER DATOS DE EDITORIAL POR ID//////////
+router.get('/editorial/:id_editorial', (req , res)=>{
+    const { id_editorial } = req.params
+    mysqlConnect.query('SELECT * FROM editorial WHERE id_editorial=?', [id_editorial], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json(registros)
+        }
+    })
+})
+
+////////////CAMBIAR ESTADO EDITORIAL/////////
+router.delete('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
+    const { actualizar }  = req.body
+    const { id_editorial } = req.params
+    mysqlConnect.query('UPDATE editorial SET estado = ?  WHERE id_editorial = ?', [actualizar, id_editorial], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json({
+                status:true,
+                mensaje: "El cambio de estado se realizo correctamente"
+                })
+        }
+    })
+})
+
+//////////////EDITAR EDITORIAL////////////
+    // el parametro que vamos a editar ->id_editorial
+    router.put('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
+        const { nombre }  = req.body
+        const { id_editorial } = req.params
+        mysqlConnect.query('UPDATE editorial SET nombre = ?  WHERE id_editorial = ?', [nombre, id_editorial], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+            res.json({
+                status:true,
+                mensaje: "Se editó correctamente"
+                })
+           }
+       })
+    })
 module.exports = router;

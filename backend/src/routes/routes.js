@@ -109,7 +109,7 @@ router.post('/login', bodyParser.json() , (req , res)=>{
 })
 
 
-/////////lISTAR MODELOS/////
+/////////lISTAR  USUARIOS////
 router.get('/usuarios', (req , res)=>{
     mysqlConnect.query('SELECT * FROM usuarios', (error, registros)=>{
         if(error){
@@ -119,7 +119,7 @@ router.get('/usuarios', (req , res)=>{
         }
     })
 })
-/////////////traer datos del modulo por id////////////
+/////////////TRAER USUARIOS POR ID////////////
 router.get('/usuarios/:id_usuarios', (req , res)=>{
     const {id_usuarios}= req.params
     mysqlConnect.query('SELECT * FROM usuarios WHERE id_usuarios=?', [id_usuarios] , (error, registros)=>{
@@ -131,7 +131,7 @@ router.get('/usuarios/:id_usuarios', (req , res)=>{
     })
 })
 
-/////////////INSERTAR LOS MODULOS///////////////
+/////////////INSERTAR USUARIOS///////////////
 router.post('/usuarios', bodyParser.json(), (req , res)=>{
     const{nombre, id_usuarios, apellido, correo, estado} = req.body
     mysqlConnect.query('INSERT INTO usuarios (nombre, id_usuarios, apellido, correo, estado) VALUES (?,?,?,?,?)', [nombre, id_usuarios, apellido, correo, estado] , (error, registros)=>{
@@ -143,7 +143,7 @@ router.post('/usuarios', bodyParser.json(), (req , res)=>{
     })
 })
 
-/////////////MODIFICAR LOS MODULOS///////////////
+/////////////MODIFICAR LOS USUARIOS///////////////
 router.put('/usuarios/:id_usuarios', bodyParser.json(), (req , res)=>{
     const{nombre, id_usuarios, apellido, correo, estado} = req.body
     const {id_empleado} = req.params
