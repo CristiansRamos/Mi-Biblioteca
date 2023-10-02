@@ -6,18 +6,22 @@ export function AddEditorial(){
 const [nombre, setNombre] = useState('')
 const [mensaje, setMensaje] = useState('')
 
-const guardarEditorial = async(event)=>{
-    event.preventDefault();
-    const respuesta = await API.AddEditorial({nombre})
-    if(respuesta.status){
-        setMensaje(respuesta.mensaje)
-        setTimeout(()=>{
-            setMensaje('')
-            window.location.href='/editorial'
-            }, 3000)
+  
+    const guardarEditorial = async(event)=>{
+      event.preventDefault();
+      if(nombre !== ''){
+      const respuesta = await API.AddEditorial({nombre})
+      if(respuesta.status){
+          setMensaje(respuesta.mensaje)
+          setTimeout(()=>{
+              setMensaje('')
+              window.location.href='/editorial'
+              }, 3000)
+      }
+      return;
     }
-    return;
   }
+
     return(
         <>
              <main className="form-signin w-100 m-auto">
