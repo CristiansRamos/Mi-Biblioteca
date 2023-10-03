@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
+import { Link } from "react-router-dom";
+import { Menu } from "../../Menu";
 
 export function Libros(){
   const [Libros, setLibros] = useState([])
@@ -10,8 +12,10 @@ export function Libros(){
 
         return(
             <>
-              <h2>aca van los libros</h2>
-            <table class="table table-striped-columns table-success">
+              <Menu/>
+
+          <div className="container">
+            <table class="table table-striped-columns table-success  table-bordered table-responsive">
               <thead>
                 <tr>
                   <td>Título</td>
@@ -19,7 +23,6 @@ export function Libros(){
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
-                  <th  colspan="2">Acciones</th>
 
                 </tr>
               </thead>
@@ -36,8 +39,8 @@ export function Libros(){
 
               </tbody>
             </table>
-
-            </>
+          </div>
+        </>
         )
 
 }

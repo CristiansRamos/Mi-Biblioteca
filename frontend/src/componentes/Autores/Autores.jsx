@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
+import { Menu } from "../../Menu";
 
 
 export function Autores(){
@@ -41,11 +42,13 @@ export function Autores(){
 
         return(
             <>
+              <Menu/>
+
             <Link to='/AddAutores'>
               <button type="button" className="btn btn-success">Crear nuevo </button>
             </Link>
 
-            <table class="table table-striped-columns table-success">
+            <table class="table table-striped-columns table-success table-responsive">
               <thead>
                 <tr>
                   <td>Autor</td>
