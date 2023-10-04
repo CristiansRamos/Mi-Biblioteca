@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
+import { AddEditorial } from "./AddEditorial";
 
 
 export function Editorial(){
@@ -11,16 +12,6 @@ export function Editorial(){
   const [nombre, setNombre] = useState('')
 
 
-  const toastTrigger = document.getElementById('liveToastBtn')
-  const toastLiveExample = document.getElementById('liveToast')
-  if (toastTrigger) {
-      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-      toastTrigger.addEventListener('click', () => {
-        toastBootstrap.show()
-      })
-    }
-
-  
 
     useEffect(()=>{
       API.getEditorial().then(setEditorial)}, [])
@@ -31,14 +22,10 @@ export function Editorial(){
         const actualizar = (estado_actual=="A")?"B":"A";
         const respuesta= await API.ActualizarEstadoEditorial(id_editorial, {actualizar});
         if(respuesta.status){
-            setMensaje(respuesta.mensaje)
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastBootstrap.show()
             setTimeout(()=>{
                 setMensaje('')
-                toastBootstrap.hide()
                 API.getEditorial().then(setEditorial)
-            }, 2500)
+            }, 0)
         }
         
     }
@@ -57,24 +44,20 @@ export function Editorial(){
 
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastBootstrap.show()
             setTimeout(()=>{
                 setMensaje('')
                 window.location.href='/editorial'
-                }, 2500)
+                }, 0)
         }
         return;
     }else{
         const respuesta = await API.AddEditorial({nombre})
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastBootstrap.show()
             setTimeout(()=>{
                 setMensaje('')
                 window.location.href='/editorial'
-                }, 2500)
+                }, 0)
         }
         return;
     }
@@ -85,17 +68,19 @@ export function Editorial(){
         return(
             <>
               <Menu/>
-              <div className="container">
-                <div className="">
-                  <Link to='/AddEditorial'>
-                    <button type="button" className="btn btn-success">Crear nuevo </button>
-                  </Link>
-                </div>
-
-
-            <table class="table table-striped-columns table-success table-responsive">
+              
+          <div className="position-absolute top-50 start-50 translate-middle">
+            <div>
+                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Crear Nuevo
+              </button>
+            </div>
+            <table className="table align-middle table-responsive">
               <thead>
                 <tr>
+
+                </tr>
+                <tr className="table-info">
                   <td>Editorial</td>
                   <td>Estado</td>
                   <td colspan="2">Acciones</td>
@@ -121,16 +106,24 @@ export function Editorial(){
 
               </tbody>
             </table>
+            </div>
 
-            <div id="liveToast" class="toast toast-container  bottom-0 end-0 p-3" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <strong class="me-auto">Mensaje</strong>
-              </div>
-              <div class="toast-body">
-                {mensaje}
-              </div>
-            </div>
-            </div>
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Editorial</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <AddEditorial/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </>
         )
 

@@ -14,7 +14,7 @@ export function Libros(){
             <>
               <Menu/>
 
-          <div className="container">
+          <div className="position-absolute top-50 start-50 translate-middle">
             <table class="table table-striped-columns table-success  table-bordered table-responsive">
               <thead>
                 <tr>

@@ -41,7 +41,9 @@ const [mensaje, setMensaje] = useState('')
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <Link to="/editorial" >Volver</Link>
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+
+
 
               </form>
             </main>

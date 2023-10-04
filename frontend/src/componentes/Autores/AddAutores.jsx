@@ -1,58 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from '../../servicios/servicios'
-
 export function AddAutores(){
     const [nombre, setNombre] = useState('')
-    const [Editorial, setEditorial] = useState([])
-    const [id_editorial, setIdEditorial]= useState('')
+    const [id_editorial, setIdEditorial] = useState('')
+    const [editorial, setEditorial] = useState([])
     const [mensaje, setMensaje] = useState('')
 
     useEffect(()=>{
-      API.getEditorial().then(setEditorial)}, [])
+        API.getEditorial().then(setEditorial)
+    }, [])
 
     const guardarAutores = async(event)=>{
         event.preventDefault();
-
-        const respuesta = await API.AddAutores({nombre, id_editorial})
+        if(nombre !== ''){
+        const respuesta = await API.AddAutores({nombre, id_editorial});
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
             setTimeout(()=>{
                 setMensaje('')
                 window.location.href='/autores'
-                }, 3000)
+                }, 0)
         }
         return;
       }
-        return(
-            <>
-                <main className="form-signin w-100 m-auto">
-                  <form onSubmit={guardarAutores}>
-                    <div>
-                        {mensaje}
-                    </div>
-                    
-                    <div className="form-floating">
-                      <input 
-                      type="text" 
-                      value={nombre}
-                      onChange={(event)=>setNombre(event.target.value)}
-                      className="form-control" 
-                      />
-                      <label for="floatingInput">Nombre de Autor</label>
-                    </div>
-                    <div>
-                      <select onChange={(event)=>setIdEditorial(event.target.value)} className="form-control"> 
-                      {Editorial.map((e)=>(
-                        <option value={e.id_editorial}>{e.nombre}</option> ))}
-                      </select>
-                    </div>
-                  
-                    <button className="btn btn-primary" type="submit" >Guardar</button>
-                    <Link to="/autores" >Volver</Link>
-
-                  </form>
-                </main>
-            </>
-        )
     }
+
+    return(
+        <>
+            <main className="form-signin w-100 m-auto">
+              <form onSubmit={guardarAutores}>
+                <div>
+                    {mensaje}
+                </div>
+                <div className="form-floating">
+                  <input 
+                  type="text" 
+                  value={nombre}
+                  onChange={(event)=>setNombre(event.target.value)}
+                  className="form-control" 
+                  placeholder="Nombre del editorial"
+                  />
+                  <label for="floatingInput">Nombre de Autor</label>
+                </div>
+                <div className="form-floating">
+                  
+                 <select onChange={(event)=>setIdEditorial(event.target.value)} className="form-control">
+                 <option value="">seleccione una editorial</option>
+                    {editorial.map((e)=>(
+                    
+                    <option value={e.id_editorial}>{e.nombre}</option>
+                    ))}
+                 </select>
+                </div>
+               
+               
+                <button className="btn btn-primary" type="submit" >Guardar</button>
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                
+              </form>
+          </main>
+        </>
+    )
+}

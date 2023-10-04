@@ -19,7 +19,7 @@ router.get('/Autores', (req , res)=>{
     router.post('/autores', bodyParser.json(), (req , res)=>{
         const { nombre, id_editorial }  = req.body
        
-        mysqlConnect.query('INSERT INTO autores (nombre, id_editorial) VALUES (?, ?, ?)', [nombre, id_editorial], (error, registros)=>{
+        mysqlConnect.query('INSERT INTO autores (nombre, id_editorial) VALUES (?, ?)', [nombre, id_editorial], (error, registros)=>{
            if(error){
                res.json({
                    status:false,
@@ -28,14 +28,14 @@ router.get('/Autores', (req , res)=>{
            }else{
                res.json({
                    status:true,
-                   mensaje: "El insert se realizo correctamente"
+                   mensaje: "se agrego correctamente"
                    })
            }
        })
    })
 
    ////////////CAMBIAR ESTADO AUTORES/////////
-router.delete('/autores/:id_autor', bodyParser.json(), (req , res)=>{
+router.put('/autores/:id_autor', bodyParser.json(), (req , res)=>{
     const { actualizar }  = req.body
     const { id_autor } = req.params
     mysqlConnect.query('UPDATE autores SET estado = ?  WHERE id_autor = ?', [actualizar, id_autor], (error, registros)=>{
@@ -48,6 +48,25 @@ router.delete('/autores/:id_autor', bodyParser.json(), (req , res)=>{
                 })
         }
     })
+})
+
+router.delete('/autores/:id_autor', bodyParser.json(), (req , res)=>{
+    const { id_autor } = req.params
+    mysqlConnect.query('DELETE FROM autores WHERE id_autor = ?', id_autor, (error, registros)=>{
+       if(error){
+           
+            res.json({
+            status:false,
+            mensaje: error
+        })
+       }else{
+         res.json({
+            status:true,
+            mensaje: 'La eliminacion del registro ' +id_autor+ ' se realizo correctamente'
+        })
+          
+       }
+   })
 })
 
 module.exports= router;

@@ -4,9 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    display: flex;
+}
 .Link{
+    inline-size: 100%;
+    block-size: 100%;
     text-decoration: none;
     color: aliceblue;
+    padding: 15px;
 }
 
 .aside{
@@ -49,7 +55,6 @@
 .options div{
     display: flex;
     align-items: center;
-    padding: 15px;
     cursor: pointer;
     margin-block-end: 5px;
     font-size: 1.1rem;
@@ -80,4 +85,33 @@
 
 .aside.active .head i{
     margin: auto;
+}
+
+@media (max-width:500px) {
+    .aside {
+        display: none;
+    }
+    .aside .option,
+    .aside .profile{
+        display: none;
+    }
+    
+    .aside .head i{
+        display: none;
+    }
+}
+
+@media(max-width:850px){
+    .aside {
+        inline-size: 70px;
+        transition: all .4s ease;
+    }
+    .aside .option,
+    .aside .profile{
+        display: none;
+    }
+    
+    .aside .head i{
+        margin: auto;
+    }
 }

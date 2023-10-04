@@ -6,7 +6,7 @@ import logo from './assets/img/logo.png'
 
 
 export function Menu(){
-    
+
 
 
     return(
@@ -30,7 +30,7 @@ export function Menu(){
                     <img src={logo} alt="logo" />
                     <p>MiBiblioteca</p>
                 </div >
-                <i className="bi bi-list" id="barra"></i>
+                <i className="bi bi-list" id="barra" ></i>
             </div>
             <div className="options">
                 <div>

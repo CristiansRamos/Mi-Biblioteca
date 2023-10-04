@@ -8,8 +8,11 @@ import { Menu } from "./Menu";
 export function Dashboard(){
 
     return(
-        
-        <Menu/>        
+        <>
+              <Menu/> 
+        </>
+  
+              
 
     )
 }

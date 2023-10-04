@@ -141,8 +141,20 @@ export async function AddAutores(datos){
 
 export async function ActualizarEstadoAutores(id_autor, actulizar){
     const Options={
-        method:'DELETE',
+        method:'PUT',
         body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+export async function deleteAutor(id_autor){
+    const Options={
+        method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
         }
