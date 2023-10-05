@@ -43,10 +43,10 @@ export function AddAutores(){
                   />
                   <label for="floatingInput">Nombre de Autor</label>
                 </div>
+
                 <div className="form-floating">
-                  
-                 <select onChange={(event)=>setIdEditorial(event.target.value)} className="form-control">
-                 <option value="">seleccione una editorial</option>
+                 <select onChange={(event)=>setIdEditorial(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected >Seleccione una editorial</option>
                     {editorial.map((e)=>(
                     
                     <option value={e.id_editorial}>{e.nombre}</option>

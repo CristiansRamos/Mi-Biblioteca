@@ -56,8 +56,9 @@ export function Menu(){
                         <i class="bi bi-person-badge"></i>
                         <span  className="option">Autores</span>
                     </Link>
-
                 </div>
+
+                <Link to="/Registro" className="Link">Registro</Link>
 
             </div>
         </aside>

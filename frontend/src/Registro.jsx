@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as API from './servicios/servicios'
+import { Menu } from "./Menu";
 
 export function Registro(){
     
@@ -17,7 +18,7 @@ export function Registro(){
         
          if(Registro.status){
             alert(Registro.mensaje)
-            window.location.href='/login'
+            window.location.href='/Registro'
          }else{
            alert(Registro.mensaje)
           

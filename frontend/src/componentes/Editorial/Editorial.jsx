@@ -99,7 +99,7 @@ export function Editorial(){
                      }
                   </td>
                   <td> 
-                    <Link to={`/EditEditorial/${editorial.id_editorial}`} ><button class="btn btn-secondary">Editar</button></Link>
+                    <Link to={`/EditEditorial/${editorial.id_editorial}`} ><button class="btn btn-secondary"><i class="bi bi-pencil"></i></button></Link>
                   </td>
                 </tr>
               ))}

@@ -17,21 +17,24 @@ export function Autores(){
 
 
       const eliminar = async(id_autor)=>{
-        if(confirm('Esta seguro de eliminar este registro?')){
-            const borrado = await API.deleteAutor(id_autor);
-            if(borrado){
-              console.log("se borro")
-              setTimeout(()=>{
-                window.location.href='/autores'
-                }, 0)
-            }else{
-                alert("No se puede eliminar porque ocurrio el error");
-            }
-        }
-        
-    }
-
-
+        Swal.fire({
+          title: '¿Esta seguro que quiere Eliminar?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            API.deleteAutor(id_autor);
+            setTimeout(()=>{
+            window.location.href='/autores'
+            }, 1000)
+            Swal.fire(
+              'Eliminado!')
+          }
+        })
+      }
             ////////////CAMBIAR ESTADO/////////
             const cambiar_estado = async (e, id_autor, estado_actual)=>{
               e.preventDefault();
