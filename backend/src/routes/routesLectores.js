@@ -17,5 +17,21 @@ router.get('/lectores',(req , res)=>{
         })
     })
 
+    /////////////AGREGAR LECTORES/////////
+    router.post('/lectores', bodyParser.json(), (req , res)=>{
+        const { nombre, apellido, dni, correo }  = req.body
+      
+        mysqlConnect.query('INSERT INTO lectores (nombre, apellido, dni, correo) VALUES (?,?,?,?)', [nombre,apellido,dni, correo], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+                res.json({
+                status:true,
+                mensaje: "Se Agregó correctamente"
+                })
+           }
+       })
+    })
+
 
     module.exports = router;

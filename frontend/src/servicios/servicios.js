@@ -244,3 +244,16 @@ export async function getLectores(){
     const data= await respuesta.json()
     return data;
 }
+////////AGREGAR LECTORES METODO POST/////////
+export async function AddLector(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores`, Options)
+    const data= await respuesta.json()
+    return data;
+}
