@@ -87,7 +87,7 @@ body{
     margin: auto;
 }
 
-@media (max-width:500px) {
+@media (max-inline-size:500px) {
     .aside {
         display: none;
     }
@@ -101,7 +101,7 @@ body{
     }
 }
 
-@media(max-width:980px){
+@media(max-inline-size:980px){
     .aside {
         inline-size: 70px;
         transition: all .4s ease;

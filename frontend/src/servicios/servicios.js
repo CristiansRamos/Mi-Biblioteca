@@ -123,6 +123,19 @@ export async function getAutores(){
     return data;
 }
 
+///////////////AUTORES POR ID////////////
+export async function getAutoresByID(id_autor){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+
 ////////AGREGAR AUTORES METODO POST/////////
 export async function AddAutores(datos){
     const Options={
@@ -151,10 +164,24 @@ export async function ActualizarEstadoAutores(id_autor, actulizar){
     const data= await respuesta.json()
     return data;
 }
-
+///////////ELIMINAR AUTOR////////////
 export async function deleteAutor(id_autor){
     const Options={
         method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+/////////////EDITAR AUTORES////////////
+export async function EditAutores(datos, id_autor){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
         }

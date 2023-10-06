@@ -15,6 +15,18 @@ router.get('/Autores', (req , res)=>{
     })
 })
 
+////////////TRAER DATOS DE AUTOR POR ID//////////
+router.get('/autores/:id_autor', (req , res)=>{
+    const { id_autor } = req.params
+    mysqlConnect.query('SELECT * FROM autores WHERE id_autor=?', [id_autor], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json(registros)
+        }
+    })
+})
+
     /////////////AGREGAR AUTORES/////////
     router.post('/autores', bodyParser.json(), (req , res)=>{
         const { nombre, id_editorial }  = req.body
@@ -49,7 +61,7 @@ router.put('/autores/:id_autor', bodyParser.json(), (req , res)=>{
         }
     })
 })
-
+////////////ELIMINAR AUTOR///////
 router.delete('/autores/:id_autor', bodyParser.json(), (req , res)=>{
     const { id_autor } = req.params
     mysqlConnect.query('DELETE FROM autores WHERE id_autor = ?', id_autor, (error, registros)=>{
@@ -68,5 +80,22 @@ router.delete('/autores/:id_autor', bodyParser.json(), (req , res)=>{
        }
    })
 })
+
+//////////////EDITAR AUTORES////////////
+    // el parametro que vamos a editar ->id_autor
+    router.put('/autores/:id_autor', bodyParser.json(), (req , res)=>{
+        const { nombre}  = req.body
+        const { id_autor} = req.params
+        mysqlConnect.query('UPDATE autores SET nombre = ?  WHERE id_autor = ?', [nombre, id_autor], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+            res.json({
+                status:true,
+                mensaje: "Se editó correctamente"
+                })
+           }
+       })
+    })
 
 module.exports= router;

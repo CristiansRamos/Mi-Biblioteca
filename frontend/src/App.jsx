@@ -11,6 +11,7 @@ import { AddEditorial } from './componentes/Editorial/AddEditorial'
 import { AddAutores } from './componentes/Autores/AddAutores'
 import { EditEditorial } from './componentes/Editorial/EditEditorial'
 import { Menu } from './Menu'
+import { EditAutores } from './componentes/Autores/EditAutores'
 
 
 
@@ -35,9 +36,7 @@ function App() {
       <Route path='/AddEditorial' element= {<AddEditorial/>}></Route>
       <Route path='/AddAutores' element= {<AddAutores/>}></Route>
       <Route path='/EditEditorial/:id_editorial' element= {<EditEditorial/>}></Route>
-
-
-
+      <Route path='/EditAutores/:id_autor' element= {<EditAutores/>}></Route>
 
     </Routes>
 
