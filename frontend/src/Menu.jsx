@@ -70,8 +70,6 @@ export function Menu(){
                     </Link>
                 </div>
 
-                <Link to="/Registro" className="Link">Registro</Link>
-
             </div>
         </aside>
     </body>

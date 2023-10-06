@@ -23,7 +23,7 @@ export function Registro(){
         
          if(Registro.status){
             alert(Registro.mensaje)
-            window.location.href='/Registro'
+            window.location.href='/Usuarios'
          }else{
            alert(Registro.mensaje)
           
@@ -114,6 +114,7 @@ export function Registro(){
                  </select>
                 </div>
                 <button className="btn btn-primary" type="submit">Registrar </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               </form>
           </main>
         </>
