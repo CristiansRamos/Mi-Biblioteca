@@ -28,6 +28,47 @@ export async function Registro(datos){
     const data= await respuesta.json()
     return data;
 }
+
+////////////ROLES/////////
+export async function getRoles(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/roles`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+
+///////////LISTAR USUARIOS/////////
+export async function getUsuarios(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/usuarios`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+////////////USUARIOS POR ID/////////
+export async function getUsuariosByID(id_usuario){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/usuarios/${id_usuario}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+
 /////////libros/////////////
 export async function getLibros(){
     const Options={

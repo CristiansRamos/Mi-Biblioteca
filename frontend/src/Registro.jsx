@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as API from './servicios/servicios'
 import { Menu } from "./Menu";
 
@@ -10,7 +10,12 @@ export function Registro(){
     const [user, setUser]= useState('')
     const [pass, setPass]= useState('')
     const [correo, setCorreo]= useState('')
-    const [id_rol, setIdRol]= useState('1')
+    const [id_rol, setIdRol]= useState('')
+    
+    const [roles, setRoles] = useState([])
+
+    useEffect(()=>{
+      API.getRoles().then(setRoles)}, [])
 
     const Registro = async(event)=>{
         event.preventDefault();
@@ -86,6 +91,7 @@ export function Registro(){
                   />
                   <label for="usuario">Usuario</label>
                 </div>
+
                 <div className="form-floating">
                   <input 
                   required
@@ -96,6 +102,16 @@ export function Registro(){
                   id="pass" 
                   />
                   <label for="password">Password</label>
+                </div>
+
+                <div className="form-floating">
+                 <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected >Seleccione un Rol</option>
+                    {roles.map((r)=>(
+                    
+                    <option value={r.id_rol}>{r.nombre}</option>
+                    ))}
+                 </select>
                 </div>
                 <button className="btn btn-primary" type="submit">Registrar </button>
               </form>

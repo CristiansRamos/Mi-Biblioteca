@@ -30,6 +30,8 @@ app.use(require('./routes/routes'))
 app.use(require('./routes/routesLibros'))
 app.use(require('./routes/routesEditorial'))
 app.use(require('./routes/routesAutores'))
+app.use(require('./routes/routesUsuarios'))
+
 
 
 app.listen(app.get('puerto'), ()=>{

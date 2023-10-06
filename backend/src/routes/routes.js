@@ -23,6 +23,7 @@ router.post('/registro', bodyParser.json() , (req , res)=>{
             mensaje: "El DNI es un campo obligatorio"
         })
     };
+    
 
 
     mysqlConnect.query('SELECT * FROM usuarios WHERE user=?', [user], (error, usuarios)=>{
@@ -109,52 +110,7 @@ router.post('/login', bodyParser.json() , (req , res)=>{
 })
 
 
-/////////lISTAR  USUARIOS////
-router.get('/usuarios', (req , res)=>{
-    mysqlConnect.query('SELECT * FROM usuarios', (error, registros)=>{
-        if(error){
-            console.log('Error en la base de datos', error)
-        }else{
-            res.json(registros)
-        }
-    })
-})
-/////////////TRAER USUARIOS POR ID////////////
-router.get('/usuarios/:id_usuarios', (req , res)=>{
-    const {id_usuarios}= req.params
-    mysqlConnect.query('SELECT * FROM usuarios WHERE id_usuarios=?', [id_usuarios] , (error, registros)=>{
-        if(error){
-            console.log('Error en la base de datos', error)
-        }else{
-            res.json(registros)
-        }
-    })
-})
 
-/////////////INSERTAR USUARIOS///////////////
-router.post('/usuarios', bodyParser.json(), (req , res)=>{
-    const{nombre, id_usuarios, apellido, correo, estado} = req.body
-    mysqlConnect.query('INSERT INTO usuarios (nombre, id_usuarios, apellido, correo, estado) VALUES (?,?,?,?,?)', [nombre, id_usuarios, apellido, correo, estado] , (error, registros)=>{
-        if(error){
-            console.log('Error en la base de datos', error)
-        }else{
-            res.send('el insert se realizo correctamente :)')
-        }
-    })
-})
-
-/////////////MODIFICAR LOS USUARIOS///////////////
-router.put('/usuarios/:id_usuarios', bodyParser.json(), (req , res)=>{
-    const{nombre, id_usuarios, apellido, correo, estado} = req.body
-    const {id_empleado} = req.params
-    mysqlConnect.query('UPDATE usuarios SET nombre = ? apellido = ? WHERE id_usuarios = ?', [nombre, id_usuarios, apellido, correo, estado] , (error, registros)=>{
-        if(error){
-            console.log('Error en la base de datos', error)
-        }else{
-            res.send('se modifico correctamente :)')
-        }
-    })
-})
 
 
 module.exports = router;

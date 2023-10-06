@@ -13,7 +13,7 @@ export function AddAutores(){
 
     const guardarAutores = async(event)=>{
         event.preventDefault();
-        if(nombre !== ''){
+        if(nombre.length>0){
         const respuesta = await API.AddAutores({nombre, id_editorial});
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
