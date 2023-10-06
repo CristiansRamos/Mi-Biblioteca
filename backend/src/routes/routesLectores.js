@@ -32,6 +32,25 @@ router.get('/lectores',(req , res)=>{
            }
        })
     })
+    ////////////ELIMINAR LECTOR///////
+router.delete('/lectores/:id_lector', bodyParser.json(), (req , res)=>{
+    const { id_lector } = req.params
+    mysqlConnect.query('DELETE FROM lectores WHERE id_lector = ?', id_lector, (error, registros)=>{
+       if(error){
+           
+            res.json({
+            status:false,
+            mensaje: error
+        })
+       }else{
+         res.json({
+            status:true,
+            mensaje: 'La eliminacion del registro ' +id_lector+ ' se realizo correctamente'
+        })
+          
+       }
+   })
+})
 
 
     module.exports = router;

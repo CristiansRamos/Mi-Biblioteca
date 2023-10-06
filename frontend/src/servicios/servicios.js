@@ -257,3 +257,15 @@ export async function AddLector(datos){
     const data= await respuesta.json()
     return data;
 }
+///////////ELIMINAR LECTOR////////////
+export async function deleteLector(id_lector){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
