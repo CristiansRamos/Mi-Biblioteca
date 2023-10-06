@@ -63,4 +63,24 @@ router.put('/usuarios/:id_usuarios', bodyParser.json(), (req , res)=>{
     })
 })
 
+    ////////////ELIMINAR USUARIOS///////
+    router.delete('/usuarios/:id_usuario', bodyParser.json(), (req , res)=>{
+        const { id_usuario } = req.params
+        mysqlConnect.query('DELETE FROM usuarios WHERE id_usuario = ?', id_usuario, (error, registros)=>{
+           if(error){
+               
+                res.json({
+                status:false,
+                mensaje: error
+            })
+           }else{
+             res.json({
+                status:true,
+                mensaje: 'La eliminacion del registro ' +id_usuario+ ' se realizo correctamente'
+            })
+              
+           }
+       })
+    })
+
 module.exports= router;

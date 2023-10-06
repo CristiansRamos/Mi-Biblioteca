@@ -10,6 +10,28 @@ export function Usuarios(){
 
     useEffect(()=>{
       API.getUsuarios().then(setUsuarios)}, [])
+
+
+  ///////////ELIMINAR/////////
+  const eliminar = async(id_usuario)=>{
+    Swal.fire({
+      title: '¿Esta seguro que quiere Eliminar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        API.deleteUsuario(id_usuario);
+        setTimeout(()=>{
+        window.location.href='/usuarios'
+        }, 1000)
+        Swal.fire(
+          'Eliminado!')
+      }
+    })
+  }
       
 
         return(
@@ -32,6 +54,7 @@ export function Usuarios(){
                   <td>correo</td>
                   <td>Rol</td>
                   <td>Estado</td>
+                  <td colSpan={3}>Acciones</td>
 
 
                 </tr>
@@ -46,7 +69,9 @@ export function Usuarios(){
                   <td >{u.correo}</td>
                   <td >{u.rol}</td>
                   <td >{u.estado}</td>
-
+                  <td>
+                    <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                  </td>
                 </tr>
               ))}
 

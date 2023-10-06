@@ -68,6 +68,18 @@ export async function getUsuariosByID(id_usuario){
     const data= await respuesta.json();
     return data[0];
 }
+///////////ELIMINAR USUARIOS////////////
+export async function deleteUsuario(id_usuario){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/usuarios/${id_usuario}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
 
 /////////libros/////////////
 export async function getLibros(){
