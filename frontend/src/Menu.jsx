@@ -63,6 +63,12 @@ export function Menu(){
                         <span  className="option">Usuarios</span>
                     </Link>
                 </div>
+                <div>
+                    <Link to="/Lectores" className="Link">
+                        <i class="bi bi-person-badge"></i>
+                        <span  className="option">Lectores</span>
+                    </Link>
+                </div>
 
                 <Link to="/Registro" className="Link">Registro</Link>
 

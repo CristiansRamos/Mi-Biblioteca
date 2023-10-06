@@ -231,3 +231,16 @@ export async function EditAutores(datos, id_autor){
     const data= await respuesta.json()
     return data;
 }
+////////////LECTORES/////////
+
+export async function getLectores(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores`, Options)
+    const data= await respuesta.json()
+    return data;
+}

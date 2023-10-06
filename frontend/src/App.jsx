@@ -12,6 +12,7 @@ import { AddAutores } from './componentes/Autores/AddAutores'
 import { EditEditorial } from './componentes/Editorial/EditEditorial'
 import { Menu } from './Menu'
 import { Usuarios } from './componentes/Usuarios/Usuarios'
+import { Lectores } from './componentes/Lectores/Lectores'
 
 
 
@@ -31,6 +32,7 @@ function App() {
       <Route path='/Menu' element= {<Menu/>}></Route>
       <Route path='/Dashboard' element= {<Dashboard/>}></Route>
       <Route path='/Usuarios' element= {<Usuarios/>}></Route>
+      <Route path='/Lectores' element= {<Lectores/>}></Route>
       <Route path='/Libros' element= {<Libros/>}></Route>
       <Route path='/Editorial' element= {<Editorial/>}></Route>
       <Route path='/Autores' element= {<Autores/>}></Route>
