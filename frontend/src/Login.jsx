@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from './servicios/servicios'
 import './Login.css'
@@ -10,6 +10,17 @@ import libros_apilados from './assets/img/libros_apilados.jpeg'
 export function Login(){
     const [user, setUsername] = useState('');
     const [pass, setPassword] = useState('');
+
+
+    useEffect(()=>{
+        const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
+    
+        if(datos_usuario){
+            window.location.href='/Dashboard';
+            return;
+        }
+        
+    },[])
 
 
     const ingresar = async(event)=>{

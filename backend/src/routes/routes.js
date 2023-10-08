@@ -108,6 +108,7 @@ router.post('/login', bodyParser.json() , (req , res)=>{
     
 
 })
+//////////////MENU///////////
 
 router.get('/menu/:id_rol',verificarToken, (req , res)=>{
     const { id_rol } = req.params;

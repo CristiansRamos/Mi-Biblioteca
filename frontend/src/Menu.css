@@ -15,6 +15,13 @@ body{
     padding: 15px;
 }
 
+.user-name{
+    color: aliceblue;
+    background-color: rgb(0, 0, 0);
+    border-radius: 30%;
+    position: fixed;
+}
+
 .aside{
     block-size: 100vh;
     inline-size: 300px;
