@@ -27,7 +27,6 @@ export function AddLector(){
         <>
         <main className="form-signin w-100 m-auto">
               <form onSubmit={Lector}>
-                <h1 className="h3 mb-3 fw-normal">completar los campos</h1>
                 
                 <div className="form-floating">
                   <input 

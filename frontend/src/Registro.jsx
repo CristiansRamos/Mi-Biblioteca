@@ -34,77 +34,8 @@ export function Registro(){
         <>
         <main className="form-signin w-100 m-auto">
               <form onSubmit={Registro}>
-                <h1 className="h3 mb-3 fw-normal">completar los campos</h1>
-                
-                <div className="form-floating">
-                  <input 
-                  required
-                  type="text" 
-                  value={apellido}
-                  onChange={(event)=>setApellido(event.target.value)}
-                  className="form-control" 
-                  id="apellido" 
-                  />
-                  <label for="apellido">Apellido</label>
-                </div>
-                <div className="form-floating">
-                  <input 
-                  required
-                  type="text" 
-                  value={nombre}
-                  onChange={(event)=>setNombre(event.target.value)}
-                  className="form-control" 
-                  id="nombre" 
-                  />
-                  <label for="nombre">Nombre</label>
-                </div>
 
-                <div className="form-floating">
-                  <input 
-                  type="number" 
-                  value={dni}
-                  onChange={(event)=>setDni(event.target.value)}
-                  className="form-control" 
-                  id="dni" 
-                  />
-                  <label for="dni">DNI</label>
-                </div>
-                <div className="form-floating">
-                <input 
-                  required
-                  type="email" 
-                  value={correo}
-                  onChange={(event)=>setCorreo(event.target.value)}
-                  className="form-control" 
-                  id="correo" 
-                  />
-                  <label for="correo">Correo</label>
-                </div>
-                <div className="form-floating">
-                  <input 
-                  required
-                  type="text" 
-                  value={user}
-                  onChange={(event)=>setUser(event.target.value)}
-                  className="form-control" 
-                  id="user" 
-                  />
-                  <label for="usuario">Usuario</label>
-                </div>
-
-                <div className="form-floating">
-                  <input 
-                  required
-                  type="password" 
-                  value={pass}
-                  onChange={(event)=>setPass(event.target.value)}
-                  className="form-control" 
-                  id="pass" 
-                  />
-                  <label for="password">Password</label>
-                </div>
-
-                <div className="form-floating">
+              <div >
                  <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option selected >Seleccione un Rol</option>
                     {roles.map((r)=>(
@@ -113,6 +44,81 @@ export function Registro(){
                     ))}
                  </select>
                 </div>
+                
+                <div >
+                  <label for="apellido">Apellido</label>
+                  <input 
+                  required
+                  type="text" 
+                  value={apellido}
+                  onChange={(event)=>setApellido(event.target.value)}
+                  className="form-control" 
+                  id="apellido" 
+                  />
+                  
+                </div>
+                <div >
+                  <label for="nombre">Nombre</label>
+                  <input 
+                  required
+                  type="text" 
+                  value={nombre}
+                  onChange={(event)=>setNombre(event.target.value)}
+                  className="form-control" 
+                  id="nombre" 
+                  />
+                  
+                </div>
+
+                <div>
+                  <label for="dni">DNI</label>
+                  <input 
+                  type="number" 
+                  value={dni}
+                  onChange={(event)=>setDni(event.target.value)}
+                  className="form-control" 
+                  id="dni" 
+                  />
+                  
+                </div>
+                <div>
+                <label for="correo">Correo</label>
+                <input 
+                  required
+                  type="email" 
+                  value={correo}
+                  onChange={(event)=>setCorreo(event.target.value)}
+                  className="form-control" 
+                  id="correo" 
+                  />
+                  
+                </div>
+                <div>
+                  <label for="usuario">Usuario</label>
+                  <input 
+                  required
+                  type="text" 
+                  value={user}
+                  onChange={(event)=>setUser(event.target.value)}
+                  className="form-control" 
+                  id="user" 
+                  />
+                 
+                </div>
+
+                <div>
+                  <label for="password">Password</label>
+                  <input 
+                  required
+                  type="password" 
+                  value={pass}
+                  onChange={(event)=>setPass(event.target.value)}
+                  className="form-control" 
+                  id="pass" 
+                  />
+                  
+                </div>
+
                 <button className="btn btn-primary" type="submit">Registrar </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               </form>
