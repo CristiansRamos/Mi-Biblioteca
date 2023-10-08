@@ -109,8 +109,64 @@ router.post('/login', bodyParser.json() , (req , res)=>{
 
 })
 
+router.get('/menu/:id_rol',verificarToken, (req , res)=>{
+    const { id_rol } = req.params;
+    jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+        if(error){
+            res.sendStatus(403);
+        }else{
+            mysqlConnect.query('SELECT * FROM menu WHERE id_rol=?', [id_rol], (error, registros)=>{
+                if(error){
+                    console.log('Error en la base de datos', error)
+                }else{
+                    res.json({
+                        status:true,
+                        menu:registros 
+                    })
+                }
+            })
+        }
+    })
+})
+
+router.post('/menu_permisos/',verificarToken, bodyParser.json() , (req , res)=>{
+    const { id_rol, menu } = req.body;
+   
+    jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+        if(error){
+            res.sendStatus(403);
+        }else{
+            mysqlConnect.query('SELECT * FROM menu WHERE id_rol=? AND href=?', [id_rol, menu], (error, registros)=>{
+                if(error){
+                    console.log('Error en la base de datos', error)
+                }else{
+                    if(registros.length>0){
+                        res.json({
+                            status:true
+                        })
+                    }else{
+                        res.json({
+                            status:false
+                        })
+                    }
+                    
+                }
+            })
+        }
+    })
+})
 
 
 
+function verificarToken(req, res, next){
+    const bearer= req.headers['authorization'];
+    if(typeof bearer!=='undefined'){
+        const token =bearer.split(" ")[1]
+        req.token= token;
+        next()
+    }else{
+        res.send('Debe contener un token')
+    }
+ }
 
 module.exports = router;
