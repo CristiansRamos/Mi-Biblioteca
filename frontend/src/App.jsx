@@ -14,6 +14,7 @@ import { Menu } from './Menu'
 import { Usuarios } from './componentes/Usuarios/Usuarios'
 import { Lectores } from './componentes/Lectores/Lectores'
 import { AddLector } from './componentes/Lectores/AddLector'
+import { Prestamos } from './componentes/Prestamos/Prestamos'
 
 
 
@@ -41,6 +42,8 @@ function App() {
       <Route path='/AddEditorial' element= {<AddEditorial/>}></Route>
       <Route path='/AddAutores' element= {<AddAutores/>}></Route>
       <Route path='/EditEditorial/:id_editorial' element= {<EditEditorial/>}></Route>
+      <Route path='/Prestamos' element= {<Prestamos/>}></Route>
+
 
 
     </Routes>

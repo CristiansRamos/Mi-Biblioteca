@@ -32,7 +32,7 @@ app.use(require('./routes/routesEditorial'))
 app.use(require('./routes/routesAutores'))
 app.use(require('./routes/routesUsuarios'))
 app.use(require('./routes/routesLectores'))
-
+app.use(require('./routes/routesPrestamos'))
 
 
 

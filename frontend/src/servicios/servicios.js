@@ -312,3 +312,17 @@ export async function deleteLector(id_lector){
     const data= await respuesta.json()
     return data;
 }
+
+////////////PRESTAMOS/////////
+
+export async function getPrestamos(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamos`, Options)
+    const data= await respuesta.json()
+    return data;
+}

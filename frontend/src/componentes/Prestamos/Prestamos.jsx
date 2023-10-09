@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
-import { Registro} from "../.././Registro";
+/* import { AddPrestamo } from "./AddLector"; */
 
 
-export function Usuarios(){
-  const [Usuarios, setUsuarios] = useState([])
+export function Prestamos(){
+  const [Prestamos, setPrestamos] = useState([])
 
     useEffect(()=>{
-      API.getUsuarios().then(setUsuarios)}, [])
-
+      API.getPrestamos().then(setPrestamos)}, [])
+      
 
   ///////////ELIMINAR/////////
-  const eliminar = async(id_usuario)=>{
+  const eliminar = async(id_lector)=>{
     Swal.fire({
       title: '¿Esta seguro que quiere Eliminar?',
       icon: 'warning',
@@ -23,16 +23,15 @@ export function Usuarios(){
       confirmButtonText: 'Si, eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
-        API.deleteUsuario(id_usuario);
+        API.deleteLector(id_lector);
         setTimeout(()=>{
-        window.location.href='/usuarios'
+        window.location.href='/prestamos'
         }, 1000)
         Swal.fire(
           'Eliminado!')
       }
     })
   }
-      
 
         return(
             <>
@@ -40,37 +39,33 @@ export function Usuarios(){
 
           <div className="position-absolute top-50 start-50 translate-middle">
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Agregar usuario
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Nuevo Prestamo
             </button>
-
+            
             <table class="table table-striped-columns table-success  table-bordered table-responsive">
               <thead>
                 <tr>
-                  <td>Nombre</td>
-                  <td>Apellido</td>
-                  <td>Dni</td>
-                  <td>Usuario</td>
-                  <td>correo</td>
-                  <td>Rol</td>
+                  <td>Lector</td>
+                  <td>Libro</td>
+                  <td>Fecha de Prestamo</td>
+                  <td>Fecha de devolucion</td>
                   <td>Estado</td>
-                  <td colSpan={3}>Acciones</td>
+                  <td colSpan="3">Acciones</td>
 
 
                 </tr>
               </thead>
               <tbody>
-              {Usuarios.map((u)=>(
+              {Prestamos.map((p)=>(
                 <tr>
-                  <td >{u.nombre}</td>
-                  <td >{u.apellido}</td>
-                  <td >{u.dni}</td>
-                  <td >{u.user}</td>
-                  <td >{u.correo}</td>
-                  <td >{u.rol}</td>
-                  <td >{u.estado}</td>
+                  <td >{p.lectores}</td>
+                  <td >{p.libros}</td>
+                  <td >{p.fechaPrestamo}</td>
+                  <td >{p.fechaDevolucion}</td>
+                  <td >{p.estado}</td>
                   <td>
-                    <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                    <button onClick={()=>eliminar(l.id_lector )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
                 </tr>
               ))}
@@ -79,22 +74,23 @@ export function Usuarios(){
             </table>
           </div>
 
-         {/*  ///////////MODAL////////// */}
-         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+                   {/*  ///////////MODAL////////// */}
+{/*          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Usuario</h1>
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Lector</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <Registro/>
+                  <AddPrestamo/>
                 </div>
                 <div class="modal-footer">
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </>
         )
 
