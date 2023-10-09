@@ -13,7 +13,7 @@ export function Prestamos(){
       
 
   ///////////ELIMINAR/////////
-  const eliminar = async(id_lector)=>{
+  const eliminar = async(id_prestamo)=>{
     Swal.fire({
       title: '¿Esta seguro que quiere Eliminar?',
       icon: 'warning',
@@ -23,7 +23,7 @@ export function Prestamos(){
       confirmButtonText: 'Si, eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
-        API.deleteLector(id_lector);
+        API.deletePrestamo(id_prestamo);
         setTimeout(()=>{
         window.location.href='/prestamos'
         }, 1000)
@@ -65,7 +65,7 @@ export function Prestamos(){
                   <td >{p.fechaDevolucion}</td>
                   <td >{p.estado}</td>
                   <td>
-                    <button onClick={()=>eliminar(l.id_lector )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                    <button onClick={()=>eliminar(p.id_prestamo )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
                 </tr>
               ))}

@@ -326,3 +326,16 @@ export async function getPrestamos(){
     const data= await respuesta.json()
     return data;
 }
+
+///////////ELIMINAR PRESTAMO////////////
+export async function deletePrestamo(id_prestamo){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
+    const data= await respuesta.json()
+    return data;
+}

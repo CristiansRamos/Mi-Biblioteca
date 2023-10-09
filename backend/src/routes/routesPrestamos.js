@@ -33,24 +33,24 @@ router.get('/prestamos',(req , res)=>{
        })
     })
     ////////////ELIMINAR PRESTAMO///////
-router.delete('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
-    const { id_prestamo } = req.params
-    mysqlConnect.query('DELETE FROM prestamos WHERE id_prestamo = ?', id_prestamo, (error, registros)=>{
-       if(error){
-           
-            res.json({
-            status:false,
-            mensaje: error
-        })
-       }else{
-         res.json({
-            status:true,
-            mensaje: 'La eliminacion del registro ' +id_prestamo+ ' se realizo correctamente'
-        })
-          
-       }
-   })
-})
+    router.delete('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
+        const { id_prestamo } = req.params
+        mysqlConnect.query('DELETE FROM prestamos WHERE id_prestamo = ?', id_prestamo, (error, registros)=>{
+           if(error){
+               
+                res.json({
+                status:false,
+                mensaje: error
+            })
+           }else{
+             res.json({
+                status:true,
+                mensaje: 'La eliminacion del registro ' +id_prestamo+ ' se realizo correctamente'
+            })
+              
+           }
+       })
+    })
 
 
     module.exports = router;
