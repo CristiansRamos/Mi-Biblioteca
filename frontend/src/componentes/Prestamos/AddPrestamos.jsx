@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from '../../servicios/servicios'
-export function AddAutores(){
+
+export function AddPrestamos(){
     const [nombre, setNombre] = useState('')
-    const [id_editorial, setIdEditorial] = useState('')
-    const [editorial, setEditorial] = useState([])
+    const [id_libro, setIdLibro] = useState('')
+    const [libros, setLibros] = useState([])
     const [mensaje, setMensaje] = useState('')
 
     useEffect(()=>{
-        API.getEditorial().then(setEditorial)
+        API.getLibros().then(setLibros)
     }, [])
 
-    const guardarAutores = async(event)=>{
+    const guardarPrestamos = async(event)=>{
         event.preventDefault();
         if(nombre.length>0){
-        const respuesta = await API.AddAutores({nombre, id_editorial});
+        const respuesta = await API.AddPrestamos({nombre, id_libro});
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
             setTimeout(()=>{
                 setMensaje('')
-                window.location.href='/autores'
+                window.location.href='/prestamos'
                 }, 0)
         }
         return;
@@ -29,7 +30,7 @@ export function AddAutores(){
     return(
         <>
             <main className="form-signin w-100 m-auto">
-              <form onSubmit={guardarAutores}>
+              <form onSubmit={guardarPrestamos}>
                 <div>
                     {mensaje}
                 </div>
@@ -39,17 +40,17 @@ export function AddAutores(){
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
                   className="form-control" 
-                  placeholder="Nombre del editorial"
+                  placeholder="Nombre"
                   />
-                  <label for="floatingInput">Nombre de Autor</label>
+                  <label for="floatingInput">Nombre prestamo</label>
                 </div>
 
                 <div className="form-floating">
-                 <select onChange={(event)=>setIdEditorial(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
-                  <option disabled selected >Seleccione una editorial</option>
-                    {editorial.map((e)=>(
+                 <select onChange={(event)=>setIdLibro(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option disabled selected >Seleccione un libro</option>
+                    {libros.map((l)=>(
                     
-                    <option value={e.id_editorial}>{e.nombre}</option>
+                    <option value={l.id_libro}>{l.nombre}</option>
                     ))}
                  </select>
                 </div>

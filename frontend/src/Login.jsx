@@ -12,7 +12,7 @@ export function Login(){
     const [pass, setPassword] = useState('');
 
 
-    useEffect(()=>{
+/*     useEffect(()=>{
         const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
     
         if(datos_usuario){
@@ -20,7 +20,7 @@ export function Login(){
             return;
         }
         
-    },[])
+    },[]) */
 
 
     const ingresar = async(event)=>{

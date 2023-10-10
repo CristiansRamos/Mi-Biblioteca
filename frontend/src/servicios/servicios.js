@@ -339,3 +339,17 @@ export async function deletePrestamo(id_prestamo){
     const data= await respuesta.json()
     return data;
 }
+
+////////AGREGAR PRESTAMO METODO POST/////////
+export async function AddPrestamos(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamos`, Options)
+    const data= await respuesta.json()
+    return data;
+}

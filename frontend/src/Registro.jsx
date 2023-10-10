@@ -37,7 +37,7 @@ export function Registro(){
 
               <div >
                  <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
-                  <option selected >Seleccione un Rol</option>
+                  <option disabled selected >Seleccione un Rol</option>
                     {roles.map((r)=>(
                     
                     <option value={r.id_rol}>{r.nombre}</option>

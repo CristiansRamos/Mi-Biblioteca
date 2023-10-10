@@ -47,7 +47,7 @@ export function Prestamos(){
               <thead>
                 <tr>
                   <td>Lector</td>
-                  <td>Libro</td>
+                  <td>Libro Prestado</td>
                   <td>Fecha de Prestamo</td>
                   <td>Fecha de devolucion</td>
                   <td>Estado</td>
@@ -59,7 +59,7 @@ export function Prestamos(){
               <tbody>
               {Prestamos.map((p)=>(
                 <tr>
-                  <td >{p.lectores}</td>
+                  <td >{p.nombreCompleto}</td>
                   <td >{p.libros}</td>
                   <td >{p.fechaPrestamo}</td>
                   <td >{p.fechaDevolucion}</td>

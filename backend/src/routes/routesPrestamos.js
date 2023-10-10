@@ -5,10 +5,10 @@ const router = express()
 
 
 
-//////////LISTAR EDITORIALES//////
+//////////LISTAR PRESTAMOS//////
 
 router.get('/prestamos',(req , res)=>{
-    mysqlConnect.query('SELECT p.id_prestamo, p.fechaPrestamo, p.fechaDevolucion, p.estado , le.nombre AS lectores , l.nombre AS libros FROM prestamos AS p INNER JOIN lectores AS le ON le.id_lector=p.id_lector INNER JOIN libros AS l ON l.id_libro=p.id_libro', (error, registros)=>{
+    mysqlConnect.query('SELECT p.id_prestamo, p.fechaPrestamo, p.fechaDevolucion, p.estado , l.nombre AS libros, concat_ws(" ", le.nombre, le.apellido) nombreCompleto FROM prestamos AS p INNER JOIN lectores AS le ON le.id_lector=p.id_lector INNER JOIN libros AS l ON l.id_libro=p.id_libro', (error, registros)=>{
         if(error){
             console.log('Error en la base de datos', error)
         }else{
@@ -19,19 +19,22 @@ router.get('/prestamos',(req , res)=>{
 
     /////////////AGREGAR PRESTAMOS/////////
     router.post('/prestamos', bodyParser.json(), (req , res)=>{
-        const { nombre, apellido, dni, correo }  = req.body
-      
-        mysqlConnect.query('INSERT INTO prestamos (nombre, apellido, dni, correo) VALUES (?,?,?,?)', [nombre,apellido,dni, correo], (error, registros)=>{
+        const { nombre, id_libro }  = req.body
+       
+        mysqlConnect.query('INSERT INTO prestamos (nombre, id_libro) VALUES (?, ?)', [nombre, id_libro], (error, registros)=>{
            if(error){
-               console.log('Error en la base de datos', error)
+               res.json({
+                   status:false,
+                   mensaje: error
+                   })
            }else{
-                res.json({
-                status:true,
-                mensaje: "Se Agregó correctamente"
-                })
+               res.json({
+                   status:true,
+                   mensaje: "se agrego correctamente"
+                   })
            }
        })
-    })
+   })
     ////////////ELIMINAR PRESTAMO///////
     router.delete('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
         const { id_prestamo } = req.params
