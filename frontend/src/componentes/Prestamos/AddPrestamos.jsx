@@ -7,15 +7,25 @@ export function AddPrestamos(){
     const [id_libro, setIdLibro] = useState('')
     const [libros, setLibros] = useState([])
     const [mensaje, setMensaje] = useState('')
+    const [id_lector, setIdLector] = useState('')
+    const [lectores, setLectores] = useState([])
+    const [fechaPrestamo, setFechaPrestamo] = useState('')
+    const [fechaDevolucion, setFechaDevolucion] = useState('')
+    const [prestamos, setPrestamos] = useState([])
+
+
 
     useEffect(()=>{
-        API.getLibros().then(setLibros)
+        API.getLibros().then(setLibros),
+        API.getLectores().then(setLectores),
+        API.getPrestamos().then(setPrestamos)
+
     }, [])
 
     const guardarPrestamos = async(event)=>{
         event.preventDefault();
-        if(nombre.length>0){
-        const respuesta = await API.AddPrestamos({nombre, id_libro});
+        if(id_lector.length>0){
+        const respuesta = await API.AddPrestamos({id_libro, id_lector, fechaPrestamo, fechaDevolucion});
         if(respuesta.status){
             setMensaje(respuesta.mensaje)
             setTimeout(()=>{
@@ -34,15 +44,15 @@ export function AddPrestamos(){
                 <div>
                     {mensaje}
                 </div>
+
                 <div className="form-floating">
-                  <input 
-                  type="text" 
-                  value={nombre}
-                  onChange={(event)=>setNombre(event.target.value)}
-                  className="form-control" 
-                  placeholder="Nombre"
-                  />
-                  <label for="floatingInput">Nombre prestamo</label>
+                 <select onChange={(event)=>setIdLector(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                  <option disabled selected >Seleccione un lector</option>
+                    {lectores.map((le)=>(
+                    
+                    <option value={le.id_lector}>{le.nombre}</option>
+                    ))}
+                 </select>
                 </div>
 
                 <div className="form-floating">
@@ -54,7 +64,21 @@ export function AddPrestamos(){
                     ))}
                  </select>
                 </div>
-               
+
+                <div className="form-floating">
+                
+                 <input type="date" onChange={(event)=>setFechaPrestamo(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
+                 <label htmlFor="">Fecha Prestamo</label>
+                </div>
+
+
+                <div className="form-floating">
+                
+                <input type="date" onChange={(event)=>setFechaDevolucion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
+                <label htmlFor="">Fecha Devolucion</label>
+               </div>
+                
+
                
                 <button className="btn btn-primary" type="submit" >Guardar</button>
                 <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>

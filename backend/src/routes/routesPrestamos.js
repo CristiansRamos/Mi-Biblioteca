@@ -19,9 +19,9 @@ router.get('/prestamos',(req , res)=>{
 
     /////////////AGREGAR PRESTAMOS/////////
     router.post('/prestamos', bodyParser.json(), (req , res)=>{
-        const { nombre, id_libro }  = req.body
+        const { id_lector, id_libro, fechaPrestamo, fechaDevolucion }  = req.body
        
-        mysqlConnect.query('INSERT INTO prestamos (nombre, id_libro) VALUES (?, ?)', [nombre, id_libro], (error, registros)=>{
+        mysqlConnect.query('INSERT INTO prestamos (id_lector, id_libro, fechaPrestamo, fechaDevolucion) VALUES (?, ?, ?, ?)', [id_lector, id_libro, fechaPrestamo, fechaDevolucion], (error, registros)=>{
            if(error){
                res.json({
                    status:false,

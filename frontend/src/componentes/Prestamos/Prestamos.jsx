@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
+import { AddPrestamos } from "./AddPrestamos";
 /* import { AddPrestamo } from "./AddLector"; */
 
 
@@ -50,7 +51,7 @@ export function Prestamos(){
                   <td>Libro Prestado</td>
                   <td>Fecha de Prestamo</td>
                   <td>Fecha de devolucion</td>
-                  <td>Estado</td>
+                  <td>Estado de Devolucion </td>
                   <td colSpan="3">Acciones</td>
 
 
@@ -63,17 +64,20 @@ export function Prestamos(){
                   <td >{p.libros}</td>
                   <td >{p.fechaPrestamo}</td>
                   <td >{p.fechaDevolucion}</td>
-                  <td >{p.estado}</td>
+                  <td > {p.estado}</td>
                   <td>
-                    <button onClick={()=>eliminar(p.id_prestamo )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                    <button onClick={()=>eliminar(p.id_prestamo )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
                   </td>
                 </tr>
               ))}
 
               </tbody>
             </table>
+            <div>
+            < AddPrestamos />
           </div>
-
+          </div>
+          
 
                    {/*  ///////////MODAL////////// */}
 {/*          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
