@@ -23,12 +23,12 @@ export function Lectores(){
       confirmButtonText: 'Si, eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
-        API.deleteLector(id_lector);
-        setTimeout(()=>{
-        window.location.href='/lectores'
-        }, 1000)
-        Swal.fire(
-          'Eliminado!')
+        API.deleteLector(id_lector)
+            setTimeout(()=>{
+            window.location.href='/lectores'
+            }, 1000)
+            Swal.fire(
+            'Eliminado!')
       }
     })
   }

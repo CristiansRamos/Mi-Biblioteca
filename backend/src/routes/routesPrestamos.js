@@ -8,7 +8,7 @@ const router = express()
 //////////LISTAR PRESTAMOS//////
 
 router.get('/prestamos',(req , res)=>{
-    mysqlConnect.query('SELECT p.id_prestamo, p.fechaPrestamo, p.fechaDevolucion, p.estado , l.nombre AS libros, concat_ws(" ", le.nombre, le.apellido) nombreCompleto FROM prestamos AS p INNER JOIN lectores AS le ON le.id_lector=p.id_lector INNER JOIN libros AS l ON l.id_libro=p.id_libro', (error, registros)=>{
+    mysqlConnect.query('SELECT p.id_prestamo, p.fechaPrestamo, p.fechaDevolucion, p.estado , l.nombre AS libros, le.dni, concat_ws(" ", le.nombre, le.apellido) nombreCompleto FROM prestamos AS p INNER JOIN lectores AS le ON le.id_lector=p.id_lector INNER JOIN libros AS l ON l.id_libro=p.id_libro', (error, registros)=>{
         if(error){
             console.log('Error en la base de datos', error)
         }else{

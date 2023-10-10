@@ -48,6 +48,7 @@ export function Prestamos(){
               <thead>
                 <tr>
                   <td>Lector</td>
+                  <td>dni</td>
                   <td>Libro Prestado</td>
                   <td>Fecha de Prestamo</td>
                   <td>Fecha de devolucion</td>
@@ -61,6 +62,7 @@ export function Prestamos(){
               {Prestamos.map((p)=>(
                 <tr>
                   <td >{p.nombreCompleto}</td>
+                  <td >{p.dni}</td>
                   <td >{p.libros}</td>
                   <td >{p.fechaPrestamo}</td>
                   <td >{p.fechaDevolucion}</td>
@@ -73,14 +75,11 @@ export function Prestamos(){
 
               </tbody>
             </table>
-            <div>
-            < AddPrestamos />
-          </div>
           </div>
           
 
                    {/*  ///////////MODAL////////// */}
-{/*          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -88,13 +87,13 @@ export function Prestamos(){
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <AddPrestamo/>
+                  <AddPrestamos/>
                 </div>
                 <div class="modal-footer">
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
         </>
         )
 
