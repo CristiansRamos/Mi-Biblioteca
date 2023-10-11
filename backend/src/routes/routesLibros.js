@@ -16,4 +16,20 @@ router.get('/Libros', (req , res)=>{
     })
 })
 
+    /////////////AGREGAR LIBROS/////////
+    router.post('/libros', bodyParser.json(), (req , res)=>{
+        const { nombre, id_genero, id_ubicacion, id_autor}  = req.body
+      
+        mysqlConnect.query('INSERT INTO libros (nombre, id_genero, id_ubicacion, id_autor) VALUES (?,?,?,?)', [nombre, id_genero, id_ubicacion, id_autor], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+                res.json({
+                status:true,
+                mensaje: "Se Agregó correctamente"
+                })
+           }
+       })
+    })
+
 module.exports= router;

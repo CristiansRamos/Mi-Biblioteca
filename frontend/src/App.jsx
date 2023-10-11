@@ -16,6 +16,7 @@ import { Lectores } from './componentes/Lectores/Lectores'
 import { AddLector } from './componentes/Lectores/AddLector'
 import { Prestamos } from './componentes/Prestamos/Prestamos'
 import { AddPrestamos } from './componentes/Prestamos/AddPrestamos'
+import { AddLibros } from './componentes/Libros/AddLibros'
 
 
 
@@ -38,6 +39,7 @@ function App() {
       <Route path='/Lectores' element= {<Lectores/>}></Route>
       <Route path='/AddLector' element= {<AddLector/>}></Route>
       <Route path='/Libros' element= {<Libros/>}></Route>
+      <Route path='/AddLibros' element= {<AddLibros/>}></Route>
       <Route path='/Editorial' element= {<Editorial/>}></Route>
       <Route path='/Autores' element= {<Autores/>}></Route>
       <Route path='/AddEditorial' element= {<AddEditorial/>}></Route>

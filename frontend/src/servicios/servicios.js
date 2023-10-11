@@ -124,6 +124,47 @@ export async function getLibros(){
     const data= await respuesta.json()
     return data;
 }
+
+////////AGREGAR LIBROS METODO POST/////////
+export async function AddLibros(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/libros`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+///////////GENEROS////////////
+
+export async function getGeneros(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/generos`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+///////////UBICACION///////////
+
+export async function getUbicaciones(){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicaciones`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
 ///////////////EDITORIAL//////////////
 
 export async function getEditorial(){
