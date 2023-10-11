@@ -30,11 +30,33 @@ export function Dashboard(){
     return(
         <>
               <Menu/> 
+              
               <div className="contenedor">
-                <div className="contenedor_hijo">
-                    <p>Total Libros</p>
-                    <div> {totalLibros} </div>
-                 </div>
+                <div className="container text-center">
+                <div class="container text-center contenedor_dos">
+                    <div class="row">
+                        <div class="col contenedor_hijo">
+                            <p>Total Libros</p>
+                            {totalLibros}
+                        </div>
+                        <div class="col contenedor_hijo">
+                            {totalLibros}
+                        </div>
+                        <div class="col contenedor_hijo">
+                            {totalLibros}
+                        </div>
+
+                    <div class="row">
+                        <div class="col contenedor_hijo">
+                            {totalLibros}
+                        </div>
+                    </div>
+             
+
+                    </div>
+                
+                </div>
+                </div>
               </div>
 
 
