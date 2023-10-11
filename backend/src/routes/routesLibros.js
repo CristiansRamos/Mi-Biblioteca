@@ -32,4 +32,25 @@ router.get('/Libros', (req , res)=>{
        })
     })
 
+
+    ////////////ELIMINAR LIBRO///////
+    router.delete('/libros/:id_libro', bodyParser.json(), (req , res)=>{
+        const { id_libro } = req.params
+        mysqlConnect.query('DELETE FROM libros WHERE id_libro = ?', id_libro, (error, registros)=>{
+           if(error){
+               
+                res.json({
+                status:false,
+                mensaje: error
+            })
+           }else{
+             res.json({
+                status:true,
+                mensaje: 'La eliminacion del registro ' +id_libro+ ' se realizo correctamente'
+            })
+              
+           }
+       })
+    })
+
 module.exports= router;

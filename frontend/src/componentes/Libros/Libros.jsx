@@ -11,8 +11,26 @@ export function Libros(){
       API.getLibros().then(setLibros)}, [])
       
 
-      let totalLibros = 0;
-      totalLibros = (Libros.length)
+      ////////////ELIMINAR////////////
+      const eliminar = async(id_libro)=>{
+        Swal.fire({
+          title: '¿Esta seguro que quiere Eliminar?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            API.deleteLibros(id_libro);
+            setTimeout(()=>{
+            window.location.href='/libros'
+            }, 1000)
+            Swal.fire(
+              'Eliminado!')
+          }
+        })
+      }
 
         return(
             <>
@@ -34,6 +52,8 @@ export function Libros(){
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
+                  <td>#</td>
+
 
                 </tr>
               </thead>
@@ -45,15 +65,14 @@ export function Libros(){
                   <td >{lib.generos}</td>
                   <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
+                  <td>
+                    <button onClick={()=>eliminar(lib.id_libro )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
+                  </td>
                 </tr>
               ))}
 
               </tbody>
             </table>
-            <div>
-              <p>total Libros</p>
-              <div> {totalLibros} </div>
-            </div>
           </div>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

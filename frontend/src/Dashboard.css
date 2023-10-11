@@ -1,0 +1,24 @@
+.contenedor{
+    display: flex;
+    width: 80vw;
+    height: 100vh;
+    background-color: aqua;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20% ;
+    justify-content: center;
+}
+
+.contenedor_hijo{
+    
+    inline-size: 300px;
+    block-size: 300px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.175);
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border: solid rgba(255, 255, 255, 0.581) 2px;
+
+}

@@ -138,6 +138,19 @@ export async function AddLibros(datos){
     const data= await respuesta.json()
     return data;
 }
+///////////ELIMINAR LIBROS////////////
+export async function deleteLibros(id_libro){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/libros/${id_libro}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
 ///////////GENEROS////////////
 
 export async function getGeneros(){
