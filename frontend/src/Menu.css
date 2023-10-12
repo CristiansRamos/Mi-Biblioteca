@@ -22,6 +22,8 @@ body{
     position: fixed;
 }
 
+
+
 .aside{
     block-size: 100vh;
     inline-size: 300px;
@@ -94,7 +96,8 @@ body{
     margin: auto;
 }
 
-@media (max-inline-size:500px) {
+@media (max-width:500px) {
+    
     .aside {
         display: none;
     }
@@ -106,9 +109,10 @@ body{
     .aside .head i{
         display: none;
     }
+
 }
 
-@media(max-inline-size:980px){
+@media(max-width:980px){
     .aside {
         inline-size: 70px;
         transition: all .4s ease;

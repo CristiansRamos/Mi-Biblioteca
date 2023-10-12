@@ -58,7 +58,9 @@ export function AddPrestamos(){
                 <div className="form-floating">
                  <select onChange={(event)=>setIdLibro(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option disabled selected >Seleccione un libro</option>
-                    {libros.map((l)=>(
+                    
+                    
+                    {libros.map((l)=> (
                     
                     <option value={l.id_libro}>{l.nombre}</option>
                     ))}

@@ -39,9 +39,17 @@ export function Lectores(){
 
           <div className="position-absolute top-50 start-50 translate-middle">
 
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Agregar Lector
-            </button>
+          <table className="table align-middle table-responsive">
+              <thead>
+                <tr className="table-info ">
+                  <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Agregar Lector
+                  </button>
+                  </td>
+                </tr>
+              </thead>
+            </table>
             
             <table class="table table-striped-columns table-success  table-bordered table-responsive">
               <thead>

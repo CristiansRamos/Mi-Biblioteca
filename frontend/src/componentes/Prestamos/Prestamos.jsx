@@ -16,6 +16,8 @@ export function Prestamos(){
       
 
   ///////////ELIMINAR/////////
+
+
   const eliminar = async(id_prestamo)=>{
     Swal.fire({
       title: '¿Esta seguro que quiere Eliminar?',
@@ -50,30 +52,45 @@ export function Prestamos(){
                 }
                 
             }
+            
+   
 
         return(
             <>
               <Menu/>
 
           <div className="position-absolute top-50 start-50 translate-middle">
-
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Nuevo Prestamo
-            </button>
             
             <table className="table align-middle table-responsive">
               <thead>
                 <tr className="table-info ">
-                  <td>Lector</td>
-                  <td>dni</td>
-                  <td>Libro Prestado</td>
-                  <td>Fecha de Prestamo</td>
-                  <td>Fecha de devolucion</td>
-                  <td>Estado de Devolucion </td>
+                  <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                 Nuevo Prestamo
+                  </button>
+                  </td>
+                </tr>
+              </thead>
+            </table>
+
+            
+            <table className="table align-middle table-responsive">
+              <thead>
+                
+                <tr id="fila" className="table-info ">
+                  
+                  <td >LECTOR</td>
+                  <td>DNI</td>
+                  <td>LIBRO PRESTADO</td>
+                  <td>FECHA DE PRESTAMO</td>
+                  <td>FECHA DE DEVOLUCION</td>
+                  <td>ESTADO DE DEVOLUCION</td>
                   <td colSpan="3">Acciones</td>
 
-
                 </tr>
+
+                <br />
+
               </thead>
               <tbody>
               {Prestamos.map((p)=>(
@@ -85,6 +102,7 @@ export function Prestamos(){
                   <td >{p.fechaDevolucion}</td>
                   <td >
                     {(p.estado=="pendiente")?
+                    
                     <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, p.id_prestamo, p.estado )} >Pendiente</button>
                     :
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, p.id_prestamo, p.estado )} >Devuelto</button>

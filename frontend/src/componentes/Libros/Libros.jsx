@@ -58,11 +58,17 @@ export function Libros(){
 
           <div className="position-absolute top-50 start-50 translate-middle">
 
-          <div>
-              <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  Agregar LIbro
-              </button>
-            </div>
+          <table className="table align-middle table-responsive">
+              <thead>
+                <tr className="table-info ">
+                  <td>
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  Agregar Libro
+                  </button>
+                  </td>
+                </tr>
+              </thead>
+            </table>
 
             <table class="table table-striped-columns table-success  table-bordered table-responsive">
               <thead>
