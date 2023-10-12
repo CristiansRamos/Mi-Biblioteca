@@ -55,5 +55,21 @@ router.get('/prestamos',(req , res)=>{
        })
     })
 
+           ////////////CAMBIAR ESTADO PRESTAMOS/////////
+router.put('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
+    const { actualizar }  = req.body
+    const { id_prestamo } = req.params
+    mysqlConnect.query('UPDATE prestamos SET estado = ?  WHERE id_prestamo = ?', [actualizar, id_prestamo], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json({
+                status:true,
+                mensaje: "El cambio de estado se realizo correctamente"
+                })
+        }
+    })
+})
+
 
     module.exports = router;

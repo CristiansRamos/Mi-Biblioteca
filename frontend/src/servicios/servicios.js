@@ -423,3 +423,18 @@ export async function AddPrestamos(datos){
     const data= await respuesta.json()
     return data;
 }
+
+////////////CAMBIAR ESTADO PRESTAMOS//////////
+
+export async function ActualizarEstadoPrestamos(id_prestamo, actulizar){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
+    const data= await respuesta.json()
+    return data;
+}

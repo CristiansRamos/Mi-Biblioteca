@@ -8,6 +8,8 @@ import { AddPrestamos } from "./AddPrestamos";
 
 export function Prestamos(){
   const [Prestamos, setPrestamos] = useState([])
+  const [mensaje, setMensaje] = useState([])
+
 
     useEffect(()=>{
       API.getPrestamos().then(setPrestamos)}, [])
@@ -33,6 +35,21 @@ export function Prestamos(){
       }
     })
   }
+
+              ////////////CAMBIAR ESTADO/////////
+              const cambiar_estado = async (e, id_prestamo, estado_actual)=>{
+                e.preventDefault();
+                const actualizar = (estado_actual=="pendiente")?"devuelto":"pendiente";
+                const respuesta= await API.ActualizarEstadoPrestamos(id_prestamo, {actualizar});
+                if(respuesta.status){
+                    setMensaje(respuesta.mensaje)
+                    setTimeout(()=>{
+                        setMensaje('')
+                        API.getPrestamos().then(setPrestamos)
+                    }, 0)
+                }
+                
+            }
 
         return(
             <>
@@ -66,7 +83,15 @@ export function Prestamos(){
                   <td >{p.libros}</td>
                   <td >{p.fechaPrestamo}</td>
                   <td >{p.fechaDevolucion}</td>
-                  <td > {p.estado}</td>
+                  <td >
+                    {(p.estado=="pendiente")?
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, p.id_prestamo, p.estado )} >Pendiente</button>
+                    :
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, p.id_prestamo, p.estado )} >Devuelto</button>
+                    
+                    }
+                  </td>
+
                   <td>
                     <button onClick={()=>eliminar(p.id_prestamo )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
                   </td>
