@@ -74,10 +74,10 @@ export function Prestamos(){
             </table>
 
             
-            <table className="table align-middle table-responsive">
+            <table className="table table-striped-columns table-responsive">
               <thead>
                 
-                <tr id="fila" className="table-info ">
+                <tr className="bg-info ">
                   
                   <td >LECTOR</td>
                   <td>DNI</td>

@@ -357,6 +357,19 @@ export async function getLectores(){
     const data= await respuesta.json()
     return data;
 }
+///////////////LECTORES POR ID////////////
+export async function getLectorByID(id_lector){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+
 ////////AGREGAR LECTORES METODO POST/////////
 export async function AddLector(datos){
     const Options={
@@ -374,6 +387,19 @@ export async function AddLector(datos){
 export async function deleteLector(id_lector){
     const Options={
         method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+/////////////EDITAR LECTOR////////////
+export async function EditLector(datos, id_lector){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
         }
@@ -430,6 +456,31 @@ export async function ActualizarEstadoPrestamos(id_prestamo, actulizar){
     const Options={
         method:'PUT',
         body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+///////////////PRESTAMO POR ID////////////
+export async function getPrestamoByID(id_prestamo){
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/prestamo/${id_prestamo}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+/////////////EDITAR PRESTAMO////////////
+export async function EditPrestamo(datos, id_prestamo){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
         }

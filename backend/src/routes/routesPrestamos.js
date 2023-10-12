@@ -71,5 +71,21 @@ router.put('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
     })
 })
 
+//////////////EDITAR PRESTAMO////////////
+    // el parametro que vamos a editar ->id_ prestamo
+    router.put('/prestamos/:id_prestamo', bodyParser.json(), (req , res)=>{
+        const { nombre }  = req.body
+        const { id_prestamo } = req.params
+        mysqlConnect.query('UPDATE prestamo SET nombre = ?  WHERE id_prestamo = ?', [nombre, id_prestamo], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+            res.json({
+                status:true,
+                mensaje: "Se editó correctamente"
+                })
+           }
+       })
+    })
 
     module.exports = router;

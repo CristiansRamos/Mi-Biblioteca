@@ -69,9 +69,9 @@ export function Autores(){
               </thead>
             </table>
 
-            <table className="table align-middle ">
+            <table className="table table-striped-columns table-responsive">
               <thead>
-                <tr className="table-info">
+                <tr className="bg-info ">
                   <td>Autor</td>
                   <td>Editorial</td>
                   <td>Estado</td>

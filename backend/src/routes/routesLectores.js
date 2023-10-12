@@ -17,6 +17,35 @@ router.get('/lectores',(req , res)=>{
         })
     })
 
+    ////////////TRAER DATOS DE LECTORES POR ID//////////
+router.get('/lectores/:id_lector', (req , res)=>{
+    const { id_lector } = req.params
+    mysqlConnect.query('SELECT * FROM lectores WHERE id_lector=?', [id_lector], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json(registros)
+        }
+    })
+})
+
+//////////////EDITAR LECTORES////////////
+    // el parametro que vamos a editar ->id_editorial
+    router.put('/lectores/:id_lector', bodyParser.json(), (req , res)=>{
+        const {nombre, apellido, dni, correo}  = req.body
+        const { id_lector } = req.params
+        mysqlConnect.query('UPDATE lectores SET nombre = ?, apellido = ?, dni = ?, correo = ? WHERE (id_lector = ?)', [nombre, apellido, dni, correo, id_lector], (error, registros)=>{
+           if(error){
+               console.log('Error en la base de datos', error)
+           }else{
+            res.json({
+                status:true,
+                mensaje: "Se editó correctamente"
+                })
+           }
+       })
+    })
+
     /////////////AGREGAR LECTORES/////////
     router.post('/lectores', bodyParser.json(), (req , res)=>{
         const { nombre, apellido, dni, correo }  = req.body

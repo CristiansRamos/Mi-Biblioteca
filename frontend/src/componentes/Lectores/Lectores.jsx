@@ -51,9 +51,9 @@ export function Lectores(){
               </thead>
             </table>
             
-            <table class="table table-striped-columns table-success  table-bordered table-responsive">
+            <table class="table table-striped-columns table-responsive">
               <thead>
-                <tr>
+                <tr className="bg-info ">
                   <td>Nombre</td>
                   <td>Apellido</td>
                   <td>Dni</td>
@@ -74,6 +74,9 @@ export function Lectores(){
                   <td >{l.estado}</td>
                   <td>
                     <button onClick={()=>eliminar(l.id_lector )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                  </td>
+                  <td> 
+                    <Link to={`/EditLector/${l.id_lector}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
                   </td>
                 </tr>
               ))}

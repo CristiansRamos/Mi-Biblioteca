@@ -70,9 +70,9 @@ export function Libros(){
               </thead>
             </table>
 
-            <table class="table table-striped-columns table-success  table-bordered table-responsive">
+            <table class="table table-striped-columns table-responsive">
               <thead>
-                <tr>
+                <tr className="bg-info ">
                   <td>Título</td>
                   <td>Autor-Editorial</td>
                   <td>Genero</td>

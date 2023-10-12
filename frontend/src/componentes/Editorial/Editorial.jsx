@@ -83,12 +83,12 @@ export function Editorial(){
               </thead>
             </table>
 
-            <table className="table align-middle table-responsive">
+            <table className="table table-striped-columns table-responsive">
               <thead>
                 <tr>
 
                 </tr>
-                <tr className="table-info">
+                <tr className="bg-info ">
                   <td>Editorial</td>
                   <td>Estado</td>
                   <td colspan="2">Acciones</td>
@@ -107,7 +107,7 @@ export function Editorial(){
                      }
                   </td>
                   <td> 
-                    <Link to={`/EditEditorial/${editorial.id_editorial}`} ><button class="btn btn-secondary"><i class="bi bi-pencil"></i></button></Link>
+                    <Link to={`/EditEditorial/${editorial.id_editorial}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
                   </td>
                 </tr>
               ))}

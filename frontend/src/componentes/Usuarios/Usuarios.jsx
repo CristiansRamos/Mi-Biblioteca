@@ -52,9 +52,9 @@ export function Usuarios(){
               </thead>
             </table>
 
-            <table class="table table-striped-columns table-success  table-bordered table-responsive">
+            <table class="table table-striped-columns table-responsive">
               <thead>
-                <tr>
+                <tr className="bg-info ">
                   <td>Nombre</td>
                   <td>Apellido</td>
                   <td>Dni</td>
