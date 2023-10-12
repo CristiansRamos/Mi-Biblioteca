@@ -138,6 +138,22 @@ export async function AddLibros(datos){
     const data= await respuesta.json()
     return data;
 }
+
+////////////CAMBIAR ESTADO LIBROS//////////
+
+export async function ActualizarEstadoLibros(id_libro, actulizar){
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/libros/${id_libro}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
 ///////////ELIMINAR LIBROS////////////
 export async function deleteLibros(id_libro){
     const Options={

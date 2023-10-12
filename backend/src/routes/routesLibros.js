@@ -33,6 +33,23 @@ router.get('/Libros', (req , res)=>{
     })
 
 
+       ////////////CAMBIAR ESTADO LIBROS/////////
+router.put('/libros/:id_libro', bodyParser.json(), (req , res)=>{
+    const { actualizar }  = req.body
+    const { id_libro } = req.params
+    mysqlConnect.query('UPDATE libros SET estado = ?  WHERE id_libro = ?', [actualizar, id_libro], (error, registros)=>{
+        if(error){
+            console.log('Error en la base de datos', error)
+        }else{
+            res.json({
+                status:true,
+                mensaje: "El cambio de estado se realizo correctamente"
+                })
+        }
+    })
+})
+
+
     ////////////ELIMINAR LIBRO///////
     router.delete('/libros/:id_libro', bodyParser.json(), (req , res)=>{
         const { id_libro } = req.params

@@ -6,6 +6,9 @@ import { AddLibros } from "./AddLibros";
 
 export function Libros(){
   const [Libros, setLibros] = useState([])
+  const [mensaje, setMensaje] = useState([])
+
+  
 
     useEffect(()=>{
       API.getLibros().then(setLibros)}, [])
@@ -32,6 +35,23 @@ export function Libros(){
         })
       }
 
+
+            ////////////CAMBIAR ESTADO/////////
+            const cambiar_estado = async (e, id_libro, estado_actual)=>{
+              e.preventDefault();
+              const actualizar = (estado_actual=="A")?"B":"A";
+              const respuesta= await API.ActualizarEstadoLibros(id_libro, {actualizar});
+              if(respuesta.status){
+                  setMensaje(respuesta.mensaje)
+                  setTimeout(()=>{
+                      setMensaje('')
+                      API.getLibros().then(setLibros)
+                  }, 0)
+              }
+              
+          }
+
+
         return(
             <>
               <Menu/>
@@ -52,7 +72,7 @@ export function Libros(){
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
-                  <td>#</td>
+                  <td colSpan="3">#</td>
 
 
                 </tr>
@@ -65,6 +85,16 @@ export function Libros(){
                   <td >{lib.generos}</td>
                   <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
+
+                  <td >
+                    {(lib.estado=="A")?
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Desactivar</button>
+                    :
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Activar</button>
+                    
+                    }
+                  </td>
+
                   <td>
                     <button onClick={()=>eliminar(lib.id_libro )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
                   </td>
