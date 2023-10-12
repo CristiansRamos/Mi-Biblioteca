@@ -61,9 +61,9 @@ export function Prestamos(){
                 Nuevo Prestamo
             </button>
             
-            <table class="table table-striped-columns table-success  table-bordered table-responsive">
+            <table className="table align-middle table-responsive">
               <thead>
-                <tr>
+                <tr className="table-info ">
                   <td>Lector</td>
                   <td>dni</td>
                   <td>Libro Prestado</td>
