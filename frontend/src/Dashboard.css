@@ -9,25 +9,38 @@
     
 }
 
-/* .contenedor_dos{
-    width: 500px;
+
+.micontainer{
+    font-family: 'Segoe UI', Tahoma;
     display: flex;
-    gap: 12px;
+    gap: 6px;
+    width: 90%;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
 
-} */
-
-.contenedor_hijo{
-
-    flex: 2 1 300px;
-    height: 250px;
-    inline-size: 300px;
-    block-size: 300px;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.175);
+.flex-item{
+    background-color: #ffffff52;
+    font-size: 24px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
-    border: solid rgba(255, 255, 255, 0.581) 2px;
-    
+    flex-grow: 1;
+    flex-basis: 100px;
+    box-shadow: 0px 0px 8px 0px;
+    border-radius: 10px;
+}
+
+/* .titulo{
+
+    background-color: blueviolet;
+    width: 50%;
+    height: 100px;
+} */
+.num{
+    width: 50%;
+    background-color: aqua;
+    font-size: 5vmax;
+    height: 100px;
 
 }

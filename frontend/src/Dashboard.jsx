@@ -19,45 +19,64 @@ export function Dashboard(){
 
 
       const [Libros, setLibros] = useState([])
+      const [Lectores, setLectores] = useState([])
+      const [Prestamos, setPrestamos] = useState([])
+      const [Autores, setAutores] = useState([])
+      const [Editorial, setEditorial] = useState([])
+
+
+
+
 
       useEffect(()=>{
-        API.getLibros().then(setLibros)}, [])
+        API.getLibros().then(setLibros),
+        API.getLectores().then(setLectores),
+        API.getPrestamos().then(setPrestamos),
+        API.getAutores().then(setAutores),
+        API.getEditorial().then(setEditorial)
+    }, [])
         
   
-        let totalLibros = 0;
+        let totalLibros, totalLectores, totalPrestamos, totalAutores, totalEditorial = 0;
+
         totalLibros = (Libros.length)
+        totalLectores = (Lectores.length)
+        totalPrestamos = (Prestamos.length)
+        totalAutores = (Autores.length)
+        totalEditorial = (Editorial.length)
+
 
     return(
         <>
               <Menu/> 
               
               <div className="contenedor">
-                <div className="container text-center">
-                <div class="container text-center contenedor_dos">
-                    <div class="row">
-                        <div class="col contenedor_hijo">
-                            <p>Total Libros</p>
-                            {totalLibros}
-                        </div>
-                        <div class="col contenedor_hijo">
-                            {totalLibros}
-                        </div>
-                        <div class="col contenedor_hijo">
-                            {totalLibros}
-                        </div>
-
-                    <div class="row">
-                        <div class="col contenedor_hijo">
-                            {totalLibros}
-                        </div>
+                <div className="micontainer">
+                    <div className="flex-item">
+                        <div className="titulo">Total Libros</div>
+                        <div className="num">{totalLibros}</div>
                     </div>
-             
+                    <div className="flex-item">
+                        <div className="titulo">Total Lectores</div>
+                        <div className="num">{totalLectores}</div>
 
                     </div>
-                
-                </div>
+                    <div className="flex-item">
+                        <div>Total Prestamos</div>
+                        <div className="num">{totalPrestamos}</div>
+
+                    </div>
+                    <div className="flex-item">
+                        <div >Total Autores</div>
+                        <div className="num">{totalAutores}</div>
+                    </div>
+                    <div className="flex-item">
+                        <div >Total Editorial</div>
+                        <div className="num">{totalEditorial}</div>
+                    </div>
                 </div>
               </div>
+
 
 
         </>
