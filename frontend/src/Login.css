@@ -14,18 +14,16 @@
 }
 
 .login-container {
-    width: auto;
-    height: 500px;
+    width: 20rem;
+    height: auto;
     display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    backdrop-filter: blur(4.0px);
-    border-radius: 0 5px 5px 0;
-    box-shadow: 0px 0px 10px #00000033;
-    padding: 50px;
     text-align: center;
-    justify-content: center;
-    margin: 150px 150px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px #00000033; */
+    /* padding: 50px; */
+
 }
 
 img{
@@ -43,13 +41,21 @@ img{
     justify-content: space-between;
     width: 100vw;
     height: 100vh;
-    margin-left: -0;
+    margin: -0;
     
 }
 
 h1 {
-    font-size: 24px;
-    margin-block-end: 20px;
+    display: flex;
+    font-size:5cqmax;
+    font-family: Tahoma, sans-serif;
+    position: absolute;
+    z-index: 10;
+    color: #ffffff69;
+    margin: 2rem;
+}
+h2{
+    margin-top: 2rem;
 }
 
 .form-group {
@@ -61,17 +67,20 @@ h1 {
 .input {
     inline-size: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
+    border-radius: 30px;
+    margin: 1rem auto ;
+
 }
 #input{
     background-color: #fff;
-    color: black;
     border: none;
-    border-bottom: solid rgb(0, 0, 0) ;
+    border-bottom: 1px solid #00000044 ;
     outline: none;
+    margin: 1rem;
+    width: 15rem;
 
 }
+
 
 
 button {
@@ -79,7 +88,6 @@ button {
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -90,23 +98,39 @@ button:hover {
 }
 
 @media(max-width: 300px){
-        .body{
-
+    .body{
+        width: 100vw;
         height: 100vh;
-        background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
+    background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
+
+}
+    .login-container{
+        background-color: rgb(255, 255, 255);
+        width: 15rem;
+    }
+    #input{
+        width: auto;
     }
     .container{
         display: none;
        
     }
+
 }
 
 @media(max-width: 400px){
     .body{
-    width: 500px;
-    height: 500px;
+        width: 100vw;
+        height: 100vh;
     background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
 
+}
+.login-container{
+    background-color: rgb(255, 255, 255);
+    width: 15rem;
+}
+#input{
+    width: auto;
 }
 .container{
     display: none;
@@ -120,10 +144,16 @@ button:hover {
     height: 100vh;
     background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
     
+    .login-container{
+        background-color: rgb(255, 255, 255);
+        width: 15rem;
+    }
+    #input{
+        width: 10rem;
+    }
+    .container{
+        display: none;
+       
+    }
 }
-.container{
-    display: none;
-   
 }
-}
-

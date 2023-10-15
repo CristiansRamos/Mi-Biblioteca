@@ -40,14 +40,17 @@ export function Login(){
 
     return(
         <>  
+        <h1 className="titulo">MI BIBLIOTECA</h1>
+
             <div className="body">
                 <div  className="container ">
            
                 </div>
                     <div className="login-container">
-                        <h2>Iniciar Sesión</h2>
+                        
                         <form onSubmit={ingresar}>
-                            <div className="form-group">
+                            <h2>Iniciar Sesión</h2>
+                            <div className="">
                                 <input
                                 required
                                 type="text" 
@@ -58,7 +61,7 @@ export function Login(){
                                 placeholder="Usuario"/>
                                 
                             </div>
-                            <div className="form-group">
+                            <div className="form">
                                 <input 
                                 required
                                 type="password" 
@@ -69,6 +72,7 @@ export function Login(){
                                 placeholder="Contraseña"/>
                             </div>
                             <button type="submit" className="input" >Iniciar Sesión</button>
+                            <Link>¿ Olvidaste tu contraseña?  </Link>
                         </form>
                     </div>
                 </div>
