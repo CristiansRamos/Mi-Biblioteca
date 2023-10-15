@@ -6,32 +6,45 @@
 }
 
 .body{
-    background-color: #0080FF;
-    width: max-content;
-    height: max-content;
+    width: 100vw;
+    height: auto;
+    display: flex;
     
     
 }
 
 .login-container {
+    width: auto;
+    height: 500px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
+    backdrop-filter: blur(4.0px);
     border-radius: 0 5px 5px 0;
     box-shadow: 0px 0px 10px #00000033;
     padding: 50px;
     text-align: center;
+    justify-content: center;
+    margin: 150px 150px;
 }
 
 img{
-    inline-size: 400px;
-    block-size: auto;
-    border-radius: 5px 0 0 5px;
-    box-shadow: 0px 0px 10px #00000033;
+    max-width: 100%;
+    height: auto;
+
+    
+
+
 
 }
 .container{
+    background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
     display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -0;
+    
 }
 
 h1 {
@@ -54,7 +67,12 @@ h1 {
 #input{
     background-color: #fff;
     color: black;
+    border: none;
+    border-bottom: solid rgb(0, 0, 0) ;
+    outline: none;
+
 }
+
 
 button {
     background-color: #0080FF;
@@ -71,36 +89,41 @@ button:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 500px) {
-    img{
-        display: flex;
-        inline-size: 100%;
-        block-size: auto;
-        border-radius: 5px 5px 0 0;
+@media(max-width: 300px){
+        .body{
 
+        height: 100vh;
+        background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
     }
     .container{
-        display: block;
-    }
-    .login-container{
-        border-radius: 0% 0% 5px 5px;
-
+        display: none;
+       
     }
 }
 
-@media (max-width: 767px) {
-    img{
-        display: flex;
-        inline-size: 100%;
-        block-size: auto;
-        border-radius: 5px 5px 0 0;
+@media(max-width: 400px){
+    .body{
+    width: 500px;
+    height: 500px;
+    background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
 
-    }
-    .container{
-        display: block;
-    }
-    .login-container{
-        border-radius: 0 0 5px 5px;
-
-    }
 }
+.container{
+    display: none;
+   
+}
+}
+
+@media(max-width: 800px){
+    .body{
+    width: 100vw;
+    height: 100vh;
+    background: url('./assets/img/leyendo.jpg') no-repeat center center/cover;
+    
+}
+.container{
+    display: none;
+   
+}
+}
+

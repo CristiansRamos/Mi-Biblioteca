@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from './servicios/servicios'
 import './Login.css'
-import libros_apilados from './assets/img/libros_apilados.jpeg'
+import leyendo from './assets/img/leyendo.jpg'
 
 
 
@@ -40,22 +40,20 @@ export function Login(){
 
     return(
         <>  
-            <div>
-                <h1 >Mi Biblioteca</h1>
-            </div>
-            <div onSubmit={ingresar} className="container">
-                <div className="container">
-                    <img src={libros_apilados} alt="libros_apilados"/>
+            <div className="body">
+                <div  className="container ">
+           
+                </div>
                     <div className="login-container">
                         <h2>Iniciar Sesión</h2>
-                        <form id="">
+                        <form onSubmit={ingresar}>
                             <div className="form-group">
                                 <input
                                 required
                                 type="text" 
                                 value={user}
                                 onChange={(event)=> setUsername(event.target.value)}
-                                className="input" 
+                               
                                 id="input" 
                                 placeholder="Usuario"/>
                                 
@@ -66,7 +64,7 @@ export function Login(){
                                 type="password" 
                                 value={pass} 
                                 onChange={(event)=> setPassword(event.target.value)}
-                                className="input" 
+                                
                                 id="input" 
                                 placeholder="Contraseña"/>
                             </div>
@@ -74,7 +72,6 @@ export function Login(){
                         </form>
                     </div>
                 </div>
-            </div>
         </>
     )
 }

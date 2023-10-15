@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body{
-    display: flex;
+  
 }
 .Link{
     inline-size: 100%;
@@ -28,7 +28,7 @@ body{
     block-size: 100vh;
     inline-size: 300px;
     padding: 10px;
-    background-color: #157afe;
+    background-color: #0048ff;
     position:fixed;
     color: aliceblue;
     transition: all .4s ease;
@@ -73,8 +73,8 @@ body{
 .options div:hover{
     background-color: aliceblue;
     transition: all .60 ease-in-out;
-    color: #157afe;
-    .Link{color:#157afe}
+    color: #0048ff;
+    .Link{color:#0048ff}
 }
 
 .options i {
