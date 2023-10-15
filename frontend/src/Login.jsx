@@ -10,6 +10,7 @@ import leyendo from './assets/img/leyendo.jpg'
 export function Login(){
     const [user, setUsername] = useState('');
     const [pass, setPassword] = useState('');
+    const [mensajeAlerta, setMensajeAlerta] = useState('')
 
 
 /*     useEffect(()=>{
@@ -32,7 +33,8 @@ export function Login(){
           window.localStorage.setItem('token', JSON.stringify(usuario.token))
           window.location.href='/Dashboard';
          }else{
-          alert(usuario.mensaje)
+            setMensajeAlerta(usuario.mensaje)
+
          }
         return;
     }
@@ -46,9 +48,17 @@ export function Login(){
                 <div  className="container ">
            
                 </div>
+
                     <div className="login-container">
                         
                         <form onSubmit={ingresar}>
+                            
+                        {mensajeAlerta? 
+                        <div className="alert alert-danger" role="alert">
+                            {mensajeAlerta}
+                        </div>
+                            :<></>}
+
                             <h2>Iniciar Sesión</h2>
                             <div className="">
                                 <input

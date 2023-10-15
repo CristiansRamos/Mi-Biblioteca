@@ -67,7 +67,7 @@ export function Menu(){
                 {menus.map((m)=>(
                 <div className="options">
                      <Link  className="Link"   to={m.href}>
-                        <i class="bi bi-book"></i>
+            
                         <span className="option"> {m.nombre} </span>
                     </Link>
                     
