@@ -13,6 +13,8 @@ export function Registro(){
     const [id_rol, setIdRol]= useState('')
     
     const [roles, setRoles] = useState([])
+    const [mensajeAlerta, setMensajeAlerta] = useState('')
+
 
     useEffect(()=>{
       API.getRoles().then(setRoles)}, [])
@@ -22,7 +24,8 @@ export function Registro(){
         const Registro = await API.Registro({apellido, nombre, dni, user, pass, correo, id_rol})
         
          if(Registro.status){
-            alert(Registro.mensaje)
+          setMensajeAlerta(Registro.mensaje)
+
             window.location.href='/Usuarios'
          }else{
            alert(Registro.mensaje)
@@ -33,11 +36,18 @@ export function Registro(){
     return(
         <>
         <main className="form-signin w-100 m-auto">
+
+        {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+
               <form onSubmit={Registro}>
 
               <div >
                  <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
-                  <option disabled selected >Seleccione un Rol</option>
+                  <option  disabled selected >Seleccione un Rol</option>
                     {roles.map((r)=>(
                     
                     <option value={r.id_rol}>{r.nombre}</option>

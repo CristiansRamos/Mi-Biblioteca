@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
-import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
 import { AddAutores } from "./AddAutores";
 

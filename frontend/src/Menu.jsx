@@ -1,11 +1,3 @@
-/* import React from "react";
-import './Menu.css'
-import { Link } from "react-router-dom";
-
-
-
-
-export function Menu(){ */
 
 import React, { useEffect, useState } from "react";
 
@@ -18,6 +10,7 @@ export function Menu(){
    
     const [menus, setMenu]= useState([])
     const [user, setUser]= useState()
+    const iconos = [<i class="bi bi-book"></i>, <i class="bi bi-file-earmark-spreadsheet"></i>, <i class="bi bi-person-badge-fill"></i>,<i class="bi bi-book"></i>, <i class="bi bi-file-earmark-spreadsheet"></i>, <i class="bi bi-person-badge-fill"></i>]
 
     useEffect(()=>{
         const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -26,7 +19,7 @@ export function Menu(){
             return;
         }
         
-        setUser(datos_usuario.apellido+' '+datos_usuario.nombre)
+        setUser(datos_usuario.nombre+' '+datos_usuario.apellido)
         traer_menu(datos_usuario.id_rol);
     },[])
 
@@ -47,14 +40,22 @@ export function Menu(){
     return(
       <> 
         <body>
-
+        <header className="header">
+            <nav>
+                {user}
+                
+                <button  class="btn btn-primary ms-5" onClick={salir}>Cerrar Sesion</button>
+            </nav>
+        </header>
         <aside className="aside " id="aside">
             <div className="head">
                 <div className="profile">
                     <img src={logo} alt="logo" />
-                    <p>{user}</p>
+                    <p>Mi Biblioteca</p>
+
                 </div >
-                <i className="bi bi-list" id="barra" onClick={ocultarMenu}></i>
+        <i className="bi bi-list" id="barra" onClick={ocultarMenu}></i>
+                
             </div>
             <div className="options">
                 <div>
@@ -65,9 +66,10 @@ export function Menu(){
                 </div>
 
                 {menus.map((m)=>(
-                <div className="options">
+                <div className="options" >
+
+
                      <Link  className="Link"   to={m.href}>
-            
                         <span className="option"> {m.nombre} </span>
                     </Link>
                     
@@ -75,8 +77,6 @@ export function Menu(){
 
                     ))}
 
-                    
-                    <button  class="btn btn-outline-dark" onClick={salir}>Cerrar Sesion</button>
             
             </div>
             <div className="user-name"></div>

@@ -2,35 +2,38 @@ import React, { useEffect, useState } from "react";
 import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
-import { AddEditorial } from "./AddEditorial";
+/* import { AddUbicaciones } from "./AddUbicaciones"; */
 
 
-export function Editorial(){
-  const [Editorial, setEditorial] = useState([])
+export function Ubicaciones(){
+  const [Ubicaciones, setUbicaciones] = useState([])
   const [mensaje, setMensaje] = useState('')
+ 
  
 
 
-    useEffect(()=>{
-      API.getEditorial().then(setEditorial)}, [])
 
-      ////////////CAMBIAR ESTADO/////////
-      const cambiar_estado = async (e, id_editorial, estado_actual)=>{
+    useEffect(()=>{
+      API.getUbicaciones().then(setUbicaciones)}, [])
+
+/*       ////////////CAMBIAR ESTADO/////////
+      const cambiar_estado = async (e, id_ubicacion, estado_actual)=>{
         e.preventDefault();
         const actualizar = (estado_actual=="A")?"B":"A";
-        const respuesta= await API.ActualizarEstadoEditorial(id_editorial, {actualizar});
+        const respuesta= await API.ActualizarEstadoUbicaciones(id_ubicacion, {actualizar});
         if(respuesta.status){
             setTimeout(()=>{
                 setMensaje('')
-                API.getEditorial().then(setEditorial)
+                API.getUbicaciones().then(setUbicaciones)
             }, 0)
         }
         
-    }
+    } */
 
+/*  */
 
 ///////////////////////////////////////
-const eliminar = async(id_editorial)=>{
+const eliminar = async(id_ubicacion)=>{
   Swal.fire({
     title: '¿Esta seguro que quiere Eliminar?',
     icon: 'warning',
@@ -40,10 +43,10 @@ const eliminar = async(id_editorial)=>{
     confirmButtonText: 'Si, eliminar'
   }).then((result) => {
     if (result.isConfirmed) {
-      API.deleteEditorial(id_editorial);
+      API.deleteUbicaciones(id_ubicacion);
       setTimeout(()=>{
-      window.location.href='/editorial'
-      }, 0)
+      window.location.href='/ubicaciones'
+      }, 1000)
       Swal.fire(
         'Eliminado!')
     }
@@ -75,28 +78,25 @@ const eliminar = async(id_editorial)=>{
 
                 </tr>
                 <tr className="bg-info ">
-                  <td>Editorial</td>
+                  <td>Ubicaciones</td>
                   <td>Estado</td>
                   <td colSpan="3">Acciones</td>
                 </tr>
               </thead>
               <tbody>
-              {Editorial.map((ed)=>(
+              {Ubicaciones.map((ubicaciones)=>(
                 <tr>
-                  <td  >{ed.nombre}</td>
-                  <td >{ed.estado}</td>
+                  <td >{ubicaciones.nombre}</td>
+                  <td >{ubicaciones.estado}</td>
                   <td >
-                    {(ed.estado=="A")?
-                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, ed.id_editorial, ed.estado )} >Desactivar</button>
+                    {(ubicaciones.estado=="A")?
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Desactivar</button>
                     :
-                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ed.id_editorial, ed.estado )} >Activar</button>
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Activar</button>
                      }
                   </td>
-                  <td> 
-                    <Link to={`/EditEditorial/${ed.id_editorial}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
-                  </td>
                   <td>
-                    <button onClick={()=>eliminar(ed.id_editorial)}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                    <button onClick={()=>eliminar(ubicaciones.id_ubicacion)}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
                 </tr>
               ))}
@@ -112,11 +112,11 @@ const eliminar = async(id_editorial)=>{
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar editorial</h1>
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar ubicaciones</h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <AddEditorial/>
+              
                 </div>
                 <div class="modal-footer">
                 </div>

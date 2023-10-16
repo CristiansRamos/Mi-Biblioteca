@@ -18,6 +18,7 @@ import { Prestamos } from './componentes/Prestamos/Prestamos'
 import { AddPrestamos } from './componentes/Prestamos/AddPrestamos'
 import { AddLibros } from './componentes/Libros/AddLibros'
 import { EditLector } from './componentes/Lectores/EditLector'
+import { Ubicaciones } from './componentes/Ubicaciones/Ubicaciones'
 
 
 
@@ -50,6 +51,8 @@ function App() {
       <Route path='/EditEditorial/:id_editorial' element= {<EditEditorial/>}></Route>
       <Route path='/Prestamos' element= {<Prestamos/>}></Route>
       <Route path='/AddPrestamos' element= {<AddPrestamos/>}></Route>
+      <Route path='/Ubicaciones' element= {<Ubicaciones/>}></Route>
+
   
 
 

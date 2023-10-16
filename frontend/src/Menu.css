@@ -7,6 +7,24 @@
 body{
   
 }
+.header{
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    justify-content: end;
+    align-items: center;
+    background-color: #f0f8ff15;
+    box-shadow: 0 0px 6px 0 #000000;
+
+
+}
+
+nav{
+    margin: 20px;
+    
+}
+
 .Link{
     inline-size: 100%;
     block-size: 100%;
@@ -29,9 +47,11 @@ body{
     inline-size: 300px;
     padding: 10px;
     background-color: #0048ff;
-    position:fixed;
+
     color: aliceblue;
     transition: all .4s ease;
+    position: absolute;
+    z-index: 10;
 
 }
 
@@ -50,6 +70,8 @@ body{
     font-size: 30px;
     cursor: pointer;
 }
+
+
 .head p{
     margin-block-start: 10px;
 }
@@ -96,6 +118,11 @@ body{
     margin: auto;
 }
 
+
+@media (max-width:300px) {
+
+}
+
 @media (max-width:500px) {
     
     .aside {
@@ -106,9 +133,7 @@ body{
         display: none;
     }
     
-    .aside .head i{
-        display: none;
-    }
+
 
 }
 

@@ -46,7 +46,7 @@ router.get('/editorial/:id_editorial', (req , res)=>{
 })
 
 ////////////CAMBIAR ESTADO EDITORIAL/////////
-router.delete('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
+router.post('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
     const { actualizar }  = req.body
     const { id_editorial } = req.params
     mysqlConnect.query('UPDATE editorial SET estado = ?  WHERE id_editorial = ?', [actualizar, id_editorial], (error, registros)=>{
@@ -74,6 +74,25 @@ router.delete('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
                 status:true,
                 mensaje: "Se editó correctamente"
                 })
+           }
+       })
+    })
+
+    ////////////ELIMINAR EDITORIAL///////
+    router.delete('/editorial/:id_editorial', bodyParser.json(), (req , res)=>{
+        const { id_editorial } = req.params
+        mysqlConnect.query('DELETE FROM editorial WHERE id_editorial = ?', id_editorial, (error, registros)=>{
+           if(error){
+            console.log(error)         
+                res.json({
+                status:false,
+                mensaje: error
+            })
+           }else{
+             res.json({
+                status:true,
+                mensaje: 'La eliminacion del registro ' +id_editorial+ ' se realizo correctamente'
+            })
            }
        })
     })

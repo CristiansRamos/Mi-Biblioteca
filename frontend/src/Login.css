@@ -46,14 +46,29 @@ img{
 }
 
 h1 {
-    display: flex;
-    font-size:5cqmax;
+    display: block;
+    font-size:4cqmax;
     font-family: Tahoma, sans-serif;
+    white-space: nowrap;
     position: absolute;
+    border-right: 4px solid;
     z-index: 10;
-    color: #ffffff69;
+    width: 13ch;
+    color: #ffffff;
     margin: 2rem;
+    animation: typing 2s steps(12), blink .9s infinite  step-start;
+    overflow: hidden;
 }
+
+@keyframes typing{
+    from{
+        width: 0;
+    }
+}
+@keyframes blink{
+    50% { border-color: transparent}
+}
+
 h2{
     margin-top: 2rem;
 }

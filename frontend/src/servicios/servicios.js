@@ -194,6 +194,34 @@ export async function getUbicaciones(){
     return data;
 }
 
+/////////////AGREGAR UBICACION///////////
+export async function AddUbicaciones(datos){
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicacion`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+///////////ELIMINAR UBICACION////////////
+export async function deleteUbicaciones(id_ubicacion){
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicaciones/${id_ubicacion}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+
 ///////////////EDITORIAL//////////////
 
 export async function getEditorial(){
@@ -249,8 +277,20 @@ export async function AddEditorial(datos){
 /////////////////CAMBIAR ESTADO EDITORIAL//////////
 export async function ActualizarEstadoEditorial(id_editorial, actulizar){
     const Options={
-        method:'DELETE',
+        method:'POST',
         body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+///////////ELIMINAR EDITORIAL////////////
+export async function deleteEditorial(id_editorial){
+    const Options={
+        method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
         }

@@ -1,6 +1,6 @@
 .contenedor{
     display: flex;
-    width: 80vw;
+    width: 70vw;
     height: 100vh;
     align-items: center;
     margin-left: 20% ;
@@ -46,6 +46,7 @@
     width: 50%;
     background-color: aqua;
     font-size: 5vmax;
-    height: 200px;
+    margin-left: 10px;
+    border: 50%;
 
 }

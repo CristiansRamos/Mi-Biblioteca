@@ -30,5 +30,22 @@ router.post('/ubicaciones', bodyParser.json(), (req , res)=>{
        }
    })
 })
+    ////////////ELIMINAR UBICACION///////
+    router.delete('/ubicaciones/:id_ubicacion', bodyParser.json(), (req , res)=>{
+        const { id_ubicacion } = req.params
+        mysqlConnect.query('DELETE FROM ubicaciones WHERE id_ubicacion = ?', id_ubicacion, (error, registros)=>{
+           if(error){           
+                res.json({
+                status:false,
+                mensaje: error
+            })
+           }else{
+             res.json({
+                status:true,
+                mensaje: 'La eliminacion del registro ' +id_ubicacion+ ' se realizo correctamente'
+            })
+           }
+       })
+    })
 
 module.exports= router;

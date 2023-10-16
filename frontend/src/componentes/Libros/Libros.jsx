@@ -8,10 +8,11 @@ export function Libros(){
   const [Libros, setLibros] = useState([])
   const [mensaje, setMensaje] = useState([])
 
-  
+
 
     useEffect(()=>{
-      API.getLibros().then(setLibros)}, [])
+      API.getLibros().then(setLibros)
+    }, [])
       
 
       ////////////ELIMINAR////////////
@@ -57,7 +58,7 @@ export function Libros(){
               <Menu/>
 
           <div className="position-absolute top-50 start-50 translate-middle">
-
+   
           <table className="table align-middle table-responsive">
               <thead>
                 <tr className="table-info ">
@@ -78,13 +79,15 @@ export function Libros(){
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
-                  <td colSpan="3">#</td>
+                  <td colSpan="3">Acciones</td>
 
 
                 </tr>
               </thead>
               <tbody>
+      
               {Libros.map((lib)=>(
+                  
                 <tr>
                   <td >{lib.nombre}</td>
                   <td >{lib.autor_editorial}</td>
@@ -92,6 +95,8 @@ export function Libros(){
                   <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
 
+
+                
                   <td >
                     {(lib.estado=="A")?
                     <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Desactivar</button>
@@ -106,8 +111,8 @@ export function Libros(){
                   </td>
                 </tr>
               ))}
-
               </tbody>
+              
             </table>
           </div>
 
