@@ -7,13 +7,25 @@ import { AddLibros } from "./AddLibros";
 export function Libros(){
   const [Libros, setLibros] = useState([])
   const [mensaje, setMensaje] = useState([])
+  const [rol, setRol] = useState([])
 
+
+ 
 
 
     useEffect(()=>{
       API.getLibros().then(setLibros)
+      const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
+
+      setRol(datos_usuario.id_rol);
+console.log(rol)
     }, [])
       
+////////////////////////////////////////
+
+
+
+///////////////////////////////////////
 
       ////////////ELIMINAR////////////
       const eliminar = async(id_libro)=>{
@@ -70,7 +82,8 @@ export function Libros(){
                 </tr>
               </thead>
             </table>
-
+          
+          
             <table class="table table-striped-columns table-responsive">
               <thead>
                 <tr className="bg-info ">
@@ -79,7 +92,10 @@ export function Libros(){
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
+                  {(rol==1)?
                   <td colSpan="3">Acciones</td>
+                  :
+                  <td colSpan="3"></td>}
 
 
                 </tr>
@@ -94,20 +110,24 @@ export function Libros(){
                   <td >{lib.generos}</td>
                   <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
-
-
-                
                   <td >
-                    {(lib.estado=="A")?
+                  {(rol==1)?
+
+                    (lib.estado=="A")?
                     <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Desactivar</button>
                     :
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Activar</button>
                     
-                    }
+                    :
+                    <td> </td>}
                   </td>
 
                   <td>
+                  {(rol==1)?
+                    
                     <button onClick={()=>eliminar(lib.id_libro )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
+                    :
+                    <></>}
                   </td>
                 </tr>
               ))}

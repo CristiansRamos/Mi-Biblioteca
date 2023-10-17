@@ -17,7 +17,7 @@ router.get('/usuarios', (req , res)=>{
 
 /////////////LISTAR ROLES////////
 router.get('/roles', (req , res)=>{
-    mysqlConnect.query('SELECT r.id_rol, r.nombre nombre FROM roles AS r', (error, registros)=>{
+    mysqlConnect.query('SELECT r.id_rol, r.nombre FROM roles AS r', (error, registros)=>{
         if(error){
             console.log('Error en la base de datos', error)
         }else{

@@ -10,7 +10,6 @@ export function Menu(){
    
     const [menus, setMenu]= useState([])
     const [user, setUser]= useState()
-    const iconos = [<i class="bi bi-book"></i>, <i class="bi bi-file-earmark-spreadsheet"></i>, <i class="bi bi-person-badge-fill"></i>,<i class="bi bi-book"></i>, <i class="bi bi-file-earmark-spreadsheet"></i>, <i class="bi bi-person-badge-fill"></i>]
 
     useEffect(()=>{
         const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -21,6 +20,7 @@ export function Menu(){
         
         setUser(datos_usuario.nombre+' '+datos_usuario.apellido)
         traer_menu(datos_usuario.id_rol);
+        console.log(datos_usuario.id_rol)
     },[])
 
     const traer_menu =  async (id_rol)=>{
@@ -42,11 +42,13 @@ export function Menu(){
         <body>
         <header className="header">
             <nav>
+
                 {user}
                 
                 <button  class="btn btn-primary ms-5" onClick={salir}>Cerrar Sesion</button>
             </nav>
         </header>
+        
         <aside className="aside " id="aside">
             <div className="head">
                 <div className="profile">
@@ -54,7 +56,7 @@ export function Menu(){
                     <p>Mi Biblioteca</p>
 
                 </div >
-        <i className="bi bi-list" id="barra" onClick={ocultarMenu}></i>
+                <i className="bi bi-list barra" id="barra" onClick={ocultarMenu}></i>
                 
             </div>
             <div className="options">
@@ -71,6 +73,7 @@ export function Menu(){
 
                      <Link  className="Link"   to={m.href}>
                         <span className="option"> {m.nombre} </span>
+
                     </Link>
                     
                 </div>

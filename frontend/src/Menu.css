@@ -4,9 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-  
-}
+
 .header{
     display: flex;
     width: 100%;
@@ -47,7 +45,6 @@ nav{
     inline-size: 300px;
     padding: 10px;
     background-color: #0048ff;
-
     color: aliceblue;
     transition: all .4s ease;
     position: absolute;
@@ -121,33 +118,14 @@ nav{
 
 @media (max-width:300px) {
 
+    .header{
+        
+    }
 }
 
 @media (max-width:500px) {
-    
     .aside {
-        display: none;
-    }
-    .aside .option,
-    .aside .profile{
-        display: none;
-    }
-    
 
+    }
 
-}
-
-@media(max-width:980px){
-    .aside {
-        inline-size: 70px;
-        transition: all .4s ease;
-    }
-    .aside .option,
-    .aside .profile{
-        display: none;
-    }
-    
-    .aside .head i{
-        margin: auto;
-    }
 }

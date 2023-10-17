@@ -83,7 +83,7 @@ const eliminar = async(id_editorial)=>{
               <tbody>
               {Editorial.map((ed)=>(
                 <tr>
-                  <td  >{ed.nombre}</td>
+                  <td >{ed.nombre}</td>
                   <td >{ed.estado}</td>
                   <td >
                     {(ed.estado=="A")?
@@ -92,11 +92,20 @@ const eliminar = async(id_editorial)=>{
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ed.id_editorial, ed.estado )} >Activar</button>
                      }
                   </td>
-                  <td> 
+                  <td>
+                  {(ed.estado=="A")?
                     <Link to={`/EditEditorial/${ed.id_editorial}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
+                    :
+                    <button disabled class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button>
+                    }
                   </td>
                   <td>
+                  {(ed.estado=="B")?
+
                     <button onClick={()=>eliminar(ed.id_editorial)}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                    :
+                    <button disabled class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                  }
                   </td>
                 </tr>
               ))}
