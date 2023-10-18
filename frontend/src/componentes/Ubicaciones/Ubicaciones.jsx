@@ -60,7 +60,7 @@ const eliminar = async(id_ubicacion)=>{
               
           <div className="position-absolute top-50 start-50 translate-middle">
 
-          <table className="table align-middle table-responsive">
+{/*           <table className="table align-middle table-responsive">
               <thead>
                 <tr className="table-info ">
                   <td>
@@ -70,7 +70,7 @@ const eliminar = async(id_ubicacion)=>{
                   </td>
                 </tr>
               </thead>
-            </table>
+            </table> */}
 
             <table className="table table-striped-columns table-responsive">
               <thead>
@@ -88,13 +88,13 @@ const eliminar = async(id_ubicacion)=>{
                 <tr>
                   <td >{ubicaciones.nombre}</td>
                   <td >{ubicaciones.estado}</td>
-                  <td >
+{/*                   <td >
                     {(ubicaciones.estado=="A")?
                     <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Desactivar</button>
                     :
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Activar</button>
                      }
-                  </td>
+                  </td> */}
                   <td>
                     <button onClick={()=>eliminar(ubicaciones.id_ubicacion)}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
