@@ -54,9 +54,9 @@ export function AddLector(){
 
                 <div className="form-floating">
                   <input 
-                  type="number" 
+                  type="number" min={0}
                   value={dni}
-                  onChange={(event)=>setDni(event.target.value)}
+                  onChange={(event)=>setDni((event.target.value < 0)?event.target.value * -1:event.target.value)}
                   className="form-control" 
                   id="dni" 
                   />
