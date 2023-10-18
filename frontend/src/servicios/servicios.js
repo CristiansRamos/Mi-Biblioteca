@@ -2,12 +2,14 @@ const URL ='http://localhost:2023';
 
 //esta es mi funcion para loguearme
 export async function Login(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     console.log(datos)
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/Login`, Options);
@@ -17,11 +19,13 @@ export async function Login(datos){
 
 /////////registro/////////
 export async function Registro(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/Registro`, Options)
@@ -31,10 +35,12 @@ export async function Registro(datos){
 
 ////////////ROLES/////////
 export async function getRoles(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/roles`, Options)
@@ -45,10 +51,12 @@ export async function getRoles(){
 
 ///////////LISTAR USUARIOS/////////
 export async function getUsuarios(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/usuarios`, Options)
@@ -58,10 +66,12 @@ export async function getUsuarios(){
 
 ////////////USUARIOS POR ID/////////
 export async function getUsuariosByID(id_usuario){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/usuarios/${id_usuario}`, Options)
@@ -70,10 +80,12 @@ export async function getUsuariosByID(id_usuario){
 }
 ///////////ELIMINAR USUARIOS////////////
 export async function deleteUsuario(id_usuario){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/usuarios/${id_usuario}`, Options)
@@ -130,11 +142,13 @@ export async function getLibros(){
 
 ////////AGREGAR LIBROS METODO POST/////////
 export async function AddLibros(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/libros`, Options)
@@ -145,11 +159,13 @@ export async function AddLibros(datos){
 ////////////CAMBIAR ESTADO LIBROS//////////
 
 export async function ActualizarEstadoLibros(id_libro, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/libros/${id_libro}`, Options)
@@ -159,10 +175,12 @@ export async function ActualizarEstadoLibros(id_libro, actulizar){
 
 ///////////ELIMINAR LIBROS////////////
 export async function deleteLibros(id_libro){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/libros/${id_libro}`, Options)
@@ -173,10 +191,12 @@ export async function deleteLibros(id_libro){
 ///////////GENEROS////////////
 
 export async function getGeneros(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/generos`, Options)
@@ -186,10 +206,12 @@ export async function getGeneros(){
 ///////////UBICACION///////////
 
 export async function getUbicaciones(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/ubicaciones`, Options)
@@ -199,11 +221,13 @@ export async function getUbicaciones(){
 
 /////////////AGREGAR UBICACION///////////
 export async function AddUbicaciones(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/ubicacion`, Options)
@@ -213,10 +237,12 @@ export async function AddUbicaciones(datos){
 
 ///////////ELIMINAR UBICACION////////////
 export async function deleteUbicaciones(id_ubicacion){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/ubicaciones/${id_ubicacion}`, Options)
@@ -228,10 +254,12 @@ export async function deleteUbicaciones(id_ubicacion){
 ///////////////EDITORIAL//////////////
 
 export async function getEditorial(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial`, Options)
@@ -240,10 +268,12 @@ export async function getEditorial(){
 }
 ///////////////EDITORIAL POR ID////////////
 export async function getEditorialByID(id_editorial){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
@@ -252,11 +282,13 @@ export async function getEditorialByID(id_editorial){
 }
 /////////////EDITAR EDITORIAL////////////
 export async function EditEditorial(datos, id_editorial){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
@@ -266,11 +298,13 @@ export async function EditEditorial(datos, id_editorial){
 
 ////////AGREGAR EDITORIAL METODO POST/////////
 export async function AddEditorial(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial`, Options)
@@ -279,11 +313,13 @@ export async function AddEditorial(datos){
 }
 /////////////////CAMBIAR ESTADO EDITORIAL//////////
 export async function ActualizarEstadoEditorial(id_editorial, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
@@ -292,10 +328,12 @@ export async function ActualizarEstadoEditorial(id_editorial, actulizar){
 }
 ///////////ELIMINAR EDITORIAL////////////
 export async function deleteEditorial(id_editorial){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/editorial/${id_editorial}`, Options)
@@ -309,10 +347,12 @@ export async function deleteEditorial(id_editorial){
 ////////////AUTORES/////////
 
 export async function getAutores(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores`, Options)
@@ -322,10 +362,12 @@ export async function getAutores(){
 
 ///////////////AUTORES POR ID////////////
 export async function getAutoresByID(id_autor){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
@@ -335,11 +377,13 @@ export async function getAutoresByID(id_autor){
 
 ////////AGREGAR AUTORES METODO POST/////////
 export async function AddAutores(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores`, Options)
@@ -350,11 +394,13 @@ export async function AddAutores(datos){
 ////////////CAMBIAR ESTADO AUTOR//////////
 
 export async function ActualizarEstadoAutores(id_autor, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
@@ -363,10 +409,12 @@ export async function ActualizarEstadoAutores(id_autor, actulizar){
 }
 ///////////ELIMINAR AUTOR////////////
 export async function deleteAutor(id_autor){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
@@ -376,11 +424,13 @@ export async function deleteAutor(id_autor){
 
 /////////////EDITAR AUTORES////////////
 export async function EditAutores(datos, id_autor){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/autores/${id_autor}`, Options)
@@ -390,10 +440,12 @@ export async function EditAutores(datos, id_autor){
 ////////////LECTORES/////////
 
 export async function getLectores(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/lectores`, Options)
@@ -402,10 +454,12 @@ export async function getLectores(){
 }
 ///////////////LECTORES POR ID////////////
 export async function getLectorByID(id_lector){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
@@ -415,11 +469,13 @@ export async function getLectorByID(id_lector){
 
 ////////AGREGAR LECTORES METODO POST/////////
 export async function AddLector(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/lectores`, Options)
@@ -428,10 +484,12 @@ export async function AddLector(datos){
 }
 ///////////ELIMINAR LECTOR////////////
 export async function deleteLector(id_lector){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
@@ -440,11 +498,13 @@ export async function deleteLector(id_lector){
 }
 /////////////EDITAR LECTOR////////////
 export async function EditLector(datos, id_lector){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
@@ -455,10 +515,12 @@ export async function EditLector(datos, id_lector){
 ////////////PRESTAMOS/////////
 
 export async function getPrestamos(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamos`, Options)
@@ -468,10 +530,12 @@ export async function getPrestamos(){
 
 ///////////ELIMINAR PRESTAMO////////////
 export async function deletePrestamo(id_prestamo){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
@@ -481,11 +545,13 @@ export async function deletePrestamo(id_prestamo){
 
 ////////AGREGAR PRESTAMO METODO POST/////////
 export async function AddPrestamos(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamos`, Options)
@@ -496,11 +562,13 @@ export async function AddPrestamos(datos){
 ////////////CAMBIAR ESTADO PRESTAMOS//////////
 
 export async function ActualizarEstadoPrestamos(id_prestamo, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
@@ -509,10 +577,12 @@ export async function ActualizarEstadoPrestamos(id_prestamo, actulizar){
 }
 ///////////////PRESTAMO POR ID////////////
 export async function getPrestamoByID(id_prestamo){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamo/${id_prestamo}`, Options)
@@ -521,11 +591,13 @@ export async function getPrestamoByID(id_prestamo){
 }
 /////////////EDITAR PRESTAMO////////////
 export async function EditPrestamo(datos, id_prestamo){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'PUT',
         body: JSON.stringify(datos),
         headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         }
     }
     const respuesta = await fetch(`${URL}/prestamos/${id_prestamo}`, Options)
