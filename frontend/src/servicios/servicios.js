@@ -114,10 +114,13 @@ export async function ver_permisos(datos){
 
 /////////libros/////////////
 export async function getLibros(){
+    const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+
         }
     }
     const respuesta = await fetch(`${URL}/libros`, Options)

@@ -92,10 +92,7 @@ console.log(rol)
                   <td>Genero</td>
                   <td>Ubicación</td>
                   <td>Estado</td>
-                  {(rol==1)?
                   <td colSpan="3">Acciones</td>
-                  :
-                  <td colSpan="3"></td>}
 
 
                 </tr>
@@ -111,15 +108,12 @@ console.log(rol)
                   <td >{lib.ubicacion}</td>
                   <td >{lib.estado}</td>
                   <td >
-                  {(rol==1)?
 
-                    (lib.estado=="A")?
+                    {(lib.estado=="A")?
                     <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Desactivar</button>
                     :
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, lib.id_libro, lib.estado )} >Activar</button>
-                    
-                    :
-                    <td> </td>}
+                    }
                   </td>
 
                   <td>

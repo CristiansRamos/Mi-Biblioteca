@@ -71,7 +71,7 @@ export function AddPrestamos(){
                     <option  value={l.id_libro}>{l.nombre}</option>
 
                     :
-                    <div> </div> 
+                    <div></div>
                     ))}
 
 
