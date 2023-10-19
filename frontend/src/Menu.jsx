@@ -5,11 +5,12 @@ import './Menu.css';
 import { Link } from "react-router-dom";
 import * as API from './servicios/servicios'
 import logo from './assets/img/logo.png'
-
+import perfil_user from './assets/img/perfil_user.png'
 export function Menu(){
    
     const [menus, setMenu]= useState([])
     const [user, setUser]= useState()
+    
 
     useEffect(()=>{
         const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
@@ -42,10 +43,8 @@ export function Menu(){
         <body>
         <header className="header">
             <nav>
-
+                <img src={perfil_user} alt="logo" className="perfil_user" />
                 {user}
-                
-                <button  class="btn btn-primary ms-5" onClick={salir}>Cerrar Sesion</button>
             </nav>
         </header>
         
@@ -68,8 +67,8 @@ export function Menu(){
                 </div>
 
                 {menus.map((m)=>(
-                <div className="options" >
 
+                <div className="options" >
 
                      <Link  className="Link"   to={m.href}>
                         <span className="option"> {m.nombre} </span>
@@ -82,7 +81,7 @@ export function Menu(){
 
             
             </div>
-            <div className="user-name"></div>
+            <button  className="cerrar_sesion" onClick={salir}>Cerrar Sesion</button>
         </aside>
        
     </body>

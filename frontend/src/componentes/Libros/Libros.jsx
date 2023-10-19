@@ -84,7 +84,7 @@ console.log(rol)
             </table>
           
           
-            <table class="table table-striped-columns table-responsive">
+            <table class="table table-striped-columns table-responsive mi-tabla">
               <thead>
                 <tr className="bg-info ">
                   <td>Título</td>
