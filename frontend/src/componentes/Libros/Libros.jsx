@@ -10,6 +10,9 @@ export function Libros(){
   const [Libros, setLibros] = useState([])
   const [mensaje, setMensaje] = useState([])
   const [rol, setRol] = useState([])
+  const [search, setSearch] = useState("")
+
+  
 
 
  
@@ -65,8 +68,22 @@ console.log(rol)
               }
               
           }
-
-
+          ////////////////funcion de busqueda////////
+          const buscador = (e)=>{
+            setSearch(e.target.value)
+            /* console.log(e.target.value) */
+          }
+          ////////////////metodo de filtrado////////
+          let resul = []
+          if(!search)
+          {
+            resul= Libros
+          }else{
+            resul =Libros.filter((dato)=>
+            dato.nombre.toLowerCase().includes(search.toLowerCase())
+            )
+          }
+///////////////////////////////////////////////////////////////////////////////////
         return(
             <>
               <Menu/>
@@ -81,6 +98,7 @@ console.log(rol)
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   Agregar Libro
                   </button>
+                    <input value={search} onChange={buscador} type="text" placeholder="search" className="form-control"/>
                   </td>
                 </tr>
               </thead>
@@ -102,9 +120,9 @@ console.log(rol)
               </thead>
               <tbody>
       
-              {Libros.map((lib)=>(
+              {resul.map((lib)=>(
                   
-                <tr>
+                <tr key={lib.id}>
                   <td >{lib.nombre}</td>
                   <td >{lib.autor_editorial}</td>
                   <td >{lib.generos}</td>
