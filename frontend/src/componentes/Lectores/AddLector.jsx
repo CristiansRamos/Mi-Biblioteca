@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import * as API from '../../servicios/servicios'
+import { Vigia } from "../../Vigia";
+
 
 export function AddLector(){
     
@@ -25,6 +27,8 @@ export function AddLector(){
       }
     return(
         <>
+              <Vigia/>
+
         <main className="form-signin w-100 m-auto">
               <form onSubmit={Lector}>
                 

@@ -3,6 +3,8 @@ import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
 import { AddLibros } from "./AddLibros";
+import { Vigia } from "../../Vigia";
+
 
 export function Libros(){
   const [Libros, setLibros] = useState([])
@@ -68,10 +70,11 @@ console.log(rol)
         return(
             <>
               <Menu/>
+              <Vigia/>
 
           <div className="position-absolute top-50 start-50 translate-middle">
    
-          <table className="table align-middle table-responsive">
+          <table className="table">
               <thead>
                 <tr className="table-info ">
                   <td>
@@ -83,8 +86,8 @@ console.log(rol)
               </thead>
             </table>
           
-          
-            <table class="table table-striped-columns table-responsive mi-tabla">
+
+            <table class="table">
               <thead>
                 <tr className="bg-info ">
                   <td>Título</td>
@@ -129,6 +132,7 @@ console.log(rol)
               
             </table>
           </div>
+
 
          {/*  ///////////MODAL////////// */}
          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

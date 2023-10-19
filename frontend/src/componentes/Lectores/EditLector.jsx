@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Vigia } from "../../Vigia";
+
 
 export function EditLector(){
 const [nombre, setNombre] = useState('')
@@ -40,6 +42,8 @@ const editarLector = async(event)=>{
 }
     return(
         <>
+              <Vigia/>
+
              <main className="form-signin w-100 m-auto">
               <form onSubmit={editarLector}>
                 <div>

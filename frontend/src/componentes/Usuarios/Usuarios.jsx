@@ -3,6 +3,7 @@ import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
 import { Registro} from "../.././Registro";
+import { Vigia } from "../../Vigia";
 
 
 export function Usuarios(){
@@ -37,10 +38,10 @@ export function Usuarios(){
         return(
             <>
               <Menu/>
-
+              <Vigia/>
           <div className="position-absolute top-50 start-50 translate-middle">
 
-          <table className="table align-middle table-responsive">
+          <table className="table">
               <thead>
                 <tr className="table-info ">
                   <td>
@@ -52,7 +53,7 @@ export function Usuarios(){
               </thead>
             </table>
 
-            <table class="table table-striped-columns table-responsive">
+            <table class="table">
               <thead>
                 <tr className="bg-info ">
                   <td>Nombre</td>

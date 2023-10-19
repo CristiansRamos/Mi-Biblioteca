@@ -112,7 +112,7 @@ nav{
 .aside.active {
     inline-size: 70px;
     height: 4rem;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     transition: all .4s ease;
 }
 /* ///// PARA DESAPARECER LAS OPCIONES ////// */

@@ -3,6 +3,8 @@ import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
 import { AddPrestamos } from "./AddPrestamos";
+import { Vigia } from "../../Vigia";
+
 /* import { AddPrestamo } from "./AddLector"; */
 
 
@@ -58,10 +60,11 @@ export function Prestamos(){
         return(
             <>
               <Menu/>
+              <Vigia/>
 
           <div className="position-absolute top-50 start-50 translate-middle">
             
-            <table className="table align-middle table-responsive">
+            <table className="table">
               <thead>
                 <tr className="table-info ">
                   <td>
@@ -74,7 +77,7 @@ export function Prestamos(){
             </table>
 
             
-            <table className="table table-striped-columns table-responsive">
+            <table className="table">
               <thead>
                 
                 <tr className="bg-info ">

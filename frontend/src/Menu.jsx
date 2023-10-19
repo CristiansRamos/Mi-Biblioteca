@@ -43,8 +43,8 @@ export function Menu(){
         <body>
         <header className="header">
             <nav>
-                <img src={perfil_user} alt="logo" className="perfil_user" />
-                {user}
+            {user}
+            <img src={perfil_user} alt="logo" className="perfil_user" />
             </nav>
         </header>
         

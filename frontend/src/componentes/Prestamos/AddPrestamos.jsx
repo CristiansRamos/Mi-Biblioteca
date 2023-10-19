@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Vigia } from "../../Vigia";
+
 
 export function AddPrestamos(){
     const [nombre, setNombre] = useState('')
@@ -39,6 +41,8 @@ export function AddPrestamos(){
 
     return(
         <>
+              <Vigia/>
+
             <main className="form-signin w-100 m-auto">
               <form onSubmit={guardarPrestamos}>
                 <div>

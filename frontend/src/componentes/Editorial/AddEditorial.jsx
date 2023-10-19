@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Vigia } from "../../Vigia";
+
 
 export function AddEditorial(){
 const [nombre, setNombre] = useState('')
@@ -24,6 +26,8 @@ const [mensaje, setMensaje] = useState('')
 
     return(
         <>
+              <Vigia/>
+
              <main className="form-signin w-100 m-auto">
               <form onSubmit={guardarEditorial}>
                 <div>
