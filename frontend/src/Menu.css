@@ -10,7 +10,7 @@
     width: 100%;
     height: 4rem;
     position: fixed;
-    justify-content: end;
+    justify-content:flex-end;
     align-items: center;
     background-color: #f0f8ff15;
     box-shadow: 0 0px 6px 0 #000000;
@@ -35,7 +35,8 @@ nav{
 .perfil_user{
     inline-size: 50px;
     border-radius: 50%;
-    margin: 10px;
+    margin: 7px 2px 9px;
+    
 }
 
 
@@ -47,7 +48,7 @@ nav{
     background-color: #0048ff;
     color: aliceblue;
     transition: all .4s ease;
-    position: absolute;
+    position: fixed;
     z-index: 10;
 
 }
@@ -63,7 +64,7 @@ nav{
     block-size: 50px;
     margin-block-end: 30px
 }
-.head i{
+.icono_menu{
     display: none;
 }
 
@@ -110,9 +111,8 @@ nav{
 
 /* ////////  PARA ENCOGER EL MENU  //////// */
 .aside.active {
-    inline-size: 70px;
-    height: 4rem;
-    background-color: #ffffff;
+    inline-size: 0;
+
     transition: all .4s ease;
 }
 /* ///// PARA DESAPARECER LAS OPCIONES ////// */
@@ -135,20 +135,22 @@ nav{
 }
 
 
-    .head i{
-        display: flex;
-        font-size: 30px;
-        cursor: pointer;
-    }
+.icono_menu{
+    display:initial;
+    font-size: 30px;
+    cursor: pointer;
+ 
+}
+nav{
+   display: flex;
+}
 }
 
 @media (max-width:500px) {
 
 /* ////////  PARA ENCOGER EL MENU  //////// */
 .aside.active {
-    inline-size: 70px;
-    height: 4rem;
-    background-color: rgb(255, 255, 255);
+    inline-size: 0px;
     transition: all .4s ease;
 }
 /* ///// PARA DESAPARECER LAS OPCIONES ////// */
@@ -170,44 +172,53 @@ nav{
     display: none;
 }
 
-    .head i{
-        display: flex;
+    .icono_menu{
+        display:initial;
         font-size: 30px;
         cursor: pointer;
+     
     }
+    nav{
+       display: flex;
+    }
+
 }
 
 @media (max-width:800px) {
 
-    /* ////////  PARA ENCOGER EL MENU  //////// */
-    .aside.active {
-        inline-size: 70px;
-        height: 4rem;
-        background-color: rgb(255, 255, 255);
-        transition: all .4s ease;
-    }
-    /* ///// PARA DESAPARECER LAS OPCIONES ////// */
-    .aside.active .option,
-    .aside.active .profile{
-        display: none;
-    }
+   /* ////////  PARA ENCOGER EL MENU  //////// */
+.aside.active {
+    inline-size: 0px;
+ 
+    transition: all .4s ease;
+}
+/* ///// PARA DESAPARECER LAS OPCIONES ////// */
+.aside.active .option,
+.aside.active .profile{
+    display: none;
+}
+
+.aside.active .head i{
+    margin: auto;
+    color: #000000;
+}
+
+.aside.active .cerrar_sesion{
+    display: none;
     
-    .aside.active .head i{
-        margin: auto;
-        color: #000000;
-    }
-    
-    .aside.active .cerrar_sesion{
-        display: none;
-        
-    }
-    .aside.active .Link{
-        display: none;
-    }
-    
-        .head i{
-            display: flex;
-            font-size: 30px;
-            cursor: pointer;
-        }
-    }
+}
+.aside.active .Link{
+    display: none;
+}
+
+.icono_menu{
+    display:initial;
+    font-size: 30px;
+    cursor: pointer;
+ 
+}
+nav{
+   display: flex;
+}
+
+}

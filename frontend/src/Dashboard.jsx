@@ -50,7 +50,7 @@ export function Dashboard(){
         <>
               <Menu/> 
               
-              <div className="contenedor">
+              <div className="contenedorDash">
                 <div className="micontainer">
                     <div className="flex-item">
                         <div className="titulo">Total Libros</div>

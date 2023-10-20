@@ -43,8 +43,15 @@ export function Menu(){
         <body>
         <header className="header">
             <nav>
-            {user}
-            <img src={perfil_user} alt="logo" className="perfil_user" />
+            <div>
+                <img src={perfil_user} alt="logo" className="perfil_user" />
+                {user}
+            </div>
+            <div>
+            <   i className="bi bi-list icono_menu" id="barra" onClick={ocultarMenu}></i>
+
+            </div>
+
             </nav>
         </header>
         
@@ -55,7 +62,6 @@ export function Menu(){
                     <p>Mi Biblioteca</p>
 
                 </div >
-                <i className="bi bi-list barra" id="barra" onClick={ocultarMenu}></i>
                 
             </div>
             <div className="options">

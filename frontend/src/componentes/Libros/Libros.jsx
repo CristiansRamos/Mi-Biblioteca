@@ -88,7 +88,7 @@ console.log(rol)
             <>
               <Menu/>
               <Vigia/>
-
+          <div className="contenedor">
           <div className="position-absolute top-50 start-50 translate-middle">
    
           <table className="table">
@@ -98,7 +98,7 @@ console.log(rol)
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   Agregar Libro
                   </button>
-                    <input value={search} onChange={buscador} type="text" placeholder="search" className="form-control"/>
+                    <input value={search} onChange={buscador} type="text" placeholder="Buscar..." className="form-control"/>
                   </td>
                 </tr>
               </thead>
@@ -150,7 +150,7 @@ console.log(rol)
               
             </table>
           </div>
-
+        </div>
 
          {/*  ///////////MODAL////////// */}
          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
