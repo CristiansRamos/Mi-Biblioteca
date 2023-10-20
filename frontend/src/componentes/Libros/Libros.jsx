@@ -105,7 +105,7 @@ console.log(rol)
             </table>
           
 
-            <table class="table">
+            <table class="table table-striped table-hover mt-5 shadown-lg">
               <thead>
                 <tr className="bg-info ">
                   <td>Título</td>
