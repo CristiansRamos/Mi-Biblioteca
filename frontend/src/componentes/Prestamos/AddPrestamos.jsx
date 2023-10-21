@@ -54,7 +54,7 @@ export function AddPrestamos(){
                   <option disabled selected >Seleccione un lector</option>
                     {lectores.map((le)=>(
                     
-                    <option value={le.id_lector}>{le.nombre}</option>
+                    <option value={le.id_lector}>{le.nombreCompleto}</option>
                     ))}
                  </select>
                 </div>

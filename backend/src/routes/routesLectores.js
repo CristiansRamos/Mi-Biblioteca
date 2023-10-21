@@ -13,7 +13,7 @@ router.get('/lectores',verificarToken,(req , res)=>{
         if(error){
             res.sendStatus(403);
         }else{
-            mysqlConnect.query('SELECT * FROM lectores', (error, registros)=>{
+            mysqlConnect.query('SELECT le.id_lector, le.nombre, le.apellido, le.dni, le.correo, le.estado, concat_ws("-", le.nombre, le.apellido, le.dni) nombreCompleto FROM lectores AS le', (error, registros)=>{
                 if(error){
                     console.log('Error en la base de datos', error)
                 }else{
