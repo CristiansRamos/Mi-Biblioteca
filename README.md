@@ -45,7 +45,7 @@ Uso:
 Accede al sistema utilizando las siguientes credenciales:
 
 *Administrador:* 
-Usuario: administrador, contraseña: Administrador
+Usuario: admin, contraseña: Admin
 
 *Empleado:*
 : empleado, contraseña: Empleado

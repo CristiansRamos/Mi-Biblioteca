@@ -40,7 +40,7 @@ router.get('/roles', verificarToken, (req , res)=>{
 })
 
 /////////////TRAER USUARIOS POR ID////////////
-router.get('/usuarios/:id_usuarios', verificarToken, (req , res)=>{
+router.get('/usuarios/:id_usuario', verificarToken, (req , res)=>{
     const {id_usuario}= req.params
     jwt.verify(req.token, 'biblioteca', (error, valido)=>{
         if(error){

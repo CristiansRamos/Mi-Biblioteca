@@ -48,7 +48,6 @@ export function Vigia(){
     }
     return(
         <>
-        
         </>
         
     )

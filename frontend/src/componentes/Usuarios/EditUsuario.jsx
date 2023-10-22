@@ -25,6 +25,7 @@ useEffect(()=>{
 const traer_datos =  async ()=>{
   const datos_usuario= await API.getUsuariosByID(id_usuario);
   console.log(traer_datos)
+
    setNombre(datos_usuario.nombre),
    setApellido(datos_usuario.apellido),
    setDni(datos_usuario.dni),
