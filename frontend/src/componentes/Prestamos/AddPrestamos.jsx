@@ -53,8 +53,12 @@ export function AddPrestamos(){
                  <select onChange={(event)=>setIdLector(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option disabled selected >Seleccione un lector</option>
                     {lectores.map((le)=>(
-                    
+
+                    (le.estado=="A")?
                     <option value={le.id_lector}>{le.nombreCompleto}</option>
+                    :
+                    <div></div>
+
                     ))}
                  </select>
                 </div>

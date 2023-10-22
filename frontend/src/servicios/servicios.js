@@ -3,7 +3,7 @@ const URL ='http://localhost:2025';
 //esta es mi funcion para loguearme
 export async function Login(datos){
     const token = JSON.parse(localStorage.getItem('token'));
-    console.log(datos)
+    /* console.log(datos) */
     const Options={
         method:'POST',
         body: JSON.stringify(datos),
@@ -78,6 +78,21 @@ export async function getUsuariosByID(id_usuario){
     const data= await respuesta.json();
     return data[0];
 }
+/////////////EDITAR USUARIOS////////////
+export async function EditUsuario(datos, id_usuario){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/usuarios/${id_usuario}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
 ///////////ELIMINAR USUARIOS////////////
 export async function deleteUsuario(id_usuario){
     const token = JSON.parse(localStorage.getItem('token'));
@@ -120,7 +135,7 @@ export async function ver_permisos(datos){
    }
    const respuesta = await fetch(`${URL}/menu_permisos`, Options)
    const data= await respuesta.json();
-   console.log('respuesta de permisos', data)
+   /* console.log('respuesta de permisos', data) */
    return data;
 }
 

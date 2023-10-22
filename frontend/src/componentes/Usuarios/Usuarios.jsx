@@ -79,6 +79,13 @@ export function Usuarios(){
                   <td >{u.rol}</td>
                   <td >{u.estado}</td>
                   <td>
+                  {(u.estado=="A")?
+                    <Link to={`/EditUsuario/${u.id_usuario}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
+                    :
+                    <button disabled class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button>
+                    }
+                  </td>
+                  <td>
                     <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
                 </tr>

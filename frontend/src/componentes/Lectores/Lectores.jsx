@@ -89,12 +89,6 @@ export function Lectores(){
                   <td >{l.dni}</td>
                   <td >{l.correo}</td>
                   <td >{l.estado}</td>
-                  <td>
-                    <button onClick={()=>eliminar(l.id_lector )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
-                  </td>
-                  <td> 
-                    <Link to={`/EditLector/${l.id_lector}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
-                  </td>
                   <td >
 
                     {(l.estado=="A")?
@@ -102,7 +96,14 @@ export function Lectores(){
                     :
                     <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Activar</button>
                     }
-                    </td>
+                  </td>
+                  <td> 
+                    <Link to={`/EditLector/${l.id_lector}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
+                  </td>
+                  <td>
+                    <button onClick={()=>eliminar(l.id_lector )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                  </td>
+
                 </tr>
               ))}
 

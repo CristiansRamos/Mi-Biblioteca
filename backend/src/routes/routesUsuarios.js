@@ -41,12 +41,12 @@ router.get('/roles', verificarToken, (req , res)=>{
 
 /////////////TRAER USUARIOS POR ID////////////
 router.get('/usuarios/:id_usuarios', verificarToken, (req , res)=>{
-    const {id_usuarios}= req.params
+    const {id_usuario}= req.params
     jwt.verify(req.token, 'biblioteca', (error, valido)=>{
         if(error){
             res.sendStatus(403);
         }else{
-            mysqlConnect.query('SELECT * FROM usuarios WHERE id_usuarios=?', [id_usuarios] , (error, registros)=>{
+            mysqlConnect.query('SELECT * FROM usuarios WHERE id_usuario=?', [id_usuario] , (error, registros)=>{
                 if(error){
                     console.log('Error en la base de datos', error)
                 }else{
@@ -58,13 +58,13 @@ router.get('/usuarios/:id_usuarios', verificarToken, (req , res)=>{
 })
 
 /////////////INSERTAR USUARIOS///////////////
-router.post('/usuarios', bodyParser.json(), verificarToken, (req , res)=>{
-    const{nombre, id_usuarios, apellido, correo, id_rol, estado} = req.body
+router.post('/usuario', bodyParser.json(), verificarToken, (req , res)=>{
+    const{id_usuario, nombre,  apellido, correo, id_rol, estado} = req.body
     jwt.verify(req.token, 'biblioteca', (error, valido)=>{
         if(error){
             res.sendStatus(403);
         }else{
-            mysqlConnect.query('INSERT INTO usuarios (nombre, id_usuarios, apellido, correo, id_rol, estado) VALUES (?,?,?,?,?,?)', [nombre, id_usuarios, apellido, correo, ,id_rol, estado] , (error, registros)=>{
+            mysqlConnect.query('INSERT INTO usuarios (id_usuario, nombre, apellido, correo, id_rol, estado) VALUES (?,?,?,?,?,?)', [id_usuario, nombre, apellido, correo, ,id_rol, estado] , (error, registros)=>{
                 if(error){
                     console.log('Error en la base de datos', error)
                 }else{
@@ -75,20 +75,23 @@ router.post('/usuarios', bodyParser.json(), verificarToken, (req , res)=>{
     })
 })
 
-/////////////MODIFICAR LOS USUARIOS///////////////
-router.put('/usuarios/:id_usuarios', bodyParser.json(), verificarToken, (req , res)=>{
-    
-    const{nombre, id_usuarios, apellido, correo, estado} = req.body
-    const {id_empleado} = req.params
-    jwt.verify(req.token, 'biblioteca', (error, valido)=>{
-        if(error){
-            res.sendStatus(403);
-        }else{
-            mysqlConnect.query('UPDATE usuarios SET nombre = ? apellido = ? WHERE id_usuarios = ?', [nombre, id_usuarios, apellido, correo, estado] , (error, registros)=>{
+//////////////EDITAR USUARIO////////////
+    // el parametro que vamos a editar ->id_editorial
+    router.put('/usuarios/:id_usuario', bodyParser.json(), verificarToken,(req , res)=>{
+        const { nombre, apellido, dni, user, correo, id_rol }  = req.body
+        const { id_usuario } = req.params
+        jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+            if(error){
+                res.sendStatus(403);
+            }else{
+                mysqlConnect.query('UPDATE usuarios SET nombre = ?, apellido = ?, dni =?, user = ?, correo = ?, id_rol = ? WHERE (id_usuario = ?)', [nombre, apellido, dni, user, correo, id_rol, id_usuario], (error, registros)=>{
                 if(error){
                     console.log('Error en la base de datos', error)
                 }else{
-                    res.send('se modifico correctamente :)')
+                    res.json({
+                        status:true,
+                        mensaje: "Se editó correctamente"
+                        })
                 }
             })
         }

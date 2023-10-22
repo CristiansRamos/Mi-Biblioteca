@@ -19,6 +19,7 @@ import { AddPrestamos } from './componentes/Prestamos/AddPrestamos'
 import { AddLibros } from './componentes/Libros/AddLibros'
 import { EditLector } from './componentes/Lectores/EditLector'
 import { Ubicaciones } from './componentes/Ubicaciones/Ubicaciones'
+import { EditUsuario } from './componentes/Usuarios/EditUsuario'
 
 
 
@@ -39,6 +40,7 @@ function App() {
       <Route path='/Menu' element= {<Menu/>}></Route>
       <Route path='/Dashboard' element= {<Dashboard/>}></Route>
       <Route path='/Usuarios' element= {<Usuarios/>}></Route>
+      <Route path='/EditUsuario/:id_usuario' element= {<EditUsuario/>}></Route>
       <Route path='/Lectores' element= {<Lectores/>}></Route>
       <Route path='/AddLector' element= {<AddLector/>}></Route>
       <Route path='/EditLector/:id_lector' element= {<EditLector/>}></Route>
