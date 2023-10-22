@@ -42,7 +42,7 @@ router.get('/Libros', verificarToken, (req , res)=>{
 
 
        ////////////CAMBIAR ESTADO LIBROS/////////
-router.put('/libros/:id_libro', bodyParser.json(), (req , res)=>{
+router.post('/libros/:id_libro', bodyParser.json(), (req , res)=>{
     const { actualizar }  = req.body
     const { id_libro } = req.params
     mysqlConnect.query('UPDATE libros SET estado = ?  WHERE id_libro = ?', [actualizar, id_libro], (error, registros)=>{

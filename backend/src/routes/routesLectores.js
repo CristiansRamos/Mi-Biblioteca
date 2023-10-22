@@ -85,6 +85,23 @@ router.get('/lectores/:id_lector', verificarToken,(req , res)=>{
         }
     })
 })
+
+       ////////////CAMBIAR ESTADO LECTORES/////////
+       router.post('/lectores/:id_lector', bodyParser.json(), (req , res)=>{
+        const { actualizar }  = req.body
+        const { id_lector } = req.params
+        mysqlConnect.query('UPDATE lectores SET estado = ?  WHERE id_lector = ?', [actualizar, id_lector], (error, registros)=>{
+            if(error){
+                console.log('Error en la base de datos', error)
+            }else{
+                res.json({
+                    status:true,
+                    mensaje: "El cambio de estado se realizo correctamente"
+                    })
+            }
+        })
+    })
+
     ////////////ELIMINAR LECTOR///////
 router.delete('/lectores/:id_lector', bodyParser.json(), verificarToken,(req , res)=>{
     const { id_lector } = req.params

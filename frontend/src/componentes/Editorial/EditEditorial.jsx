@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as API from '../../servicios/servicios'
-import { Vigia } from "../../Vigia";
 
 
 export function EditEditorial(){
@@ -34,7 +33,6 @@ const editarEditorial = async(event)=>{
 }
     return(
         <>
-              <Vigia/>
 
              <main className="form-signin w-100 m-auto">
               <form onSubmit={editarEditorial}>

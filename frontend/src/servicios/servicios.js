@@ -161,7 +161,7 @@ export async function AddLibros(datos){
 export async function ActualizarEstadoLibros(id_libro, actulizar){
     const token = JSON.parse(localStorage.getItem('token'));
     const Options={
-        method:'PUT',
+        method:'POST',
         body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
@@ -482,6 +482,24 @@ export async function AddLector(datos){
     const data= await respuesta.json()
     return data;
 }
+
+////////////CAMBIAR ESTADO LECTORES//////////
+
+export async function ActualizarEstadoLectores(id_lector, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/lectores/${id_lector}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
 ///////////ELIMINAR LECTOR////////////
 export async function deleteLector(id_lector){
     const token = JSON.parse(localStorage.getItem('token'));

@@ -9,6 +9,7 @@ import { Vigia } from "../../Vigia";
 
 export function Lectores(){
   const [Lectores, setLectores] = useState([])
+  
 
     useEffect(()=>{
       API.getLectores().then(setLectores)}, [])
@@ -34,6 +35,19 @@ export function Lectores(){
       }
     })
   }
+
+  ////////////CAMBIAR ESTADO/////////
+  const cambiar_estado = async (e, id_lector, estado_actual)=>{
+    e.preventDefault();
+    const actualizar = (estado_actual=="A")?"B":"A";
+    const respuesta= await API.ActualizarEstadoLectores(id_lector, {actualizar});
+    if(respuesta.status){
+      API.getLectores().then(setLectores)
+
+    }
+    
+}
+
 
         return(
             <>
@@ -81,6 +95,14 @@ export function Lectores(){
                   <td> 
                     <Link to={`/EditLector/${l.id_lector}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
                   </td>
+                  <td >
+
+                    {(l.estado=="A")?
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Desactivar</button>
+                    :
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Activar</button>
+                    }
+                    </td>
                 </tr>
               ))}
 
@@ -105,6 +127,7 @@ export function Lectores(){
               </div>
             </div>
           </div>
+          
         </>
         )
 
