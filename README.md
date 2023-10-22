@@ -31,10 +31,12 @@ Crea una base de datos y configura las credenciales en el archivo de configuraci
 Ejecuta la aplicación:
 
 sql
-
 npm start
-Uso
-Acceso al Sistema
+
+Uso: 
+
+Acceso al Sistema:
+
 Accede al sistema utilizando las siguientes credenciales:
 Administrador: username: administrador, contraseña: Administrador
 Empleado: username: empleado, contraseña: Empleado
