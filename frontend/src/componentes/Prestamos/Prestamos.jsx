@@ -76,7 +76,7 @@ export function Prestamos(){
               </thead>
             </table>
 
-            
+            <input type="checkbox" />
             <table className="table">
               <thead>
                 

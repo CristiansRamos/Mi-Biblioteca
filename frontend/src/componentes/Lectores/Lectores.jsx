@@ -92,9 +92,9 @@ export function Lectores(){
                   <td >
 
                     {(l.estado=="A")?
-                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Desactivar</button>
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Dar de baja</button>
                     :
-                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Activar</button>
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, l.id_lector, l.estado )} >Dar de alta</button>
                     }
                   </td>
                   <td> 

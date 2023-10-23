@@ -5,7 +5,8 @@ import * as API from '../../servicios/servicios'
 
 export function EditEditorial(){
 const [nombre, setNombre] = useState('')
-const [mensaje, setMensaje] = useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
+
 
 const {id_editorial} = useParams()
 
@@ -23,9 +24,9 @@ const editarEditorial = async(event)=>{
   const respuesta = await API.EditEditorial({nombre}, id_editorial)
   
   if(respuesta.status){
-      setMensaje(respuesta.mensaje)
+    setMensajeAlerta(respuesta.mensaje)
       setTimeout(()=>{
-          setMensaje('')
+        setMensajeAlerta('')
           window.location.href='/editorial'
           }, 3000)
   }
@@ -35,10 +36,14 @@ const editarEditorial = async(event)=>{
         <>
 
              <main className="form-signin w-100 m-auto">
+
+             {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+
               <form onSubmit={editarEditorial}>
-                <div>
-                    {mensaje}
-                </div>
                 
                 <div className="form-floating">
                   <input 
@@ -51,7 +56,7 @@ const editarEditorial = async(event)=>{
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/editorial" >Volver</Link>
+                <Link to="/editorial" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
 
               </form>
             </main>

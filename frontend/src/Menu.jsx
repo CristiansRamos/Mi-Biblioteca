@@ -10,10 +10,14 @@ export function Menu(){
    
     const [menus, setMenu]= useState([])
     const [user, setUser]= useState()
+
     
 
     useEffect(()=>{
         const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
+
+
+
         if(!datos_usuario){
             window.location.href='/';
             return;
@@ -21,7 +25,7 @@ export function Menu(){
         
         setUser(datos_usuario.nombre+' '+datos_usuario.apellido)
         traer_menu(datos_usuario.id_rol);
-        console.log(datos_usuario.id_rol)
+        /* console.log(datos_usuario.id_rol) */
     },[])
 
     const traer_menu =  async (id_rol)=>{

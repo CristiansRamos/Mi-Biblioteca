@@ -12,6 +12,7 @@ export function Libros(){
   const [rol, setRol] = useState([])
   const [search, setSearch] = useState("")
 
+
   
 
 
@@ -22,8 +23,10 @@ export function Libros(){
       API.getLibros().then(setLibros)
       const datos_usuario = JSON.parse(localStorage.getItem('usuario'));
 
-      setRol(datos_usuario.id_rol);
-console.log(rol)
+      setRol(datos_usuario.id_rol)
+
+
+
     }, [])
       
 ////////////////////////////////////////

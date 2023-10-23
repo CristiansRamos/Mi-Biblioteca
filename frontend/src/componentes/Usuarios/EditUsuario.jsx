@@ -119,7 +119,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/usuarios" >Volver</Link>
+                <Link to="/usuarios" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
 
               </form>
             </main>

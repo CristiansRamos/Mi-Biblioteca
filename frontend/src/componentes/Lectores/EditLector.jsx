@@ -89,7 +89,7 @@ const editarLector = async(event)=>{
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/lectores" >Volver</Link>
+                <Link to="/lector" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
 
               </form>
             </main>
