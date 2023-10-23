@@ -6,7 +6,7 @@ import { Vigia } from "../../Vigia";
 
 export function AddLibros(){
 const [nombre, setNombre] = useState('')
-const [mensaje, setMensaje] = useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
 const [id_genero, setIdGenero] = useState('')
 const [generos, setGeneros] = useState([])
 const [id_ubicacion, setIdUbicacion] = useState('')
@@ -29,9 +29,9 @@ useEffect(()=>{
       if(nombre !== ''){
       const respuesta = await API.AddLibros({nombre, id_genero, id_ubicacion, id_autor})
       if(respuesta.status){
-          setMensaje(respuesta.mensaje)
+        setMensajeAlerta(respuesta.mensaje)
           setTimeout(()=>{
-              setMensaje('')
+            setMensajeAlerta('')
               window.location.href='/libros'
               }, 3000)
       }
@@ -44,10 +44,14 @@ useEffect(()=>{
               <Vigia/>
 
              <main className="form-signin w-100 m-auto">
+
+             {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+
               <form onSubmit={guardarLibros}>
-                <div>
-                    {mensaje}
-                </div>
                 
                 <div className="form-floating">
                   <input 
