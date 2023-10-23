@@ -9,6 +9,10 @@ const jwt= require('jsonwebtoken');
 
 const router = express();
 
+router.get('/', (req, res)=>{
+    res.send("Se conecto correctamente")
+})
+
 ////////////////////REGISTRO/////////////////
 
 router.post('/registro', bodyParser.json() , verificarToken,(req , res)=>{
