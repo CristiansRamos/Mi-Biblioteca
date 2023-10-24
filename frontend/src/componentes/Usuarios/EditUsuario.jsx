@@ -51,9 +51,8 @@ const editarUsuario = async(event)=>{
 }
     return(
         <>
-
-<main className="form-signin w-100 m-auto">
-              <form onSubmit={editarUsuario}>
+          <main className="form-signin w-100 m-auto" >
+              <form  onSubmit={editarUsuario}>
                 <div>
                     {mensaje}
                 </div>
@@ -123,6 +122,7 @@ const editarUsuario = async(event)=>{
 
               </form>
             </main>
+
         </>
     )
 }

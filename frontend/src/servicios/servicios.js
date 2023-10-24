@@ -235,7 +235,7 @@ export async function getUbicaciones(){
 }
 
 /////////////AGREGAR UBICACION///////////
-export async function AddUbicaciones(datos){
+export async function AddUbicacion(datos){
     const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'POST',
@@ -245,13 +245,13 @@ export async function AddUbicaciones(datos){
             Authorization: `Bearer ${token}`,
         }
     }
-    const respuesta = await fetch(`${URL}/ubicacion`, Options)
+    const respuesta = await fetch(`${URL}/ubicaciones`, Options)
     const data= await respuesta.json()
     return data;
 }
 
 ///////////ELIMINAR UBICACION////////////
-export async function deleteUbicaciones(id_ubicacion){
+export async function deleteUbicacion(id_ubicacion){
     const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',

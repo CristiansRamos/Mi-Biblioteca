@@ -19,20 +19,25 @@ export function Autores(){
 
       const eliminar = async(id_autor)=>{
         Swal.fire({
-          title: '¿Esta seguro que quiere Eliminar?',
+          title: 'Está seguro que quiere eliminar?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Si, eliminar'
-        }).then((result) => {
+          confirmButtonText: 'Si, eliminar!'
+        }).then(async (result) => {
           if (result.isConfirmed) {
-            API.deleteAutor(id_autor);
-            setTimeout(()=>{
-            window.location.href='/autores'
-            }, 1000)
-            Swal.fire(
-              'Eliminado!')
+            const borrado = await API.deleteAutor(id_autor);
+            if(borrado.status){
+              setTimeout(()=>{
+                window.location.href='/autores'
+                }, 1000)
+                Swal.fire(
+                'Eliminado!')
+            }else{
+                Swal.fire(
+                  'No se puede Eliminar Porque Está en uso');
+            }
           }
         })
       }

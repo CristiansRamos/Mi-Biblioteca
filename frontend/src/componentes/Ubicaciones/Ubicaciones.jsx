@@ -3,6 +3,7 @@ import * as API from '../../servicios/servicios'
 import { Link } from "react-router-dom";
 import { Menu } from "../../Menu";
 import { Vigia } from "../../Vigia";
+import { AddUbicacion } from "./AddUbicacion";
 
 /* import { AddUbicaciones } from "./AddUbicaciones"; */
 
@@ -37,20 +38,25 @@ export function Ubicaciones(){
 ///////////////////////////////////////
 const eliminar = async(id_ubicacion)=>{
   Swal.fire({
-    title: '¿Esta seguro que quiere Eliminar?',
+    title: 'Está seguro que quiere Eliminar?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, eliminar'
-  }).then((result) => {
+    confirmButtonText: 'Si, eliminar!'
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      API.deleteUbicaciones(id_ubicacion);
-      setTimeout(()=>{
-      window.location.href='/ubicaciones'
-      }, 1000)
-      Swal.fire(
-        'Eliminado!')
+      const borrado = await API.deleteUbicacion(id_ubicacion);
+      if(borrado.status){
+        setTimeout(()=>{
+          window.location.href='/ubicaciones'
+          }, 1000)
+          Swal.fire(
+          'Eliminado!')
+      }else{
+          Swal.fire(
+            'No se puede Eliminar Porque Está en uso');
+      }
     }
   })
 }
@@ -65,17 +71,17 @@ const eliminar = async(id_ubicacion)=>{
               <div className="contenedorTabla table-responsive">
 
 
-{/*           <table className="table">
+          <table className="table">
               <thead>
                 <tr className="table-info ">
                   <td>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                  Crear Nuevo
+                  Agregar Ubicacion
                   </button>
                   </td>
                 </tr>
               </thead>
-            </table> */}
+            </table>
 
             <table className="table">
               <thead>
@@ -121,7 +127,7 @@ const eliminar = async(id_ubicacion)=>{
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-              
+                  <AddUbicacion/>
                 </div>
                 <div class="modal-footer">
                 </div>

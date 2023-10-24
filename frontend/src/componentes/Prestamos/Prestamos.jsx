@@ -114,7 +114,12 @@ export function Prestamos(){
                   </td>
 
                   <td>
+                  {(p.estado=="devuelto")?
+
                     <button onClick={()=>eliminar(p.id_prestamo )}  className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
+                    :
+                    <button disabled className="btn btn-danger btn-sm" ><i className="bi bi-trash3"></i></button>
+                  }
                   </td>
                 </tr>
               ))}
