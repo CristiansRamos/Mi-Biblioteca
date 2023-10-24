@@ -42,8 +42,8 @@ nav{
 
 
 .aside{
-    block-size: 100vh;
-    inline-size: 300px;
+    width: 20rem;
+    height: 100%;
     padding: 10px;
     background-color: #0048ff;
     color: aliceblue;
@@ -141,16 +141,16 @@ nav{
     cursor: pointer;
  
 }
-nav{
-   display: flex;
-}
+
 }
 
 @media (max-width:500px) {
 
 /* ////////  PARA ENCOGER EL MENU  //////// */
 .aside.active {
-    inline-size: 0px;
+    width: 0;
+    height: 0;
+    background-color: #fff;
     transition: all .4s ease;
 }
 /* ///// PARA DESAPARECER LAS OPCIONES ////// */
@@ -160,7 +160,7 @@ nav{
 }
 
 .aside.active .head i{
-    margin: auto;
+    margin: 0;
     color: #000000;
 }
 
@@ -188,8 +188,9 @@ nav{
 
    /* ////////  PARA ENCOGER EL MENU  //////// */
 .aside.active {
-    inline-size: 0px;
- 
+    width: 0;
+    height: 0;
+    background-color: #fff;
     transition: all .4s ease;
 }
 /* ///// PARA DESAPARECER LAS OPCIONES ////// */
@@ -199,7 +200,7 @@ nav{
 }
 
 .aside.active .head i{
-    margin: auto;
+    margin: 0;
     color: #000000;
 }
 
@@ -222,3 +223,44 @@ nav{
 }
 
 }
+
+@media (max-width:900px) {
+
+    /* ////////  PARA ENCOGER EL MENU  //////// */
+ .aside.active {
+    width: 0;
+    height: 0;
+    background-color: #fff;
+     transition: all .4s ease;
+ }
+ /* ///// PARA DESAPARECER LAS OPCIONES ////// */
+ .aside.active .option,
+ .aside.active .profile{
+     display: none;
+ }
+ 
+ .aside.active .head i{
+     margin: auto;
+     color: #000000;
+ }
+ 
+ .aside.active .cerrar_sesion{
+     display: none;
+     
+ }
+ .aside.active .Link{
+     display: none;
+ }
+ 
+ .icono_menu{
+     display:initial;
+     font-size: 30px;
+     cursor: pointer;
+  
+ }
+ nav{
+    display: flex;
+ }
+ 
+ }
+ 

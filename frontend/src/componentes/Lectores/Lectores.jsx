@@ -54,7 +54,7 @@ export function Lectores(){
               <Menu/>
               <Vigia/>
 
-          <div className="position-absolute top-50 start-50 translate-middle">
+              <div className="contenedorTabla table-responsive">
 
           <table className="table">
               <thead>

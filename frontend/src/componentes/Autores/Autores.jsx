@@ -57,7 +57,8 @@ export function Autores(){
               <Menu/>
               <Vigia/>
  
-          <div className="position-absolute top-50 start-50 translate-middle ">
+              <div className="contenedorTabla table-responsive">
+
           <table className="table align-middle table-responsive">
               <thead>
                 <tr className="table-info ">

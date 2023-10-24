@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import './Menu.css';
 import { Link } from "react-router-dom";
 import * as API from './servicios/servicios'
-import logo from './assets/img/logo.png'
+import book_icon from './assets/img/book_icon.png'
 import perfil_user from './assets/img/perfil_user.png'
 export function Menu(){
    
@@ -62,7 +62,7 @@ export function Menu(){
         <aside className="aside " id="aside">
             <div className="head">
                 <div className="profile">
-                    <img src={logo} alt="logo" />
+                    <img src={book_icon} alt="logo" />
                     <p>Mi Biblioteca</p>
 
                 </div >

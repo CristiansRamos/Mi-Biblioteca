@@ -62,7 +62,8 @@ export function Prestamos(){
               <Menu/>
               <Vigia/>
 
-          <div className="position-absolute top-50 start-50 translate-middle">
+              <div className="contenedorTabla table-responsive">
+
             
             <table className="table">
               <thead>
@@ -76,7 +77,6 @@ export function Prestamos(){
               </thead>
             </table>
 
-            <input type="checkbox" />
             <table className="table">
               <thead>
                 

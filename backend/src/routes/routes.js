@@ -10,7 +10,7 @@ const jwt= require('jsonwebtoken');
 const router = express();
 
 router.get('/', (req, res)=>{
-    res.send("Se conecto correctamente")
+    res.send("Como es posible de este suceso")
 })
 
 ////////////////////REGISTRO/////////////////

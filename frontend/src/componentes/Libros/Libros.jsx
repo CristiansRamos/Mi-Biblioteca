@@ -91,24 +91,20 @@ export function Libros(){
             <>
               <Menu/>
               <Vigia/>
-          <div className="contenedor">
-          <div className="position-absolute top-50 start-50 translate-middle">
-   
-          <table className="table">
-              <thead>
-                <tr className="table-info ">
-                  <td>
+     
+
+
+          <div className="contenedorTabla table-responsive">
+ 
+                <div className="bg-info ">
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                   Agregar Libro
-                  </button>
-                    <input value={search} onChange={buscador} type="text" placeholder="Buscar..." className="form-control"/>
-                  </td>
-                </tr>
-              </thead>
-            </table>
+                  </button> <br />
+                </div> <br />
+                <input value={search} onChange={buscador} type="text" placeholder="Buscar..." className="form-control  bg-info bg-opacity-10 border border-info border-start-0 rounded-end"/><br />
           
 
-            <table class="table table-striped table-hover mt-5 shadown-lg">
+            <table class="table table-striped table-hover">
               <thead>
                 <tr className="bg-info ">
                   <td>Título</td>
@@ -150,10 +146,10 @@ export function Libros(){
                 </tr>
               ))}
               </tbody>
-              
             </table>
+
           </div>
-        </div>
+     
 
          {/*  ///////////MODAL////////// */}
          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -171,6 +167,7 @@ export function Libros(){
               </div>
             </div>
           </div>
+
         </>
         )
 
