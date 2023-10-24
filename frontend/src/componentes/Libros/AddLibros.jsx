@@ -39,6 +39,12 @@ useEffect(()=>{
     }
   }
 
+  const limpiarModal = async (event)=>{
+       
+    setNombre('')
+    setIdAutor(event.target.value)
+}
+
     return(
         <>
               <Vigia/>
@@ -68,7 +74,11 @@ useEffect(()=>{
                   <option disabled selected >Seleccione un genero</option>
                     {generos.map((g)=>(
                     
+                    (g.estado=="A")?
+
                     <option value={g.id_genero}>{g.nombre}</option>
+                    :
+                    <div></div>
                     ))}
                  </select>
                 </div>
@@ -76,9 +86,13 @@ useEffect(()=>{
                 <div className="form-floating">
                  <select onChange={(event)=>setIdUbicacion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option disabled selected >Seleccione una ubicacion</option>
-                    {ubicacion.map((u)=>(
                     
+                    {ubicacion.map((u)=>(
+
+                    (u.estado=="A")?
                     <option value={u.id_ubicacion}>{u.nombre}</option>
+                    :
+                    <div></div>
                     ))}
                  </select>
                 </div>
@@ -87,14 +101,18 @@ useEffect(()=>{
                  <select onChange={(event)=>setIdAutor(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option disabled selected >Seleccione un autor</option>
                     {autor.map((a)=>(
+
+                    (a.estado=="A")?
                     
                     <option value={a.id_autor}>{a.nombre}</option>
+                    :
+                    <div></div>
                     ))}
                  </select>
                 </div>
 
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                <button onClick={(event)=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
 
 
 

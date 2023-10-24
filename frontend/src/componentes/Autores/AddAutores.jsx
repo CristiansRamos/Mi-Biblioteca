@@ -30,6 +30,12 @@ export function AddAutores(){
       }
     }
 
+    const limpiarModal = async ()=>{
+       
+      setNombre('')
+      setIdEditorial('')
+  }
+
     return(
         <>
               <Vigia/>
@@ -41,6 +47,7 @@ export function AddAutores(){
                 </div>
                 <div className="form-floating">
                   <input 
+                  required
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
@@ -66,7 +73,7 @@ export function AddAutores(){
                
                
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                <button onClick={()=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
                 
               </form>
           </main>

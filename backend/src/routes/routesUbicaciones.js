@@ -22,6 +22,24 @@ router.get('/ubicaciones',verificarToken, (req , res)=>{
         })
     })
 
+////////////TRAER DATOS DE UBICACIONES POR ID//////////
+router.get('/ubicaciones/:id_ubicacion', verificarToken,(req , res)=>{
+    const { id_ubicacion } = req.params
+    jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+        if(error){
+            res.sendStatus(403);
+        }else{
+            mysqlConnect.query('SELECT * FROM ubicaciones WHERE id_ubicacion=?', [id_ubicacion], (error, registros)=>{
+                if(error){
+                    console.log('Error en la base de datos', error)
+                }else{
+                    res.json(registros)
+                }
+            })
+        }
+    })
+})
+
     /////////////AGREGAR UBICACIONES/////////
 router.post('/ubicaciones', bodyParser.json(), verificarToken,(req , res)=>{
     const { nombre }  = req.body
@@ -42,6 +60,52 @@ router.post('/ubicaciones', bodyParser.json(), verificarToken,(req , res)=>{
     }
 })
 })
+
+//////////////EDITAR UBICACION////////////
+    // el parametro que vamos a editar ->id_ubicacion
+    router.put('/ubicaciones/:id_ubicacion', bodyParser.json(), verificarToken,(req , res)=>{
+        const { nombre }  = req.body
+        const { id_ubicacion } = req.params
+        jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+            if(error){
+                res.sendStatus(403);
+            }else{
+                mysqlConnect.query('UPDATE ubicaciones SET nombre = ?  WHERE id_ubicacion = ?', [nombre, id_ubicacion], (error, registros)=>{
+                if(error){
+                    console.log('Error en la base de datos', error)
+                }else{
+                    res.json({
+                        status:true,
+                        mensaje: "Se editó correctamente"
+                        })
+                }
+            })
+        }
+    })
+})
+
+////////////CAMBIAR ESTADO UBICACION/////////
+router.post('/ubicaciones/:id_ubicacion', bodyParser.json(), verificarToken,(req , res)=>{
+    const { actualizar }  = req.body
+    const { id_ubicacion } = req.params
+    jwt.verify(req.token, 'biblioteca', (error, valido)=>{
+        if(error){
+            res.sendStatus(403);
+        }else{
+            mysqlConnect.query('UPDATE ubicaciones SET estado = ?  WHERE id_ubicacion = ?', [actualizar, id_ubicacion], (error, registros)=>{
+                if(error){
+                    console.log('Error en la base de datos', error)
+                }else{
+                    res.json({
+                        status:true,
+                        mensaje: "El cambio de estado se realizo correctamente"
+                        })
+                }
+            })
+        }
+    })
+})
+
     ////////////ELIMINAR UBICACION///////
     router.delete('/ubicaciones/:id_ubicacion', bodyParser.json(), verificarToken, (req , res)=>{
         const { id_ubicacion } = req.params

@@ -55,6 +55,7 @@ export function Autores(){
               }
               
           }
+
    
 
         return(
@@ -68,7 +69,7 @@ export function Autores(){
               <thead>
                 <tr className="table-info ">
                   <td>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Crear Nuevo
                   </button>
                   </td>
@@ -116,8 +117,8 @@ export function Autores(){
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Nuevo</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+   
                 </div>
                 <div class="modal-body">
                   <AddAutores/>

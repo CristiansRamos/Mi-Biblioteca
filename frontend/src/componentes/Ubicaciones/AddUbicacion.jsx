@@ -24,6 +24,11 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
     }
   }
 
+  const limpiarModal = async (event)=>{
+       
+    setNombre('')
+}
+
     return(
         <>
               <Vigia/>
@@ -49,7 +54,7 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                <button  onClick={(event)=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
 
 
 

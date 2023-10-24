@@ -19,11 +19,11 @@ export function Ubicaciones(){
     useEffect(()=>{
       API.getUbicaciones().then(setUbicaciones)}, [])
 
-/*       ////////////CAMBIAR ESTADO/////////
+      ////////////CAMBIAR ESTADO/////////
       const cambiar_estado = async (e, id_ubicacion, estado_actual)=>{
         e.preventDefault();
         const actualizar = (estado_actual=="A")?"B":"A";
-        const respuesta= await API.ActualizarEstadoUbicaciones(id_ubicacion, {actualizar});
+        const respuesta= await API.ActualizarEstadoUbicacion(id_ubicacion, {actualizar});
         if(respuesta.status){
             setTimeout(()=>{
                 setMensaje('')
@@ -31,7 +31,7 @@ export function Ubicaciones(){
             }, 0)
         }
         
-    } */
+    }
 
 /*  */
 
@@ -99,13 +99,20 @@ const eliminar = async(id_ubicacion)=>{
                 <tr>
                   <td >{ubicaciones.nombre}</td>
                   <td >{ubicaciones.estado}</td>
-{/*                   <td >
+                  <td >
                     {(ubicaciones.estado=="A")?
-                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Desactivar</button>
+                    <button class="btn btn-danger btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicacion, ubicaciones.estado )} >Desactivar</button>
                     :
-                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicaciones, ubicaciones.estado )} >Activar</button>
+                    <button class="btn btn-success btn-sm" onClick={(event)=>cambiar_estado(event, ubicaciones.id_ubicacion, ubicaciones.estado )} >Activar</button>
                      }
-                  </td> */}
+                  </td>
+                  <td>
+                  {(ubicaciones.estado=="A")?
+                    <Link to={`/EditUbicacion/${ubicaciones.id_ubicacion}`} ><button class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button></Link>
+                    :
+                    <button disabled class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button>
+                    }
+                  </td>
                   <td>
                     <button onClick={()=>eliminar(ubicaciones.id_ubicacion)}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
@@ -124,7 +131,7 @@ const eliminar = async(id_ubicacion)=>{
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar ubicaciones</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  
                 </div>
                 <div class="modal-body">
                   <AddUbicacion/>

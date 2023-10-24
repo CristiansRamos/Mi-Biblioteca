@@ -24,6 +24,10 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
       return;
     }
   }
+  const limpiarModal = async ()=>{
+       
+    setNombre('')
+}
 
     return(
         <>
@@ -50,7 +54,7 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                 </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                <button onClick={()=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
 
 
 

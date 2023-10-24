@@ -21,6 +21,7 @@ import { EditLector } from './componentes/Lectores/EditLector'
 import { Ubicaciones } from './componentes/Ubicaciones/Ubicaciones'
 import { EditUsuario } from './componentes/Usuarios/EditUsuario'
 import { AddUbicacion } from './componentes/Ubicaciones/AddUbicacion'
+import { EditUbicacion } from './componentes/Ubicaciones/EditUbicacion'
 
 
 
@@ -56,6 +57,8 @@ function App() {
       <Route path='/AddPrestamos' element= {<AddPrestamos/>}></Route>
       <Route path='/Ubicaciones' element= {<Ubicaciones/>}></Route>
       <Route path='/AddUbicacion' element= {<AddUbicacion/>}></Route>
+      <Route path='/EditUbicacion/:id_ubicacion' element= {<EditUbicacion/>}></Route>
+
 
 
   

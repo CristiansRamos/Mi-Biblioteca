@@ -27,6 +27,17 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
          }
         return;
       }
+
+      const limpiarModal = async ()=>{
+       
+        setNombre('')
+        setApellido('')
+        setDni('')
+        setCorreo('')
+
+    }
+
+
     return(
         <>
               <Vigia/>
@@ -88,6 +99,8 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                 </div>
  
                 <button className="btn btn-primary" type="submit">Registrar </button>
+                <button onClick={()=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+
               </form>
           </main>
         </>

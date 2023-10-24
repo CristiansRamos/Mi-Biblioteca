@@ -39,6 +39,14 @@ export function AddPrestamos(){
       }
     }
 
+    const limpiarModal = async ()=>{
+       
+      setFechaPrestamo('')
+      setFechaDevolucion('')
+      setIdLector('')
+      setIdLibro('')
+  }
+
     return(
         <>
               <Vigia/>
@@ -102,7 +110,7 @@ export function AddPrestamos(){
 
                
                 <button className="btn btn-primary" type="submit" >Guardar</button>
-                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                <button onClick={()=>limpiarModal('')} type="button" class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
                 
               </form>
           </main>

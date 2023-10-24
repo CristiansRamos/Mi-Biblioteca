@@ -233,6 +233,20 @@ export async function getUbicaciones(){
     const data= await respuesta.json()
     return data;
 }
+///////////////UBICACION POR ID////////////
+export async function getUbicacionByID(id_ubicacion){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicaciones/${id_ubicacion}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
 
 /////////////AGREGAR UBICACION///////////
 export async function AddUbicacion(datos){
@@ -249,12 +263,42 @@ export async function AddUbicacion(datos){
     const data= await respuesta.json()
     return data;
 }
+/////////////EDITAR UBICACION////////////
+export async function EditUbicacion(datos, id_ubicacion){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicaciones/${id_ubicacion}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
 
 ///////////ELIMINAR UBICACION////////////
 export async function deleteUbicacion(id_ubicacion){
     const token = JSON.parse(localStorage.getItem('token'));
     const Options={
         method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/ubicaciones/${id_ubicacion}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+/////////////////CAMBIAR ESTADO UBICACION//////////
+export async function ActualizarEstadoUbicacion(id_ubicacion, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(actulizar),
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
