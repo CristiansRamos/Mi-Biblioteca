@@ -10,6 +10,8 @@ export function AddLector(){
     const [apellido, setApellido]= useState('')
     const [dni, setDni]= useState('')
     const [correo, setCorreo]= useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
+
     
 
     const Lector = async(event)=>{
@@ -17,10 +19,10 @@ export function AddLector(){
         const Lector = await API.AddLector({nombre, apellido, dni, correo})
         
          if(Lector.status){
-            alert(Lector.mensaje)
+          setMensajeAlerta(Lector.mensaje)
             window.location.href='/Lectores'
          }else{
-           alert(Lector.mensaje)
+          setMensajeAlerta(Lector.mensaje)
           
          }
         return;
@@ -30,6 +32,13 @@ export function AddLector(){
               <Vigia/>
 
         <main className="form-signin w-100 m-auto">
+
+        {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+          
               <form onSubmit={Lector}>
                 
                 <div className="form-floating">

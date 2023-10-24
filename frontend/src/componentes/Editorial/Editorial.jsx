@@ -10,6 +10,7 @@ import { Vigia } from "../../Vigia";
 export function Editorial(){
   const [Editorial, setEditorial] = useState([])
   const [mensaje, setMensaje] = useState('')
+  
  
 
 
@@ -34,20 +35,25 @@ export function Editorial(){
 ///////////////////////////////////////
 const eliminar = async(id_editorial)=>{
   Swal.fire({
-    title: '¿Esta seguro que quiere Eliminar?',
+    title: 'Está seguro que quiere eliminar?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, eliminar'
-  }).then((result) => {
+    confirmButtonText: 'Si, eliminar!'
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      API.deleteEditorial(id_editorial);
-      setTimeout(()=>{
-      window.location.href='/editorial'
-      }, 0)
-      Swal.fire(
-        'Eliminado!')
+      const borrado = await API.deleteEditorial(id_editorial);
+      if(borrado.status){
+        setTimeout(()=>{
+          window.location.href='/editorial'
+          }, 1000)
+          Swal.fire(
+          'Eliminado!')
+      }else{
+          Swal.fire(
+            'No se puede Eliminar Porque Está en uso');
+      }
     }
   })
 }

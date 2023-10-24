@@ -6,7 +6,8 @@ import { Vigia } from "../../Vigia";
 
 export function AddEditorial(){
 const [nombre, setNombre] = useState('')
-const [mensaje, setMensaje] = useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
+
 
   
     const guardarEditorial = async(event)=>{
@@ -14,9 +15,9 @@ const [mensaje, setMensaje] = useState('')
       if(nombre !== ''){
       const respuesta = await API.AddEditorial({nombre})
       if(respuesta.status){
-          setMensaje(respuesta.mensaje)
+        setMensajeAlerta(respuesta.mensaje)
           setTimeout(()=>{
-              setMensaje('')
+            setMensajeAlerta('')
               window.location.href='/editorial'
               }, 3000)
       }
@@ -29,10 +30,14 @@ const [mensaje, setMensaje] = useState('')
               <Vigia/>
 
              <main className="form-signin w-100 m-auto">
+
+             {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+          
               <form onSubmit={guardarEditorial}>
-                <div>
-                    {mensaje}
-                </div>
                 
                 <div className="form-floating">
                   <input 

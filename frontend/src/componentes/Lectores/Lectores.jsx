@@ -16,22 +16,28 @@ export function Lectores(){
       
 
   ///////////ELIMINAR/////////
-  const eliminar = async(id_lector)=>{
+
+    const eliminar = async(id_lector)=>{
     Swal.fire({
-      title: '¿Esta seguro que quiere Eliminar?',
+      title: 'Está seguro que quiere eliminar?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar'
-    }).then((result) => {
+      confirmButtonText: 'Si, eliminar!'
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        API.deleteLector(id_lector)
-            setTimeout(()=>{
+        const borrado = await API.deleteLector(id_lector);
+        if(borrado.status){
+          setTimeout(()=>{
             window.location.href='/lectores'
             }, 1000)
             Swal.fire(
             'Eliminado!')
+        }else{
+            Swal.fire(
+              'No se puede Eliminar Porque el Lector tiene Prestamos Pendientes');
+        }
       }
     })
   }
@@ -54,7 +60,7 @@ export function Lectores(){
               <Menu/>
               <Vigia/>
 
-              <div className="contenedorTabla table-responsive">
+          <div className="position-absolute top-50 start-50 translate-middle">
 
           <table className="table">
               <thead>
