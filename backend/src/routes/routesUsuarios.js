@@ -3,6 +3,7 @@ const mysqlConnect = require('../database/bd')
 const bodyParser = require('body-parser');
 const router = express()
 const jwt = require('jsonwebtoken')
+const bcrypt= require('bcrypt');
 
 
 /////////lISTAR  USUARIOS////
@@ -122,6 +123,22 @@ router.post('/usuario', bodyParser.json(), verificarToken, (req , res)=>{
             })
         }
     })
+})
+////////////////////RESET PASSWORD//////////////
+router.put('/resetpass/:id_usuario', bodyParser.json(), (req , res)=>{
+
+    let newPass= bcrypt.hashSync('biblioteca', 10);
+    const { id_usuario } = req.params
+    mysqlConnect.query('UPDATE usuarios SET pass = ?  WHERE id_usuario = ?', [newPass, id_usuario], (error, registros)=>{
+       if(error){
+           console.log('Error en la base de datos', error)
+       }else{
+        res.json({
+            status:true,
+            mensaje: "El blanqueo de clave se realizo correctamente"
+            })
+       }
+   })
 })
 
     //////////////////FUNCION VERIFICAR TOKEN///////////

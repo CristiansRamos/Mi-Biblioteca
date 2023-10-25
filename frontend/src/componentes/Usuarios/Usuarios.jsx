@@ -8,6 +8,8 @@ import { Vigia } from "../../Vigia";
 
 export function Usuarios(){
   const [Usuarios, setUsuarios] = useState([])
+  const [mensaje, setMensaje] = useState([])
+
 
     useEffect(()=>{
       API.getUsuarios().then(setUsuarios)}, [])
@@ -33,6 +35,44 @@ export function Usuarios(){
       }
     })
   }
+  //////////////////////////RESET PASS///////////////
+  
+  const resetPass = async (e, id_usuario)=>{
+    e.preventDefault();
+    console.log('mi id_usuario es -->',id_usuario)
+    console.log(id_usuario)
+    Swal.fire({
+        title: 'Esta seguro?',
+        text: "Usted esta a punto de blanquear el password de un usuario!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'No ',
+        confirmButtonText: 'Si, estoy segguro!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            console.log('mi id_usuario es-->',id_usuario)
+            API.ResetUsuariosByID(id_usuario)
+            .then((respuesta) => {
+                console.log(respuesta)
+                if(respuesta.status){
+                    setMensaje(respuesta.mensaje)
+                    API.getUsuarios().then(setUsuarios)
+                    Swal.fire(
+                        'Exito!',
+                        mensaje,
+                        'success'
+                      )
+                     
+                }
+         
+            })
+        }
+    })
+
+  const datos_usuario= await API.ResetUsuariosByID(id_usuario);
+}
       
 
         return(
@@ -89,6 +129,9 @@ export function Usuarios(){
                   <td>
                     <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
+                  <td>
+                      <button onClick={(event)=>resetPass(event, u.id_usuario)} class="btn btn-dark btn-sm"><i class="bi bi-arrow-clockwise"></i>Reset Password</button>
+                    </td>
                 </tr>
               ))}
 
@@ -112,6 +155,10 @@ export function Usuarios(){
               </div>
             </div>
           </div>
+
+          <div class="toast-body">
+                {mensaje}
+                </div>
         </>
         )
 

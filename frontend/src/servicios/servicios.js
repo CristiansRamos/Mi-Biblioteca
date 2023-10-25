@@ -681,3 +681,15 @@ export async function EditPrestamo(datos, id_prestamo){
     const data= await respuesta.json()
     return data;
 }
+
+export async function ResetUsuariosByID(id_usuario){
+    const Options={
+        method:'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/resetpass/${id_usuario}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
