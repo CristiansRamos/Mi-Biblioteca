@@ -39,11 +39,11 @@ export function Usuarios(){
   
   const resetPass = async (e, id_usuario)=>{
     e.preventDefault();
-    console.log('mi id_usuario es -->',id_usuario)
+    /* console.log('mi id_usuario',id_usuario) */
     console.log(id_usuario)
     Swal.fire({
         title: 'Esta seguro?',
-        text: "Usted esta a punto de blanquear el password de un usuario!",
+        text: "Usted esta a punto de blanquear el password!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -52,10 +52,10 @@ export function Usuarios(){
         confirmButtonText: 'Si, estoy segguro!'
       }).then((result) => {
         if (result.isConfirmed) {
-            console.log('mi id_usuario es-->',id_usuario)
+            /* console.log('mi id_usuario es',id_usuario) */
             API.ResetUsuariosByID(id_usuario)
             .then((respuesta) => {
-                console.log(respuesta)
+                /* console.log(respuesta) */
                 if(respuesta.status){
                     setMensaje(respuesta.mensaje)
                     API.getUsuarios().then(setUsuarios)
@@ -130,7 +130,7 @@ export function Usuarios(){
                     <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
                   <td>
-                      <button onClick={(event)=>resetPass(event, u.id_usuario)} class="btn btn-dark btn-sm"><i class="bi bi-arrow-clockwise"></i>Reset Password</button>
+                      <button onClick={(event)=>resetPass(event, u.id_usuario)} class="btn btn-dark btn-sm"> <i class="bi bi-arrow-clockwise"> </i> Reset Pass</button>
                     </td>
                 </tr>
               ))}

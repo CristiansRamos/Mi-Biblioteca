@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mi_biblioteca` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `mi_biblioteca`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mi_biblioteca
@@ -32,7 +30,7 @@ CREATE TABLE `autores` (
   PRIMARY KEY (`id_autor`),
   KEY `fk_autores_editorial_idx` (`id_editorial`),
   CONSTRAINT `fk_autores_editorial` FOREIGN KEY (`id_editorial`) REFERENCES `editorial` (`id_editorial`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,7 +55,7 @@ CREATE TABLE `editorial` (
   `nombre` varchar(45) NOT NULL,
   `estado` enum('A','B') NOT NULL,
   PRIMARY KEY (`id_editorial`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +64,7 @@ CREATE TABLE `editorial` (
 
 LOCK TABLES `editorial` WRITE;
 /*!40000 ALTER TABLE `editorial` DISABLE KEYS */;
-INSERT INTO `editorial` VALUES (1,'MOTUS','A'),(2,'DE BOLSILLO','B'),(3,'OCEANO','B'),(4,'PLANETA DE LIBROS','A'),(5,'EL ATENEO','A'),(6,'DESTINO','A'),(32,'PLAZA  &  JANES  EDITORES','A');
+INSERT INTO `editorial` VALUES (1,'MOTUS','A'),(2,'DE BOLSILLO','A'),(3,'OCEANO','B'),(4,'PLANETA DE LIBROS','A'),(5,'EL ATENEO','B'),(6,'DESTINO','A'),(32,'PLAZA  &  JANES  EDITORES','A');
 /*!40000 ALTER TABLE `editorial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +108,7 @@ CREATE TABLE `lectores` (
   `correo` varchar(45) NOT NULL,
   `estado` enum('A','B') NOT NULL,
   PRIMARY KEY (`id_lector`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +117,7 @@ CREATE TABLE `lectores` (
 
 LOCK TABLES `lectores` WRITE;
 /*!40000 ALTER TABLE `lectores` DISABLE KEYS */;
-INSERT INTO `lectores` VALUES (6,'Juan','Perez',37273584,'perez@gmail.com','A'),(11,'Leo','Messi',10101010,'Messi@gmail.com','A');
+INSERT INTO `lectores` VALUES (6,'Juan','Perez',37273584,'perez@gmail.com','B'),(11,'Leo','Messi',10101010,'Messi@gmail.com','A');
 /*!40000 ALTER TABLE `lectores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +143,7 @@ CREATE TABLE `libros` (
   CONSTRAINT `fk_libros_autores` FOREIGN KEY (`id_autor`) REFERENCES `autores` (`id_autor`),
   CONSTRAINT `fk_libros_generos` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id_genero`),
   CONSTRAINT `fk_libros_ubicaciones` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicaciones` (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +152,7 @@ CREATE TABLE `libros` (
 
 LOCK TABLES `libros` WRITE;
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,'EL PANTANO DE LAS MARIPOSAS','A',9,1,1,'LIB123'),(2,'EN CAMBIO','A',2,5,3,'LIB222'),(3,'EL DUELO','A',2,2,2,'LIB333'),(9,'la ultima salida','B',9,1,1,NULL),(13,'LA ARMADURA DE LA LUZ','A',4,5,69,NULL);
+INSERT INTO `libros` VALUES (1,'EL PANTANO DE LAS MARIPOSAS','A',9,1,1,'LIB123'),(2,'EN CAMBIO','B',2,5,3,'LIB222'),(3,'EL DUELO','A',2,2,2,'LIB333'),(9,'la ultima salida','B',9,1,1,NULL),(13,'LA ARMADURA DE LA LUZ','A',4,5,69,NULL);
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +201,7 @@ CREATE TABLE `prestamos` (
   KEY `fk_prestamos_lector_idx` (`id_lector`),
   CONSTRAINT `fk_prestamos_lector` FOREIGN KEY (`id_lector`) REFERENCES `lectores` (`id_lector`),
   CONSTRAINT `fk_prestamos_libros` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id_libro`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +210,7 @@ CREATE TABLE `prestamos` (
 
 LOCK TABLES `prestamos` WRITE;
 /*!40000 ALTER TABLE `prestamos` DISABLE KEYS */;
-INSERT INTO `prestamos` VALUES (7,6,1,'2023-10-12','2023-10-13','devuelto'),(8,11,13,'2023-10-10','2023-10-31','pendiente');
+INSERT INTO `prestamos` VALUES (7,6,1,'2023-10-12','2023-10-13','devuelto'),(12,11,13,'2023-10-24','2023-10-31','pendiente');
 /*!40000 ALTER TABLE `prestamos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +251,7 @@ CREATE TABLE `ubicaciones` (
   `nombre` varchar(45) NOT NULL,
   `estado` enum('A','B') NOT NULL,
   PRIMARY KEY (`id_ubicacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +260,7 @@ CREATE TABLE `ubicaciones` (
 
 LOCK TABLES `ubicaciones` WRITE;
 /*!40000 ALTER TABLE `ubicaciones` DISABLE KEYS */;
-INSERT INTO `ubicaciones` VALUES (1,'ESTANTE 1','B'),(2,'ESTANTE 2','A'),(3,'ESTANTE 3','A'),(4,'ESTANTE 4','A'),(5,'ESTANTE 5','A');
+INSERT INTO `ubicaciones` VALUES (1,'ESTANTE 1','A'),(2,'ESTANTE 2','A'),(3,'ESTANTE 3','A'),(4,'ESTANTE 4','A'),(5,'ESTANTE 5','A'),(7,'ESTANTE 6','A');
 /*!40000 ALTER TABLE `ubicaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +284,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_roles_idx` (`id_rol`),
   CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,16 +293,12 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'cristian','ramos','38139594','cramos','$2b$10$nyQRfMSJwSj3BNngbr0nm.MBqqZnDJe3E7K8CTa0IQ7cupdJuEVOK','cristian@gmail.com',1,'A'),(17,'Cristian','Admin','232323232','Admin','$2b$10$7LDbWiEmSWwnxiKIF059Wu1WgJfuHyWxjq0uWbfLev/r1/zl1apHW','cristian@gmail.com',1,'A'),(19,'Nuevo','Empleado','33333444','Empleado','$2b$10$6dO4.R0xGY7g98SXJzTtxOHsO7USNSpxKUAGyTzP4ogQK.joYktva','empleado@gmail.com',2,'A');
+INSERT INTO `usuarios` VALUES (1,'Cristian','Ramos','38139594','cramos','$2b$10$ZaJClox0GMoAdTj1K4T96ufBKqwH.SzNYmk2fvod3vv3YuaFgaF8m','cristian@gmail.com',1,'A'),(17,'Nuevo','Admin','232323232','Admin','$2b$10$7LDbWiEmSWwnxiKIF059Wu1WgJfuHyWxjq0uWbfLev/r1/zl1apHW','cristian@gmail.com',1,'A'),(19,'Nuevo','Empleado','33333444','Empleado','$2b$10$6dO4.R0xGY7g98SXJzTtxOHsO7USNSpxKUAGyTzP4ogQK.joYktva','empleado@gmail.com',2,'A');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping events for database 'mi_biblioteca'
---
-
---
--- Dumping routines for database 'mi_biblioteca'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -316,4 +310,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-18 18:36:57
+-- Dump completed on 2023-10-25 17:44:07
