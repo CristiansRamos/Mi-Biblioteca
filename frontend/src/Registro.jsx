@@ -11,9 +11,11 @@ export function Registro(){
     const [pass, setPass]= useState('')
     const [correo, setCorreo]= useState('')
     const [id_rol, setIdRol]= useState('')
-    
+    const [nick, setNick]= useState('')
     const [roles, setRoles] = useState([])
     const [mensajeAlerta, setMensajeAlerta] = useState('')
+    const [mensajeAlertaNick, setMensajeAlertaNick] = useState('')
+
 
 
     useEffect(()=>{
@@ -33,6 +35,40 @@ export function Registro(){
          }
         return;
       }
+
+
+      const validarNick = async(event)=>{
+        // event.preventDefault();
+        
+        const validacion = await API.ValidarNick({user})
+        console.log(validacion)
+          if(validacion.status){
+            setMensajeAlertaNick(validacion.mensaje)
+            setNick('')
+            setTimeout(()=>{
+              setMensajeAlertaNick('')
+                setUser('')
+                // setNick('')
+                }, 5000)
+            // un icono rojo
+          }else{
+            // un icono lojo
+            setNick('')
+          }
+       
+  }
+  const limpiarModal = async (event)=>{
+       
+      setNombre('')
+      setApellido('')
+      setDni('')
+      setUser('')
+      setPass('')
+      setCorreo('')
+      setDni('')
+      setIdRol('')
+}
+
     return(
         <>
         <main className="form-signin w-100 m-auto">
@@ -85,7 +121,7 @@ export function Registro(){
                   <input 
                   type="number" min={0}
                   value={dni}
-                  onChange={(event)=>setDni(event.target.value)}
+                  onChange={(event)=>setDni((event.target.value < 0)?event.target.value * -1:event.target.value)}
                   className="form-control" 
                   id="dni" 
                   />
@@ -103,6 +139,13 @@ export function Registro(){
                   />
                   
                 </div>
+                {
+                 mensajeAlertaNick? 
+                <div className="alert alert-danger" role="alert">
+                 {mensajeAlertaNick}
+                </div>
+                :<></>
+                  }
                 <div>
                   <label for="usuario">Usuario</label>
                   <input 
@@ -110,10 +153,17 @@ export function Registro(){
                   type="text" 
                   value={user}
                   onChange={(event)=>setUser(event.target.value)}
+                  onBlur={(event)=>validarNick(event.target.value)}
                   className="form-control" 
                   id="user" 
                   />
-                 
+                 {
+                 nick? 
+                
+                 <i class="bi bi-check-circle"></i>
+                
+                :<></>
+                  }
                 </div>
 
                 <div>
@@ -130,7 +180,7 @@ export function Registro(){
                 </div>
 
                 <button className="btn btn-primary" type="submit">Registrar </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button onClick={(event)=>limpiarModal('')} type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               </form>
           </main>
         </>

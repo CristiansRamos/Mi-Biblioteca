@@ -156,9 +156,6 @@ export function Usuarios(){
             </div>
           </div>
 
-          <div class="toast-body">
-                {mensaje}
-                </div>
         </>
         )
 

@@ -107,6 +107,21 @@ export async function deleteUsuario(id_usuario){
     const data= await respuesta.json()
     return data;
 }
+/////////////VALIDAR NICK///////////////    
+export async function ValidarNick(dato){
+    
+    const Options={
+        method:'POST',
+        body: JSON.stringify(dato),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    const respuesta = await fetch(`${URL}/validarnick`, Options);
+    const data= await respuesta.json();
+    console.log('respuesta', data)
+    return data
+}
 
 ////////////menu
 export async function getMenuByRol(id_rol){
