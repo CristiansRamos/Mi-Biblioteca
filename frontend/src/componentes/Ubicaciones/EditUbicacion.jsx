@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Menu } from "../../Menu";
 
 
 export function EditUbicacion(){
@@ -34,8 +35,11 @@ const editarUbicacion = async(event)=>{
 }
     return(
         <>
+        <Menu/>
 
-             <main className="form-signin w-100 m-auto">
+<div className="contenedorTabla table-responsive">
+
+             <main>
 
              {mensajeAlerta? 
           <div className="alert alert-success" role="alert">
@@ -43,23 +47,31 @@ const editarUbicacion = async(event)=>{
           </div>
           :<></>}
 
-              <form onSubmit={editarUbicacion}>
+              <form className="contenedorTabla" onSubmit={editarUbicacion}>
                 
-                <div className="form-floating">
-                  <input 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Nombre:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Datos de Ubicacion</label>
                 </div>
+              </div>
+
                 
                 <button className="btn btn-primary" type="submit" >Guardar edicion</button>
                 <Link to="/ubicaciones" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
 
               </form>
             </main>
+          </div>
         </>
     )
 }

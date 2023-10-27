@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Menu } from "../../Menu";
 
 
 export function EditLector(){
@@ -9,7 +10,8 @@ const [apellido, setApellido] = useState('')
 const [dni, setDni] = useState('')
 const [correo, setCorreo] = useState('')
 
-const [mensaje, setMensaje] = useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
+
 
 const {id_lector} = useParams()
 
@@ -31,68 +33,100 @@ const editarLector = async(event)=>{
   const respuesta = await API.EditLector({nombre, apellido, dni, correo}, id_lector)
   
   if(respuesta.status){
-      setMensaje(respuesta.mensaje)
+    setMensajeAlerta(respuesta.mensaje)
       setTimeout(()=>{
-          setMensaje('')
+        setMensajeAlerta('')
           window.location.href='/lectores'
           }, 3000)
   }
   return;
 }
-    return(
-        <>
+    return (
+      <>
+        <Menu />
+        <div className="contenedorTabla table-responsive">
+          <main>
+            <form className="contenedorTabla" onSubmit={editarLector}>
+            {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
 
-             <main className="form-signin w-100 m-auto">
-              <form onSubmit={editarLector}>
-                <div>
-                    {mensaje}
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Nombre:
+                  </label>
                 </div>
-                
-                <div className="form-floating">
-                  <input 
-                  type="text" 
+                <div class="col-auto">
+                <input
+                  type="text"
                   value={nombre}
-                  onChange={(event)=>setNombre(event.target.value)}
-                  className="form-control" 
-                  />
-                  <label for="floatingInput">Nombre</label>
+                  onChange={(event) => setNombre(event.target.value)}
+                  className="form-control"
+                />
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
-                  type="text" 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Apellido:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input
+                  type="text"
                   value={apellido}
-                  onChange={(event)=>setApellido(event.target.value)}
-                  className="form-control" 
-                  />
-                  <label for="floatingInput">Apellido</label>
+                  onChange={(event) => setApellido(event.target.value)}
+                  className="form-control"
+                />
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
-                  type="number" 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Dni:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input
+                  type="number"
                   value={dni}
-                  onChange={(event)=>setDni(event.target.value)}
-                  className="form-control" 
-                  />
-                  <label for="floatingInput">Dni</label>
+                  onChange={(event) => setDni(event.target.value)}
+                  className="form-control"
+                />
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
-                  type="mail" 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Correo:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input
+                  type="mail"
                   value={correo}
-                  onChange={(event)=>setCorreo(event.target.value)}
-                  className="form-control" 
-                  />
-                  <label for="floatingInput">Correo</label>
+                  onChange={(event) => setCorreo(event.target.value)}
+                  className="form-control"
+                />
                 </div>
-                
-                <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/lectores" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
+              </div>
 
-              </form>
-            </main>
-        </>
-    )
+
+              <button className="btn btn-primary" type="submit">
+                Guardar edicion
+              </button>
+              <Link to="/lectores">
+                <button class="btn btn-secondary btn-sm"> Cerrar </button>
+              </Link>
+            </form>
+          </main>
+        </div>
+      </>
+    );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import * as API from '../../servicios/servicios'
+import { Menu } from "../../Menu";
 
 
 export function EditUsuario(){
@@ -13,7 +14,7 @@ const [id_rol, setIdRol]= useState('')
 const [roles, setRoles] = useState([])
 
 
-const [mensaje, setMensaje] = useState('')
+const [mensajeAlerta, setMensajeAlerta] = useState('')
 
 const {id_usuario} = useParams()
 
@@ -41,9 +42,9 @@ const editarUsuario = async(event)=>{
   const respuesta = await API.EditUsuario({nombre, apellido, dni, user, correo, id_rol}, id_usuario)
   
   if(respuesta.status){
-      setMensaje(respuesta.mensaje)
+    setMensajeAlerta(respuesta.mensaje)
       setTimeout(()=>{
-          setMensaje('')
+        setMensajeAlerta('')
           window.location.href='/usuarios'
           }, 3000)
   }
@@ -51,14 +52,26 @@ const editarUsuario = async(event)=>{
 }
     return(
         <>
-          <main className="form-signin w-100 m-auto" >
-              <form  onSubmit={editarUsuario}>
-                <div>
-                    {mensaje}
-                </div>
+        <Menu/>
+        <div className="contenedorTabla table-responsive">
 
-                <div >
-                 <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+          <main >
+              <form onSubmit={editarUsuario}>
+              {mensajeAlerta? 
+          <div className="alert alert-success" role="alert">
+              {mensajeAlerta}
+          </div>
+          :<></>}
+
+
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Rol:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <select onChange={(event)=>setIdRol(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option  disabled selected >Seleccione un Rol</option>
                     {roles.map((r)=>(
                     
@@ -66,63 +79,94 @@ const editarUsuario = async(event)=>{
                     ))}
                  </select>
                 </div>
-                
-                <div className="form-floating">
-                  <input 
+              </div>
+
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Nombre:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Nombre</label>
                 </div>
-
-                <div className="form-floating">
-                  <input 
+              </div>
+              
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Apellido:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="text" 
                   value={apellido}
                   onChange={(event)=>setApellido(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Apellido</label>
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Dni:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="number" 
                   value={dni}
                   onChange={(event)=>setDni(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Dni</label>
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Usuario:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="text" 
                   value={user}
                   onChange={(event)=>setUsuario(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Usuario</label>
                 </div>
+              </div>
 
-                <div className="form-floating">
-                  <input 
+              <div class="mb-3">
+                <div class="col-auto">
+                  <label for="inputPassword6" class="col-form-label">
+                    Mail:
+                  </label>
+                </div>
+                <div class="col-auto">
+                <input 
                   type="mail" 
                   value={correo}
                   onChange={(event)=>setCorreo(event.target.value)}
                   className="form-control" 
                   />
-                  <label for="floatingInput">Correo</label>
                 </div>
+              </div>
                 
                 <button className="btn btn-primary" type="submit" >Guardar edicion</button>
                 <Link to="/usuarios" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
 
               </form>
             </main>
-
+          </div>
         </>
     )
 }
