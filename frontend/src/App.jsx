@@ -22,6 +22,9 @@ import { Ubicaciones } from './componentes/Ubicaciones/Ubicaciones'
 import { EditUsuario } from './componentes/Usuarios/EditUsuario'
 import { AddUbicacion } from './componentes/Ubicaciones/AddUbicacion'
 import { EditUbicacion } from './componentes/Ubicaciones/EditUbicacion'
+import { Genero } from './componentes/Generos/Generos'
+import { AddGenero } from './componentes/Generos/AddGenero'
+import { EditGenero } from './componentes/Generos/EditGenero'
 
 
 
@@ -58,12 +61,9 @@ function App() {
       <Route path='/Ubicaciones' element= {<Ubicaciones/>}></Route>
       <Route path='/AddUbicacion' element= {<AddUbicacion/>}></Route>
       <Route path='/EditUbicacion/:id_ubicacion' element= {<EditUbicacion/>}></Route>
-
-
-
-  
-
-
+      <Route path='/Genero' element= {<Genero/>}></Route>
+      <Route path='/AddGenero' element= {<AddGenero/>}></Route>
+      <Route path='/EditGenero/:id_genero' element= {<EditGenero/>}></Route>
 
 
 

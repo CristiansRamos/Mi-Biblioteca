@@ -4,31 +4,31 @@ import * as API from '../../servicios/servicios'
 import { Menu } from "../../Menu";
 
 
-export function EditEditorial(){
+export function EditGenero(){
 const [nombre, setNombre] = useState('')
 const [mensajeAlerta, setMensajeAlerta] = useState('')
 
 
-const {id_editorial} = useParams()
+const {id_genero} = useParams()
 
 useEffect(()=>{
   traer_datos();
 },[])
 
 const traer_datos =  async ()=>{
-  const datos_editorial= await API.getEditorialByID(id_editorial);
-   setNombre(datos_editorial.nombre)
+  const datos_genero= await API.getGeneroByID(id_genero);
+   setNombre(datos_genero.nombre)
 }
 
-const editarEditorial = async(event)=>{
+const editarGenero = async(event)=>{
   event.preventDefault();
-  const respuesta = await API.EditEditorial({nombre}, id_editorial)
+  const respuesta = await API.EditGenero({nombre}, id_genero)
   
   if(respuesta.status){
     setMensajeAlerta(respuesta.mensaje)
       setTimeout(()=>{
         setMensajeAlerta('')
-          window.location.href='/editorial'
+          window.location.href='/genero'
           }, 3000)
   }
   return;
@@ -46,7 +46,7 @@ const editarEditorial = async(event)=>{
           </div>
           :<></>}
 
-              <form className="contenedorTabla" onSubmit={editarEditorial}>
+              <form className="contenedorTabla" onSubmit={editarGenero}>
 
               <div class="mb-3">
                 <div class="col-auto">
@@ -66,7 +66,7 @@ const editarEditorial = async(event)=>{
 
                 
                 <button className="btn btn-primary" type="submit" >Actualizar</button>
-                <Link to="/editorial" ><button class="btn btn-secondary"> Cerrar </button></Link>
+                <Link to="/genero" ><button class="btn btn-secondary"> Cerrar </button></Link>
 
               </form>
             </main>

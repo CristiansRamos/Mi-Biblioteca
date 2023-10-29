@@ -57,7 +57,7 @@ router.get('/lectores/:id_lector', verificarToken,(req , res)=>{
                 }else{
                     res.json({
                         status:true,
-                        mensaje: "Se editó correctamente"
+                        mensaje: "Se actualizó correctamente"
                         })
                 }
             })

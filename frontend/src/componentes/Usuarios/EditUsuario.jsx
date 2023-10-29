@@ -139,7 +139,7 @@ const editarUsuario = async(event)=>{
                 <input 
                   type="text" 
                   value={user}
-                  onChange={(event)=>setUsuario(event.target.value)}
+                  onChange={(event)=>setUser(event.target.value)}
                   className="form-control" 
                   />
                 </div>
@@ -161,8 +161,8 @@ const editarUsuario = async(event)=>{
                 </div>
               </div>
                 
-                <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/usuarios" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
+                <button className="btn btn-primary" type="submit" >Actualizar</button>
+                <Link to="/usuarios" ><button class="btn btn-secondary"> Cerrar </button></Link>
 
               </form>
             </main>

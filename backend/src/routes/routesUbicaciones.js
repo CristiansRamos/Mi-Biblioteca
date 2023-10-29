@@ -76,7 +76,7 @@ router.post('/ubicaciones', bodyParser.json(), verificarToken,(req , res)=>{
                 }else{
                     res.json({
                         status:true,
-                        mensaje: "Se editó correctamente"
+                        mensaje: "Se actualizó correctamente"
                         })
                 }
             })

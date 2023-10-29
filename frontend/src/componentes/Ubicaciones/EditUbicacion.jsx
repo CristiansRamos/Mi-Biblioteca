@@ -66,8 +66,8 @@ const editarUbicacion = async(event)=>{
               </div>
 
                 
-                <button className="btn btn-primary" type="submit" >Guardar edicion</button>
-                <Link to="/ubicaciones" ><button class="btn btn-secondary btn-sm"> Cerrar </button></Link>
+                <button className="btn btn-primary" type="submit" >Actualizar</button>
+                <Link to="/ubicaciones" ><button class="btn btn-secondary"> Cerrar </button></Link>
 
               </form>
             </main>

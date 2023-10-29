@@ -229,10 +229,88 @@ export async function getGeneros(){
             Authorization: `Bearer ${token}`,
         }
     }
-    const respuesta = await fetch(`${URL}/generos`, Options)
+    const respuesta = await fetch(`${URL}/genero`, Options)
     const data= await respuesta.json()
     return data;
 }
+
+///////////////GENERO POR ID////////////
+export async function getGeneroByID(id_genero){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/genero/${id_genero}`, Options)
+    const data= await respuesta.json();
+    return data[0];
+}
+
+/////////////AGREGAR GENERO///////////
+export async function AddGenero(datos){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/genero`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+/////////////EDITAR GENERO////////////
+export async function EditGenero(datos, id_genero){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'PUT',
+        body: JSON.stringify(datos),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/genero/${id_genero}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+///////////ELIMINAR GENERO////////////
+export async function deleteGenero(id_genero){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/genero/${id_genero}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+/////////////////CAMBIAR ESTADO GENERO//////////
+export async function ActualizarEstadoGenero(id_genero, actulizar){
+    const token = JSON.parse(localStorage.getItem('token'));
+    const Options={
+        method:'POST',
+        body: JSON.stringify(actulizar),
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+    }
+    const respuesta = await fetch(`${URL}/genero/${id_genero}`, Options)
+    const data= await respuesta.json()
+    return data;
+}
+
+
 ///////////UBICACION///////////
 
 export async function getUbicaciones(){

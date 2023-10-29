@@ -99,7 +99,7 @@ router.post('/editorial/:id_editorial', bodyParser.json(), verificarToken,(req ,
                 }else{
                     res.json({
                         status:true,
-                        mensaje: "Se editó correctamente"
+                        mensaje: "Se actualizó correctamente"
                         })
                 }
             })

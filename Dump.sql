@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `mi_biblioteca` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `mi_biblioteca`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mi_biblioteca
@@ -80,7 +82,7 @@ CREATE TABLE `generos` (
   `nombre` varchar(45) NOT NULL,
   `estado` enum('A','B') NOT NULL,
   PRIMARY KEY (`id_genero`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +171,7 @@ CREATE TABLE `menu` (
   `href` varchar(45) NOT NULL,
   `id_rol` int NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +180,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Libros','/Libros',1),(2,'Prestamos','/prestamos',1),(3,'Usuarios','/usuarios',1),(5,'Lectores','/lectores',1),(7,'Autores','/autores',1),(9,'Editorial','/editorial',1),(10,'Libros','/libros',2),(11,'Prestamos','/prestamos',2),(12,'Lectores','/lectores',2),(13,'Ubicaciones','/ubicaciones',1);
+INSERT INTO `menu` VALUES (1,'Libros','/Libros',1),(2,'Prestamos','/prestamos',1),(3,'Usuarios','/usuarios',1),(5,'Lectores','/lectores',1),(7,'Autores','/autores',1),(9,'Editorial','/editorial',1),(10,'Libros','/libros',2),(11,'Prestamos','/prestamos',2),(12,'Lectores','/lectores',2),(13,'Ubicaciones','/ubicaciones',1),(14,'Generos','/genero',1);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +286,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `fk_usuarios_roles_idx` (`id_rol`),
   CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,12 +295,16 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Cristian','Ramos','38139594','cramos','$2b$10$ZaJClox0GMoAdTj1K4T96ufBKqwH.SzNYmk2fvod3vv3YuaFgaF8m','cristian@gmail.com',1,'A'),(17,'Nuevo','Admin','232323232','Admin','$2b$10$7LDbWiEmSWwnxiKIF059Wu1WgJfuHyWxjq0uWbfLev/r1/zl1apHW','cristian@gmail.com',1,'A'),(19,'Nuevo','Empleado','33333444','Empleado','$2b$10$6dO4.R0xGY7g98SXJzTtxOHsO7USNSpxKUAGyTzP4ogQK.joYktva','empleado@gmail.com',2,'A');
+INSERT INTO `usuarios` VALUES (1,'Cristian','Ramos','38139593','cramos','$2b$10$zhr4ZhWXt.AUlv7J.v2dtun3u/Lz8GcNIVg277dTCS7IcRX.efpV.','cristian@gmail.com',1,'A'),(19,'Nuevo','Empleado','33333444','Empleado','$2b$10$6dO4.R0xGY7g98SXJzTtxOHsO7USNSpxKUAGyTzP4ogQK.joYktva','empleado@gmail.com',2,'A'),(28,'Admin','Nuevo','36324546','Admin','$2b$10$4hcn4jGw4U320C.AhwzfJOEuBts6npcxyQ8Vt.ps8Kr/rasVDZGtS','admin@gmail.com',1,'A');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
 -- Dumping events for database 'mi_biblioteca'
+--
+
+--
+-- Dumping routines for database 'mi_biblioteca'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -310,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-25 17:44:07
+-- Dump completed on 2023-10-29 18:08:53
