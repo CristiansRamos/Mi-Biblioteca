@@ -132,7 +132,7 @@ const eliminar = async(id_editorial)=>{
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar editorial</h1>
+                  <h5 class="modal-title fs-5" id="staticBackdropLabel">Agregar editorial</h5>
                 
                 </div>
                 <div class="modal-body">

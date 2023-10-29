@@ -130,7 +130,7 @@ const eliminar = async(id_ubicacion)=>{
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar ubicaciones</h1>
+                  <h6 class="modal-title fs-5" id="staticBackdropLabel">Agregar ubicaciones</h6>
   
                 </div>
                 <div class="modal-body">

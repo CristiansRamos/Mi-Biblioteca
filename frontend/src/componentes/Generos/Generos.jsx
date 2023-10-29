@@ -132,7 +132,7 @@ const eliminar = async(id_genero)=>{
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar genero</h1>
+                  <h6 class="modal-title fs-5" id="staticBackdropLabel">Agregar género</h6>
                 
                 </div>
                 <div class="modal-body">

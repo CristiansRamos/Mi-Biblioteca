@@ -123,7 +123,7 @@ export function Lectores(){
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Lector</h1>
+                  <h6 class="modal-title fs-5" id="staticBackdropLabel">Agregar Lector</h6>
               
                 </div>
                 <div class="modal-body">

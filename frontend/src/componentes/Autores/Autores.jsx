@@ -117,7 +117,9 @@ export function Autores(){
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-
+                    <h6>
+                      Agregar Autor
+                    </h6>
    
                 </div>
                 <div class="modal-body">

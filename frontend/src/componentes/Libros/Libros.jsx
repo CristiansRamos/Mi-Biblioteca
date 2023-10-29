@@ -174,9 +174,9 @@ export function Libros() {
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+              <h6 class="modal-title fs-5" id="staticBackdropLabel">
                 Agregar libro
-              </h1>
+              </h6>
             </div>
             <div class="modal-body">
               <AddLibros />

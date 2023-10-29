@@ -134,7 +134,7 @@ export function Prestamos(){
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Nuevo Prestamo</h1>
+                  <h6 class="modal-title fs-5" id="staticBackdropLabel">Nuevo Prestamo</h6>
 
                 </div>
                 <div class="modal-body">
