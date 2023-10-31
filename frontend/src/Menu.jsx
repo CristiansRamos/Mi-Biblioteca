@@ -42,63 +42,55 @@ export function Menu(){
         window.location.href='/';
     }
 
-    return(
-      <> 
+    return (
+      <>
         <body>
-        <header className="header">
+          <header className="header">
+          
+                  <i className="bi bi-list icono_menu"  id="barra" onClick={ocultarMenu}></i>
+                
             <nav>
-            <div>
+              <div>
                 <img src={perfil_user} alt="logo" className="perfil_user" />
                 {user}
-            </div>
-            <div>
-            <   i className="bi bi-list icono_menu" id="barra" onClick={ocultarMenu}></i>
-
-            </div>
-
+              </div>
             </nav>
-        </header>
-        
-        <aside className="aside " id="aside">
-            <div className="head">
-                <div className="profile">
-                    <img src={book_icon} alt="logo" />
-                    <p>Mi Biblioteca</p>
+          </header>
 
-                </div >
-                
+          <aside className="aside " id="aside">
+            <div className="head">
+              <div className="profile">
+                <img src={book_icon} alt="logo" />
+                <p>Mi Biblioteca</p>
+                <i
+                  className="bi bi-list icono_menu"
+                  id="barra"
+                  onClick={ocultarMenu}
+                ></i>
+              </div>
             </div>
             <div className="options">
-                <div>
-                    <Link to="/Dashboard" className="Link">
-                        <i class="bi-box2-fill"></i>
-                        <span className="option">Dashboard</span>
-                    </Link>
+              <div>
+                <Link to="/Dashboard" className="Link">
+                  <i class="bi-box2-fill"></i>
+                  <span className="option">Dashboard</span>
+                </Link>
+              </div>
+
+              {menus.map((m) => (
+                <div className="options">
+                  <Link className="Link" to={m.href}>
+                    <span className="option"> {m.nombre} </span>
+                  </Link>
                 </div>
-
-                {menus.map((m)=>(
-
-                <div className="options" >
-
-                     <Link  className="Link"   to={m.href}>
-                        <span className="option"> {m.nombre} </span>
-
-                    </Link>
-                    
-                </div>
-
-                    ))}
-
-            
+              ))}
             </div>
-            <button  className="cerrar_sesion" onClick={salir}>Cerrar Sesion</button>
-        </aside>
-       
-    </body>
-
-
-
-    </>
-    )
+            <button className="cerrar_sesion" onClick={salir}>
+              Cerrar Sesion
+            </button>
+          </aside>
+        </body>
+      </>
+    );
     
 }
