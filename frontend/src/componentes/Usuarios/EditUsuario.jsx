@@ -89,6 +89,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}
@@ -105,6 +106,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="text" 
                   value={apellido}
                   onChange={(event)=>setApellido(event.target.value)}
@@ -121,6 +123,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="number" 
                   value={dni}
                   onChange={(event)=>setDni(event.target.value)}
@@ -137,6 +140,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="text" 
                   value={user}
                   onChange={(event)=>setUser(event.target.value)}
@@ -153,6 +157,7 @@ const editarUsuario = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="mail" 
                   value={correo}
                   onChange={(event)=>setCorreo(event.target.value)}

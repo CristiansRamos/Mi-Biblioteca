@@ -57,6 +57,7 @@ const editarUbicacion = async(event)=>{
                 </div>
                 <div class="col-auto">
                 <input 
+                  required
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}

@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 ////////////////////REGISTRO/////////////////
 
-router.post("/registro", bodyParser.json(), verificarToken, (req, res) => {
+router.post("/registro", bodyParser.json(), (req, res) => {
     const { apellido, nombre, dni, user, pass, correo, id_rol } = req.body;
 
     let hash = bcrypt.hashSync(pass, 10);
@@ -26,11 +26,6 @@ router.post("/registro", bodyParser.json(), verificarToken, (req, res) => {
             mensaje: "El DNI es un campo obligatorio",
         });
     }
-
-    jwt.verify(req.token, "biblioteca", (error, valido) => {
-        if (error) {
-            res.sendStatus(403);
-        } else {
             mysqlConnect.query(
                 "SELECT * FROM usuarios WHERE user=?",
                 [user],
@@ -67,12 +62,11 @@ router.post("/registro", bodyParser.json(), verificarToken, (req, res) => {
                 }
             );
         }
-    });
-});
+    );
 
 /////////////////// LOGIN  //////////////
 
-router.post("/login", bodyParser.json(), verificarToken, (req, res) => {
+router.post("/login", bodyParser.json(),(req, res) => {
     const { user, pass } = req.body;
     if (!user) {
         res.json({
@@ -88,10 +82,6 @@ router.post("/login", bodyParser.json(), verificarToken, (req, res) => {
         });
         return;
     }
-    jwt.verify(req.token, "biblioteca", (error, valido) => {
-        if (error) {
-            res.sendStatus(403);
-        } else {
             mysqlConnect.query(
                 "SELECT * FROM usuarios WHERE user=?",
                 [user],
@@ -128,8 +118,7 @@ router.post("/login", bodyParser.json(), verificarToken, (req, res) => {
                 }
             );
         }
-    });
-});
+    );
 //////////////MENU///////////
 
 router.get("/menu/:id_rol", verificarToken, (req, res) => {

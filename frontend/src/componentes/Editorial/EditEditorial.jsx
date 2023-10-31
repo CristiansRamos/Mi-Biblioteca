@@ -55,7 +55,8 @@ const editarEditorial = async(event)=>{
                   </label>
                 </div>
                 <div class="col-auto">
-                <input 
+                <input
+                  required
                   type="text" 
                   value={nombre}
                   onChange={(event)=>setNombre(event.target.value)}

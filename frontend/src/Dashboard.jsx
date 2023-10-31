@@ -52,25 +52,25 @@ export function Dashboard(){
               
               <div className="contenedorDash">
                 <div className="micontainer">
-                    <div className="flex-item">
-                        <div className="titulo">Total Libros</div>
+                    <div className="flex-item titulo">
+                        <div >Total Libros</div>
                         <div className="num">{totalLibros}</div>
                     </div>
-                    <div className="flex-item">
-                        <div className="titulo">Total Lectores</div>
+                    <div className="flex-item titulo">
+                        <div >Total Lectores</div>
                         <div className="num">{totalLectores}</div>
 
                     </div>
-                    <div className="flex-item">
+                    <div className="flex-item titulo">
                         <div>Total Prestamos</div>
                         <div className="num">{totalPrestamos}</div>
 
                     </div>
-                    <div className="flex-item">
+                    <div className="flex-item titulo">
                         <div >Total Autores</div>
                         <div className="num">{totalAutores}</div>
                     </div>
-                    <div className="flex-item">
+                    <div className="flex-item titulo">
                         <div >Total Editorial</div>
                         <div className="num">{totalEditorial}</div>
                     </div>
