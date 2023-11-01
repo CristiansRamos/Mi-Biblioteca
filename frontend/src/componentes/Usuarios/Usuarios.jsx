@@ -126,9 +126,15 @@ export function Usuarios(){
                     <button disabled class="btn btn-secondary btn-sm"><i class="bi bi-pencil"></i></button>
                     }
                   </td>
+                  {(u.rol === 'Administrador')? //si el rol es admin, no se puede eliminar
+                  <td>
+                    <button disabled  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
+                  </td>
+:
                   <td>
                     <button onClick={()=>eliminar(u.id_usuario )}  class="btn btn-danger btn-sm" ><i class="bi bi-trash3"></i></button>
                   </td>
+                }
                   <td>
                       <button onClick={(event)=>resetPass(event, u.id_usuario)} class="btn btn-dark btn-sm"> <i class="bi bi-arrow-clockwise"> </i> Reset Pass</button>
                     </td>
