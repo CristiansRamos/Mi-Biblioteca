@@ -12,6 +12,8 @@ export function AddLector(){
     const [correo, setCorreo]= useState('')
 const [mensajeAlerta, setMensajeAlerta] = useState('')
 
+const formulario = document.getElementById('formulario')
+const inputs = document.querySelectorAll('#formulario input')
     
 
     const Lector = async(event)=>{
@@ -36,6 +38,77 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
         setCorreo('')
 
     }
+/////////////VALIDAR FORMULARIO/////////
+    const expresiones = {
+      nombre: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
+      apellido: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
+      dni: /^\d{8,9}$/, //de 8 a 9 numeros
+      correo: /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]{3,5}$/
+
+    }
+
+    const validarFormulario = (e)=>{
+      switch (e.target.name) {
+        case "nombre":
+          if(expresiones.nombre.test(e.target.value)){
+            document.getElementById('nombre').classList.add('is-valid')
+            document.getElementById('nombre').classList.remove('is-invalid')
+
+
+          }else{
+            document.getElementById('nombre').classList.add('is-invalid')
+            document.getElementById('nombre').classList.remove('is-valid')
+
+          }
+        break;
+
+        case "apellido":
+          if(expresiones.apellido.test(e.target.value)){
+            document.getElementById('apellido').classList.add('is-valid')
+            document.getElementById('apellido').classList.remove('is-invalid')
+
+
+          }else{
+            document.getElementById('apellido').classList.add('is-invalid')
+            document.getElementById('apellido').classList.remove('is-valid')
+
+          }
+        break;
+
+        case "dni":
+          if(expresiones.dni.test(e.target.value)){
+            document.getElementById('dni').classList.add('is-valid')
+            document.getElementById('dni').classList.remove('is-invalid')
+
+
+          }else{
+            document.getElementById('dni').classList.add('is-invalid')
+            document.getElementById('dni').classList.remove('is-valid')
+
+          }
+        break;
+
+        case "correo":
+          if(expresiones.correo.test(e.target.value)){
+            document.getElementById('correo').classList.add('is-valid')
+            document.getElementById('correo').classList.remove('is-invalid')
+
+
+          }else{
+            document.getElementById('correo').classList.add('is-invalid')
+            document.getElementById('correo').classList.remove('is-valid')
+
+          }
+        break;
+      }
+    }
+
+    inputs.forEach((input)=>{
+      input.addEventListener('keyup', validarFormulario);
+      input.addEventListener('blur', validarFormulario);
+
+    });
+
 
 
     return(
@@ -50,7 +123,7 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
           </div>
           :<></>}
           
-              <form onSubmit={Lector}>
+              <form id="formulario" onSubmit={Lector}>
                 
                 <div className="form-floating">
                   <input 
@@ -60,6 +133,7 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                   onChange={(event)=>setNombre(event.target.value)}
                   className="form-control" 
                   id="nombre" 
+                  name="nombre"
                   />
                   <label for="nombre">Nombre</label>
                 </div>
@@ -72,17 +146,21 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                   onChange={(event)=>setApellido(event.target.value)}
                   className="form-control" 
                   id="apellido" 
+                  name="apellido"
                   />
                   <label for="apellido">Apellido</label>
                 </div>
 
                 <div className="form-floating">
                   <input 
-                  type="number" min={0}
+                  required
+                  pattern="^\d{8,9}$"
+                  type="number" 
                   value={dni}
                   onChange={(event)=>setDni((event.target.value < 0)?event.target.value * -1:event.target.value)}
                   className="form-control" 
                   id="dni" 
+                  name="dni"
                   />
                   <label for="dni">DNI</label>
                 </div>
@@ -94,6 +172,7 @@ const [mensajeAlerta, setMensajeAlerta] = useState('')
                   onChange={(event)=>setCorreo(event.target.value)}
                   className="form-control" 
                   id="correo" 
+                  name="correo"
                   />
                   <label for="correo">Correo</label>
                 </div>

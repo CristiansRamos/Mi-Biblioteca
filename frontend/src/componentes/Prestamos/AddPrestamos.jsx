@@ -96,14 +96,14 @@ export function AddPrestamos(){
 
                 <div className="form-floating">
                 
-                 <input type="date" onChange={(event)=>setFechaPrestamo(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
+                 <input required type="date" onChange={(event)=>setFechaPrestamo(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
                  <label htmlFor="">Fecha Prestamo</label>
                 </div>
 
 
                 <div className="form-floating">
                 
-                <input type="date" onChange={(event)=>setFechaDevolucion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
+                <input required type="date" onChange={(event)=>setFechaDevolucion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
                 <label htmlFor="">Fecha Devolucion</label>
                </div>
                 
