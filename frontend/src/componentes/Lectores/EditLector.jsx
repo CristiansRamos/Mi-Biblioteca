@@ -46,7 +46,7 @@ const editarLector = async(event)=>{
   }else{
     setTimeout(()=>{
       setMensajeAlerta2('ingrese un dato valido parfavar')
-        }, 2000)
+        }, 1000)
   }
   return;
 }
@@ -66,7 +66,7 @@ const validarFormulario = (e)=>{
       if(expresiones.nombre.test(e.target.value)){
         document.getElementById('nombre').classList.add('is-valid')
         document.getElementById('nombre').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('nombre').classList.add('is-invalid')
@@ -79,6 +79,7 @@ const validarFormulario = (e)=>{
       if(expresiones.apellido.test(e.target.value)){
         document.getElementById('apellido').classList.add('is-valid')
         document.getElementById('apellido').classList.remove('is-invalid')
+        setMensajeAlerta2('')
 
 
       }else{
@@ -92,6 +93,7 @@ const validarFormulario = (e)=>{
       if(expresiones.dni.test(e.target.value)){
         document.getElementById('dni').classList.add('is-valid')
         document.getElementById('dni').classList.remove('is-invalid')
+        setMensajeAlerta2('')
 
 
       }else{
@@ -105,6 +107,7 @@ const validarFormulario = (e)=>{
       if(expresiones.correo.test(e.target.value)){
         document.getElementById('correo').classList.add('is-valid')
         document.getElementById('correo').classList.remove('is-invalid')
+        setMensajeAlerta2('')
 
 
       }else{
@@ -128,9 +131,12 @@ inputs.forEach((input)=>{
         <div className="contenedorTabla table-responsive">
           <main>
             <form id="formulario" className="contenedorTabla" onSubmit={editarLector}>
+
+            
             {mensajeAlerta? 
           <div className="alert alert-success" role="alert">
               {mensajeAlerta}
+            {/*  {mensajeAlerta2 = "none"} */}
           </div>
           :<></>}
 

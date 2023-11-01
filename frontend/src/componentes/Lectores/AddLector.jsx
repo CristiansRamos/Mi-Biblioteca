@@ -11,6 +11,8 @@ export function AddLector(){
     const [dni, setDni]= useState('')
     const [correo, setCorreo]= useState('')
 const [mensajeAlerta, setMensajeAlerta] = useState('')
+const [mensajeAlerta2, setMensajeAlerta2] = useState('')
+
 
 const formulario = document.getElementById('formulario')
 const inputs = document.querySelectorAll('#formulario input')
@@ -21,10 +23,15 @@ const inputs = document.querySelectorAll('#formulario input')
         const Lector = await API.AddLector({nombre, apellido, dni, correo})
         
          if(Lector.status){
+          setTimeout(()=>{
           setMensajeAlerta(Lector.mensaje)
             window.location.href='/Lectores'
+          }, 2000)
+
          }else{
-          setMensajeAlerta(Lector.mensaje)
+            setTimeout(()=>{
+              setMensajeAlerta2('ingrese un dato valido parfavar')
+                }, 1000)
           
          }
         return;
@@ -42,7 +49,7 @@ const inputs = document.querySelectorAll('#formulario input')
     const expresiones = {
       nombre: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
       apellido: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
-      dni: /^[0-9]{8,9}$/, //de 8 a 9 numeros
+      dni: /^[0-9]{7,8}$/, //de 8 a 9 numeros
       correo: /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]{3,5}$/
 
     }
@@ -53,7 +60,7 @@ const inputs = document.querySelectorAll('#formulario input')
           if(expresiones.nombre.test(e.target.value)){
             document.getElementById('nombre').classList.add('is-valid')
             document.getElementById('nombre').classList.remove('is-invalid')
-
+            setMensajeAlerta2('')
 
           }else{
             document.getElementById('nombre').classList.add('is-invalid')
@@ -66,7 +73,7 @@ const inputs = document.querySelectorAll('#formulario input')
           if(expresiones.apellido.test(e.target.value)){
             document.getElementById('apellido').classList.add('is-valid')
             document.getElementById('apellido').classList.remove('is-invalid')
-
+            setMensajeAlerta2('')
 
           }else{
             document.getElementById('apellido').classList.add('is-invalid')
@@ -79,7 +86,7 @@ const inputs = document.querySelectorAll('#formulario input')
           if(expresiones.dni.test(e.target.value)){
             document.getElementById('dni').classList.add('is-valid')
             document.getElementById('dni').classList.remove('is-invalid')
-
+            setMensajeAlerta2('')
 
           }else{
             document.getElementById('dni').classList.add('is-invalid')
@@ -92,7 +99,7 @@ const inputs = document.querySelectorAll('#formulario input')
           if(expresiones.correo.test(e.target.value)){
             document.getElementById('correo').classList.add('is-valid')
             document.getElementById('correo').classList.remove('is-invalid')
-
+            setMensajeAlerta2('')
 
           }else{
             document.getElementById('correo').classList.add('is-invalid')
@@ -120,6 +127,11 @@ const inputs = document.querySelectorAll('#formulario input')
         {mensajeAlerta? 
           <div className="alert alert-success" role="alert">
               {mensajeAlerta}
+          </div>
+          :<></>}
+                    {mensajeAlerta2? 
+          <div className="alert alert-danger" role="alert">
+              {mensajeAlerta2}
           </div>
           :<></>}
           
@@ -154,7 +166,7 @@ const inputs = document.querySelectorAll('#formulario input')
                 <div className="form-floating">
                   <input 
                   required
-                  pattern="^[0-9]{8,9}$"
+                  pattern="^[0-9]{7,8}$"
                   type="number" 
                   value={dni}
                   onChange={(event)=>setDni((event.target.value < 0)?event.target.value * -1:event.target.value)}

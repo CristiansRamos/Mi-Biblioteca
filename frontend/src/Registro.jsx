@@ -15,6 +15,7 @@ export function Registro(){
     const [roles, setRoles] = useState([])
     const [mensajeAlerta, setMensajeAlerta] = useState('')
     const [mensajeAlertaNick, setMensajeAlertaNick] = useState('')
+    const [mensajeAlerta2, setMensajeAlerta2] = useState('')
 
     const formulario = document.getElementById('formulario')
     const inputs = document.querySelectorAll('#formulario input')
@@ -27,13 +28,17 @@ export function Registro(){
         const Registro = await API.Registro({apellido, nombre, dni, user, pass, correo, id_rol})
         
          if(Registro.status){
-          setMensajeAlerta(Registro.mensaje)
+            setTimeout(()=>{
+              setMensajeAlerta(Registro.mensaje)
+              window.location.href='/Usuarios'
 
-            window.location.href='/Usuarios'
+                }, 1000)
+
          }else{
-           alert(Registro.mensaje)
-          
-         }
+          setTimeout(()=>{
+            setMensajeAlerta2('ingrese un dato valido parfavar')
+              }, 1000)
+       }
         return;
       }
 
@@ -87,7 +92,7 @@ const validarFormulario = (e)=>{
       if(expresiones.nombre.test(e.target.value)){
         document.getElementById('nombre').classList.add('is-valid')
         document.getElementById('nombre').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('nombre').classList.add('is-invalid')
@@ -100,7 +105,7 @@ const validarFormulario = (e)=>{
       if(expresiones.apellido.test(e.target.value)){
         document.getElementById('apellido').classList.add('is-valid')
         document.getElementById('apellido').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('apellido').classList.add('is-invalid')
@@ -113,7 +118,7 @@ const validarFormulario = (e)=>{
       if(expresiones.dni.test(e.target.value)){
         document.getElementById('dni').classList.add('is-valid')
         document.getElementById('dni').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('dni').classList.add('is-invalid')
@@ -126,7 +131,7 @@ const validarFormulario = (e)=>{
       if(expresiones.correo.test(e.target.value)){
         document.getElementById('correo').classList.add('is-valid')
         document.getElementById('correo').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('correo').classList.add('is-invalid')
@@ -139,7 +144,7 @@ const validarFormulario = (e)=>{
       if(expresiones.usuario.test(e.target.value)){
         document.getElementById('user').classList.add('is-valid')
         document.getElementById('user').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
 
       }else{
         document.getElementById('user').classList.add('is-invalid')
@@ -152,7 +157,7 @@ const validarFormulario = (e)=>{
       if(expresiones.password.test(e.target.value)){
         document.getElementById('pass').classList.add('is-valid')
         document.getElementById('pass').classList.remove('is-invalid')
-
+        setMensajeAlerta2('')
       }else{
         document.getElementById('pass').classList.add('is-invalid')
         document.getElementById('pass').classList.remove('is-valid')
@@ -175,6 +180,12 @@ inputs.forEach((input)=>{
         {mensajeAlerta? 
           <div className="alert alert-success" role="alert">
               {mensajeAlerta}
+          </div>
+          :<></>}
+          
+          {mensajeAlerta2? 
+          <div className="alert alert-danger" role="alert">
+              {mensajeAlerta2}
           </div>
           :<></>}
 
@@ -224,7 +235,7 @@ inputs.forEach((input)=>{
                   pattern="^\d{8,9}$"
                   type="number" min={0}
                   value={dni}
-                  onChange={(event)=>setDni((event.target.value)?event.target.value * -1:event.target.value)}
+                  onChange={(event)=>setDni(event.target.value)/* ?event.target.value * -1:event.target.value) */}
                   className="form-control" 
                   id="dni" 
                   name="dni"

@@ -157,19 +157,20 @@ router.post(
                 res.sendStatus(403);
             } else {
                 mysqlConnect.query(
-                    "SELECT * FROM menu WHERE id_rol=? AND href=?",
-                    [id_rol, menu],
-                    (error, registros) => {
+                    "SELECT * FROM menu WHERE id_rol=? AND href=?",[id_rol, menu], (error, registros) => {
                         if (error) {
                             console.log("Error en la base de datos", error);
                         } else {
                             if (registros.length > 0) {
                                 res.json({
                                     status: true,
+                                    mensaje: 'ok'
                                 });
                             } else {
                                 res.json({
                                     status: false,
+                                    mensaje: 'error'
+
                                 });
                             }
                         }
