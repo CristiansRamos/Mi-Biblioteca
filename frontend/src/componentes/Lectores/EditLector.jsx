@@ -14,6 +14,8 @@ const formulario = document.getElementById('formulario')
 const inputs = document.querySelectorAll('#formulario input')
 
 const [mensajeAlerta, setMensajeAlerta] = useState('')
+const [mensajeAlerta2, setMensajeAlerta2] = useState('')
+
 
 
 const {id_lector} = useParams()
@@ -40,7 +42,11 @@ const editarLector = async(event)=>{
       setTimeout(()=>{
         setMensajeAlerta('')
           window.location.href='/lectores'
-          }, 3000)
+          }, 2000)
+  }else{
+    setTimeout(()=>{
+      setMensajeAlerta2('ingrese un dato valido parfavar')
+        }, 2000)
   }
   return;
 }
@@ -49,7 +55,7 @@ const editarLector = async(event)=>{
 const expresiones = {
   nombre: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
   apellido: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
-  dni: /^\d{8,9}$/, //de 8 a 9 numeros
+  dni: /^[0-9]{8,9}$/, //de 8 a 9 numeros
   correo: /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]{3,5}$/
 
 }
@@ -91,7 +97,7 @@ const validarFormulario = (e)=>{
       }else{
         document.getElementById('dni').classList.add('is-invalid')
         document.getElementById('dni').classList.remove('is-valid')
-
+        
       }
     break;
 
@@ -125,6 +131,12 @@ inputs.forEach((input)=>{
             {mensajeAlerta? 
           <div className="alert alert-success" role="alert">
               {mensajeAlerta}
+          </div>
+          :<></>}
+
+          {mensajeAlerta2? 
+          <div className="alert alert-danger" role="alert">
+              {mensajeAlerta2}
           </div>
           :<></>}
 
@@ -175,7 +187,7 @@ inputs.forEach((input)=>{
                 <div class="col-auto">
                 <input
                   required
-                  pattern="^\d{8,9}$"
+                  pattern="^[0-9]{8,9}$"
                   type="number"
                   value={dni}
                   onChange={(event) => setDni(event.target.value)}

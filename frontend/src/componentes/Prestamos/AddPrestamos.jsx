@@ -47,6 +47,8 @@ export function AddPrestamos(){
       setIdLibro('')
   }
 
+const minfecha = new Date;
+
     return(
         <>
               <Vigia/>
@@ -58,7 +60,7 @@ export function AddPrestamos(){
                 </div>
 
                 <div className="form-floating">
-                 <select onChange={(event)=>setIdLector(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
+                 <select required onChange={(event)=>setIdLector(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example">
                   <option disabled selected >Seleccione un lector</option>
                     {lectores.map((le)=>(
 
@@ -103,7 +105,7 @@ export function AddPrestamos(){
 
                 <div className="form-floating">
                 
-                <input required type="date" onChange={(event)=>setFechaDevolucion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
+                <input required type="date" min={minfecha} onChange={(event)=>setFechaDevolucion(event.target.value)} className="form-select" id="floatingSelect" aria-label="Floating label select example"/>
                 <label htmlFor="">Fecha Devolucion</label>
                </div>
                 

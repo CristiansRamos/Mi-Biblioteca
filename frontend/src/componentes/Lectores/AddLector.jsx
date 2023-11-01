@@ -42,7 +42,7 @@ const inputs = document.querySelectorAll('#formulario input')
     const expresiones = {
       nombre: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
       apellido: /^[a-zA-Z\s]{1,40}$/, //letras y espacios
-      dni: /^\d{8,9}$/, //de 8 a 9 numeros
+      dni: /^[0-9]{8,9}$/, //de 8 a 9 numeros
       correo: /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-.]{3,5}$/
 
     }
@@ -154,7 +154,7 @@ const inputs = document.querySelectorAll('#formulario input')
                 <div className="form-floating">
                   <input 
                   required
-                  pattern="^\d{8,9}$"
+                  pattern="^[0-9]{8,9}$"
                   type="number" 
                   value={dni}
                   onChange={(event)=>setDni((event.target.value < 0)?event.target.value * -1:event.target.value)}

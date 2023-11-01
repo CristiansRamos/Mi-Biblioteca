@@ -50,10 +50,15 @@ router.get('/lectores/:id_lector', verificarToken,(req , res)=>{
         jwt.verify(req.token, 'biblioteca', (error, valido)=>{
             if(error){
                 res.sendStatus(403);
+
             }else{
                 mysqlConnect.query('UPDATE lectores SET nombre = ?, apellido = ?, dni = ?, correo = ? WHERE (id_lector = ?)', [nombre, apellido, dni, correo, id_lector], (error, registros)=>{
                 if(error){
-                    console.log('Error en la base de datos', error)
+                   /*  console.log('Error en la base de datos', error) */
+                    res.json({
+                        status: false,
+                        mensaje: "ingrese un dato valido parfavar"
+                    })
                 }else{
                     res.json({
                         status:true,
